@@ -1,6 +1,6 @@
 FORMAT: 1A
 
-# SSGInsight.Agility.Api
+# Agility
 
 This is the API for Agility. The initial release will only be consumed by one application - the new iOS application.
 
@@ -1305,23 +1305,3 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     }
                 ]
         }
-
-## Complete Routesheet item [/routesheets/:routesheetId/item/:routesheetitemid/complete]
-
-### /routesheets/:routesheetId/item/:routesheetitemid/complete [POST]    
-
-+ Request V5 (application/json)
-
-    + Headers
-            
-            Acccept: application/vnd.agility.api.v5+json;
-            
-    + Body
-    
-            {
-                "completionComments": "Some completion comments",
-                "isPassed": true,
-                "completionDate": "2018-06-15T10:00:00",
-            }
-            
-+ Response 204
