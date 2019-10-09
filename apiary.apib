@@ -1,0 +1,1327 @@
+FORMAT: 1A
+
+# SSGInsight.Agility.Api
+
+This is the API for Agility. The initial release will only be consumed by one application - the new iOS application.
+
+- Use spinal case for routes (`/this-is-a-spinal-url`)
+- GET requests retrieve data
+- POST requests mutate data
+- Always suffix the URL with a verb (e.g. `/products/list`)
+- Don't envelope data - user headers for metadata (e.g. `X-Paging-PageCount: 1`)
+- Each request to the API should include the user's device id in the header (e.g. `X-Device-Id: 02:00:00:00:00:00`)
+- Each request to the API should include the user's agility base uri in the header (e.g. `X-Agility-BaseUri: https://uat.ssginsight.com/agility802`)
+
+# Group Metadata
+
+## Find the system configuration metadata [/system-configuration/find]
+
+### /system-configuration/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "costCodesMandatory": true,
+            "faultTypesMandatory": true,
+            "availableJobsEnabled": true,
+            "attachmentsWhiteList": [ "JPG", "PNG" ]
+        }
+
+## List the crafts [/crafts/list]
+
+### /crafts/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "Air Conditioning Engineer",
+                "id": "123"
+            }
+        ]
+
+## List the job types [/job-types/list]
+
+### /job-types/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "Breakdown Repair",
+                "id": "123"
+            }
+        ]
+
+## List the priorities [/priorities/list]
+
+### /priorities/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "6 Hours",
+                "id": "789"
+            }
+        ]
+
+## List the cost codes [/cost-codes/list]
+
+### /cost-codes/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "overhead",
+                "id": "123"
+            }
+        ]
+
+## List the fault groups [/fault-groups/list]
+
+An empty list will be returned if `FaultCodeVisibility` is false.
+
+### /fault-groups/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "Electrical",
+                "id": "789",
+                "faultCodes": [
+                    {
+                        "description": "Fuse 10 amp blown",
+                        "id": "012"
+                    },
+                    {
+                        "description": "Fuse 30 amp blown",
+                        "id": "345"
+                    }
+                ]
+            }
+        ]
+
+## List the completion types [/completion-types/list]
+
+### /completion-types/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "Customer cancelled",
+                "id": "123"
+            }
+        ]
+
+## List the job statuses [/job-statuses/list]
+
+### /job-statuses/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "Job Accepted by Engineer",
+                "id": "123",,
+                "isAnActiveStatus": false
+                "followingStatuses": [
+                    {
+                        "description": "Rejected",
+                        "id": "456",
+                        "isAnActiveStatus": false
+                    }
+                ]
+            },
+            {
+                "description": "Rejected",
+                "id": "456",
+                "isAnActiveStatus": false,
+                "followingStatuses": []
+            }
+        ]
+
+## List the available job statuses [/available-job-statuses/list]
+
+### /available-job-statuses/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "Open",
+                "id": "123"
+            },
+            {
+                "description": "Awaiting",
+                "id": "456",
+            }
+        ]
+
+## Find the scheduled status [/job-statuses/scheduled/find]
+
+### /job-statuses/scheduled/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "description": "Scheduled",
+            "id": "123"
+        }
+
+## Find the accepted status [/job-statuses/accepted/find]
+
+### /job-statuses/accepted/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "description": "Accepted",
+            "id": "123"
+        }
+
+## Find the rejected status [/job-statuses/rejected/find]
+
+### /job-statuses/rejected/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "description": "Rejected",
+            "id": "123"
+        }
+
+## Find the suspended status [/job-statuses/suspended/find]
+
+### /job-statuses/suspended/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "description": "Suspended",
+            "id": "123"
+        }
+
+## Find the completed status [/job-statuses/completed/find]
+
+### /job-statuses/completed/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "description": "Completed",
+            "id": "123"
+        }
+        
+## Find the cancelled status [/job-statuses/cancelled/find]
+
+### /job-statuses/cancelled/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "description": "Cancelled",
+            "id": "123"
+        }
+
+# Group Authenticated User
+
+## Find the user [/user/find]
+
+### /user/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "avatar": {
+                "url": "https://uat.ssginsight.com/avatars/elliotchaim.gif"
+            },
+            "emailAddress": "elliot.chaim@razor.co.uk",
+            "name": "Elliot Chaim",
+            "id": "123",
+            "username": "elliotchaim"
+        }
+
+# Group User Device Id
+        
+## Update the user's PDA ID [/user/device-id/update]
+
+### /user/device-id/update [POST]
+
++ Request (application/json)
+
+        {
+            "deviceId": "02:00:00:00:00:00",
+            "platform": "apns|gcm"
+        }
+
++ Response 204
+
+## Clear the user's PDA ID [/user/device-id/clear]
+
+### /user/device-id/clear [POST]
+
++ Request (application/json)
+
+        {
+        }
+
++ Response 204
+
+# Group User Assigned Jobs
+
+## List the user's assigned jobs [/user/assigned-jobs/list]
+
+### /user/assigned-jobs/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "active": false,
+                "completionTargetDate": "2018-06-15T10:00:00",
+                "completionWarningDate": "2018-06-15T10:00:00",
+                "costCode": "",
+                "hasBeenRespondedTo": true,
+                "id": "123",
+                "jobCode": "",
+                "jobType": "",
+                "location": {
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+                },
+                "asset": {
+                    "code": "",
+                    "description": ""
+                },
+                "priority": "",
+                "responseTargetDate": "2018-06-15T10:00:00",
+                "responseWarningDate": "2018-06-15T10:00:00",
+                "scheduleStartDate": "2018-06-15T10:00:00",
+                "startDate": "2018-06-15T10:00:00",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                },
+                "taskDescription": "",
+                "workOrderDescription": "",
+                "checklists" : [
+                   {
+                        "id" : "123",
+                       "description" : "abc"
+                   }
+                ],
+                "routeSheet" : {
+                    "id" : "123"
+                }
+            }
+        ]
+        
+## Accept a job assigned to the user [/user/assigned-jobs/:jobId/accept]
+
+### /user/assigned-jobs/:jobId/accept [POST]
+
++ `actionDateTime` (optional)...
+
++ Request (application/json)
+
+        {
+            "actionDateTime": "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
+## Reject a job assigned to the the user [/user/assigned-jobs/:jobId/reject]
+
+### /user/assigned-jobs/:jobId/reject [POST]
+
++ `actionDateTime` (optional)...
+
++ Request (application/json)
+
+        {
+            "actionDateTime": "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
+## Complete a job assigned to the the user [/user/assigned-jobs/:jobId/complete]
+
+### /user/assigned-jobs/:jobId/complete [POST]
+
++ Request (application/json)
+
+        {
+            "completionComments": "",
+            "completionTypeId": "123",
+            "completedDate": "2018-06-15T10:00:00",
+            "faultTypeId": "123"
+        }
+
++ Response 204
+
+## Find a job attachments [/user/assigned-jobs/:jobId/attachments/list]
+        
+### /user/assigned-jobs/:jobId/attachments/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://agility.api/api/blobs/sdfkjhweoi34/find",
+                "urlIsInternal": true
+            },
+            {
+                "id": "1212343",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description different one",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://google.com/some.jpg",
+                "urlIsInternal": false
+            }            
+        ]
+        
+## Create a assigned job attachment [/user/assigned-jobs/:jobid/attachments/create]
+        
+### /user/assigned-jobs/:jobid/attachments/create [POST]
+
++ Request (multipart/form-data; boundary={unique boundary text}) 
+
+    + Body
+    
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentData"
+            Content-Type: application/json
+            
+            {
+                "createDate": "2018-06-15T10:00:00",
+                "description": "user text",
+                "fileName": "filename.jpg"
+            }
+            
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentFile"
+            Content-Type: image/jpeg
+            Content-Transfer-Encoding: base64
+            Content-Size: 1000
+    
+            SDFKJHWEFKJ;SDC,NSA.,VJNA;DSFJKAJKGFSDVFKDS;FGJKLHSW;GAS;DJKFHKSAJDGHKSAJDHGFKSAJDHGSAJDFKSAJDF
+            --{unique boundary text}
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": "123"
+            }
+            
+## Find an asset attachments assigned to job [/user/assigned-jobs/:jobId/asset/attachments/list]
+        
+### /user/assigned-jobs/:jobId/asset/attachments/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://agility.api/api/blobs/sdfkjhweoi34/find",
+                "urlIsInternal": true
+            },
+            {
+                "id": "1212343",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description different one",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://google.com/some.jpg",
+                "urlIsInternal": false
+            }            
+        ]
+        
+## Submit a checklist result [/user/assigned-jobs/:jobid/checklists/:checklistId/results/submit]
+
+- In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
+
+### /user/assigned-jobs/:jobid/checklists/:checklistId/results/submit [PUT]
+
++ Request (application/json)
+
+        {
+            "resultDate": "2018-06-15T10:00:00",
+            "results":  [
+                        {
+                          "checklistItemId": "123",
+                          "value" : "abc"
+                        }
+                    ]
+        }
+        
++ Response 201 (application/json)
+
+        {
+            "id": "checklist results id"
+        }
+
+## Save a checklist result [/user/assigned-jobs/:jobid/checklists/:checklistId/results/save]
+
+- In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
+
+### /user/assigned-jobs/:jobid/checklists/:checklistId/results/save [PUT]
+
++ Request (application/json)
+
+        {
+            "resultDate": "2018-06-15T10:00:00",
+            "results":  [
+                        {
+                          "checklistItemId": "123",
+                          "value" : "abc"
+                        }
+                    ]
+        }
+        
++ Response 201 (application/json)
+
+        {
+            "id": "checklist results id"
+        }
+        
+## Read previously saved checklist result [/user/assigned-jobs/:jobid/checklists/:checklistId/results/find]
+
+- In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
+
+### /user/assigned-jobs/:jobid/checklists/:checklistId/results/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "lastSavedResult":
+                {
+                    "resultDate": "2018-06-15T10:00:00",
+                    "results":  [
+                                {
+                                  "checklistItemId": "123",
+                                  "value" : "abc"
+                                }
+                            ]
+                }
+        }
+
+## Read checklist submittion status [/user/assigned-jobs/:jobid/checklists/:checklistId/results/issubmitted]
+
+### /user/assigned-jobs/:jobid/checklists/:checklistId/results/issubmitted [GET]
+
++ Response 200 (application/json)
+
+        {
+            "isChecklistSubmitted": false
+        }
+
+## Notify about a job assigned for the user [/user/notify/jobassigned]
+
+### /user/notify/jobassigned [POST]
+
++ Request (application/json)
+
+        {
+            "userSubClaim": "",
+            "jobId": "123",
+            "jobCode": "abc",
+            "taskCode": "abc"
+        }
+
++ Response 204
+
+
+## Notify that a job, already assigned to the user, has been changed [/user/notify/jobchanged]
+
+### /user/notify/jobchanged [POST]
+
++ Request (application/json)
+
+        {
+            "userSubClaim": "",
+            "jobId": "123",
+            "jobCode": "abc",
+            "taskCode": "abc"
+        }
+
++ Response 204
+
+
+## Notify that a job assigned to the user has been unassigned [/user/notify/jobunassigned]
+
+### /user/notify/jobunassigned [POST]
+
++ Request (application/json)
+
+        {
+            "userSubClaim": "",
+            "jobId": "123",
+            "jobCode": "abc",
+            "taskCode": "abc"
+        }
+
++ Response 204
+
+
+## Notify that a job assigned to the user has been cancelled [/user/notify/jobcancelled]
+
+### /user/notify/jobcancelled [POST]
+
++ Request (application/json)
+
+        {
+            "userSubClaim": "",
+            "jobId": "123",
+            "jobCode": "abc",
+            "taskCode": "abc"
+        }
+
++ Response 204
+
+
+## Notify that a job assigned to the user has been completed [/user/notify/jobcompleted]
+
+### /user/notify/jobcompleted [POST]
+
++ Request (application/json)
+
+        {
+            "userSubClaim": "",
+            "jobId": "123",
+            "jobCode": "abc",
+            "taskCode": "abc"
+        }
+
++ Response 204
+
+
+# Group Assets
+
+## List assets [/assets/list?query=belt]
+
+### /assets/list?query=belt [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "code": "12301",
+                "description": "Conveyor belt 001",
+                "id": "123"
+            }
+        ]
+        
+## List asset structure [/assets/structure/find]
+
+### /assets/structure/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "sites" : [
+                {
+                "description": "Conveyor belt 001",
+                "id": "123",
+                "locations" : [
+                    {
+                        "description": "Conveyor belt 002",
+                        "id": "123",
+                        "sublocations" : [
+                        {
+                            "description": "Conveyor belt 003",
+                            "id": "123"
+                        }
+                    ]
+                    }
+                ]
+                }
+            ]
+        }
+
+# Group Users
+        
+## Find a user's avatar [/users/:userId/avatar/find]
+
+### /users/:userId/avatar/find [GET]
+
++ Response 200 (image/png)
+
+* This endpoint should return the PNG file for the user's avatar. 
+* This endpoint should not require authentication - i.e. it should be publicly available.
+
+# Group Jobs
+
+## Create a job [/jobs/create]
+
+### /jobs/create [POST]
+
++ Request V3 (application/json)
+
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v3+json;
+            X-Assign-To-Self: false
+    
+    + Body
+    
+            {
+                "referenceId": "030B4A82-1B7C-11CF-9D53-00AA003C9CB6",
+                "assetCode": "AC1",
+                "costCodeId": "123",
+                "craftId": "123",,
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "jobTypeId": "123",
+                "priorityId": "123"
+            }
+
++ Response 200 (application/vnd.agility.api.v3+json)
+
+        {
+            "jobCode": ""
+        }
+        
++ Request V2 (application/json)
+
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v2+json;
+            X-Assign-To-Self: false
+    
+    + Body
+    
+            {
+                "assetCode": "AC1",
+                "costCodeId": "123",
+                "craftId": "123",,
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "jobTypeId": "123",
+                "priorityId": "123"
+            }
+
++ Response 200 (application/vnd.agility.api.v2+json)
+
+        {
+            "jobCode": ""
+        }
+        
++ Request V1 (application/json)
+
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v1+json;
+            X-Assign-To-Self: false
+    
+    + Body
+    
+            {
+                "assetId": "123",
+                "costCodeId": "123",
+                "craftId": "123",,
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "jobTypeId": "123",
+                "priorityId": "123"
+            }
+
++ Response 200 (application/vnd.agility.api.v1+json)
+
+        {
+            "jobCode": ""
+        }
+        
+## Find a checklist definition attached to a job [/jobs/:jobId/checklists/:checklistId/find]
+        
+### /jobs/:jobId/checklists/:checklistId/find [GET]  
++ Response 200 (application/json)
+
+        {
+            "id" : "123",
+            "description" : "abc",
+            "mustComplete": true,
+            "completeBeforeStatusId": "123",
+            "items" : [
+                {
+                    "id" : "123",
+                    "controlType": "Example",
+                    "label" : "abc",
+                    "datatype": "string",
+                    "sortOrder" : 1,
+                    "options": [
+                        {
+                          "id" : "123",
+                          "description" : "abc"
+                        }
+                    ],
+                    "validationRules" : {
+                            "isMandatory": true,
+                            "minLenght" : 0,
+                            "maxLenght" : 12,
+                            "checksum" : "element"
+                        }
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Label",
+                    "label" : "abc",
+                    "sortOrder" : 2
+                },
+                {
+                    "id" : "123",
+                    "controlType": "TextBox",
+                    "label" : "abc",
+                    "datatype": "string",
+                    "sortOrder" : 3,
+                    "validationRules" : {
+                            "isMandatory": true,
+                            "minLenght" : 0,
+                            "maxLenght" : 12,
+                            "checksum" : "element"
+                        }
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Checkbox",
+                    "label" : "abc",
+                    "sortOrder" : 4
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Checkbox",
+                    "label" : "abc",
+                    "sortOrder" : 5
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Combobox",
+                    "label" : "abc",
+                    "sortOrder" : 6,
+                    "options": [
+                        {
+                          "id" : "123",
+                          "description" : "abc"
+                        }
+                    ],
+                    "validationRules" : {
+                            "isMandatory": true
+                        }
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Signature",
+                    "label" : "abc",
+                    "sortOrder" : 7,
+                    "validationRules" : {
+                            "isMandatory": true
+                        }
+                }
+            ]
+        }
+            
+        - controlType : Label, TextBox, CheckBox, ComboBox, Signature (mandatory)
+        - options (only for Combobox, optional)
+        - checksum : NoChecksum, Element, Total (optional)
+        - datatype : string, int, decimal, currency, interval, date, datetime (optional)
+
+## Find a job [/jobs/:jobId/find]
+        
+### /jobs/:jobId/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "active": false,
+            "completionTargetDate": "2018-06-15T10:00:00",
+            "completionWarningDate": "2018-06-15T10:00:00",
+            "costCode": "",
+            "hasBeenRespondedTo": true,
+            "id": "123",
+            "jobCode": "",
+            "jobType": "",
+            "location": {
+                    "asset": ""
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+            },
+            "priority": "",
+            "responseTargetDate": "2018-06-15T10:00:00",
+            "responseWarningDate": "2018-06-15T10:00:00",
+            "scheduleStartDate": "2018-06-15T10:00:00",
+            "startDate": "2018-06-15T10:00:00",
+            "status": {
+                "description": "Accepted",
+                "id": "456"
+            },
+            "taskDescription": "",
+            "workOrderDescription": "",
+            "checklists" : [
+                {
+                    "id" : "123",
+                    "description" : "abc"
+                }
+            ],
+            "routeSheet" : {
+                "id" : "123"
+            }
+        }
+
+## Create a job attachment [/jobs/:referenceId/attachments/create]
+        
+### /jobs/:referenceId/attachments/create [POST]
+
++ Request V3 (multipart/form-data; boundary={unique boundary text}) 
+    
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v3+json;
+    + Body
+    
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentData"
+            Content-Type: application/json
+            
+            {
+                "createDate": "2018-06-15T10:00:00",
+                "description": "user text",
+                "fileName": "filename.jpg"
+            }
+            
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentFile"
+            Content-Type: image/jpeg
+            Content-Transfer-Encoding: base64
+            Content-Size: 1000
+    
+            SDFKJHWEFKJ;SDC,NSA.,VJNA;DSFJKAJKGFSDVFKDS;FGJKLHSW;GAS;DJKFHKSAJDGHKSAJDHGFKSAJDHGSAJDFKSAJDF
+            --{unique boundary text}
+            
++ Response 200 (application/vnd.agility.api.v3+json)
+
+    + Body
+
+            {
+                "id": "123"
+            }
+
+## Create a job attachment [/jobs/:jobCode/attachments/create]
+        
+### /jobs/:jobCode/attachments/create [POST]
+
++ Request V1 (multipart/form-data; boundary={unique boundary text}) 
+
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v1+json;
+            
+    + Body
+    
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentData"
+            Content-Type: application/json
+            
+            {
+                "createDate": "2018-06-15T10:00:00",
+                "description": "user text",
+                "fileName": "filename.jpg"
+            }
+            
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentFile"
+            Content-Type: image/jpeg
+            Content-Transfer-Encoding: base64
+            Content-Size: 1000
+    
+            SDFKJHWEFKJ;SDC,NSA.,VJNA;DSFJKAJKGFSDVFKDS;FGJKLHSW;GAS;DJKFHKSAJDGHKSAJDHGFKSAJDHGSAJDFKSAJDF
+            --{unique boundary text}
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": "123"
+            }
+            
+## Update a job's status [/jobs/:jobId/status/update]
+
+### /jobs/:jobId/status/update [POST]
+
++ `actionDateTime` (optional)...
+
++ Request (application/json)
+
+        {
+            "statusId": "123",
+            "actionDateTime": "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
+# Group Available Jobs
+
+## List available jobs [/available-jobs/list?assetFilter=belt]
+
+### /available-jobs/list?assetFilter=belt [POST]
+
++ Request V5 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v5+json;
+            
+    + Body
+    
+            {
+                "crafts": [
+                    {
+                        "id": "123"
+                    }
+                ],
+                "locationFilter":
+                {
+                    "sites": [
+                    {
+                        "id": "123"
+                    }
+                    ],
+                    "locations": [
+                    {
+                        "id": "123"
+                    }
+                    ],
+                    "sublocations": [
+                    {
+                        "id": "123"
+                    }
+                    ]
+                },
+                "jobTypes": [
+                    {
+                        "id": "123"
+                    }
+                ],
+                "statuses": [
+                    {
+                        "id": "123"
+                    }
+                ],
+                "startDate":
+                {
+                    "from": "2019-01-15T10:00:00",
+                    "to": "2019-06-15T10:00:00"
+                },
+                "dueDate":
+                {
+                    "from": "2019-05-15T10:00:00",
+                    "to": "2019-10-15T10:00:00"
+                }                
+            }
+
++ Response 200 (application/vnd.agility.api.v5+json)
+
+        [
+            {
+                "completionTargetDate": "2018-06-15T10:00:00",
+                "completionWarningDate": "2018-06-15T10:00:00",
+                "costCode": "",
+                "hasBeenRespondedTo": true,
+                "id": "123",
+                "jobCode": "",
+                "jobType": "",
+                "location": {
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+                },
+                "asset": {
+                    "code": "",
+                    "description": ""
+                },
+                "priority": "",
+                "responseTargetDate": "2018-06-15T10:00:00",
+                "responseWarningDate": "2018-06-15T10:00:00",
+                "startDate": "2018-06-15T10:00:00",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                 },
+                "taskDescription": "",
+                "workOrderDescription": ""
+            }
+        ]
+        
++ Request V4 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v4+json;
+
++ Response 200 (application/vnd.agility.api.v4+json)
+
+        [
+            {
+                "completionTargetDate": "2018-06-15T10:00:00",
+                "completionWarningDate": "2018-06-15T10:00:00",
+                "costCode": "",
+                "hasBeenRespondedTo": true,
+                "id": "123",
+                "jobCode": "",
+                "jobType": "",
+                "location": {
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+                },
+                "asset": {
+                    "code": "",
+                    "description": ""
+                },
+                "priority": "",
+                "responseTargetDate": "2018-06-15T10:00:00",
+                "responseWarningDate": "2018-06-15T10:00:00",
+                "startDate": "2018-06-15T10:00:00",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                 },
+                "taskDescription": "",
+                "workOrderDescription": ""
+            }
+        ]
+
+## Assign available job to current user [/available-jobs/:availableJobId/assigntoself]
+
+### /available-jobs/:availableJobId/assigntoself [POST]
+
++ Request V4 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v4+json;
+            
++ Response 204
+        
+
+# Group Helpdesk Requests
+
+## Create a helpdesk request [/helpdesk-requests/create]
+
+### /helpdesk-requests/create [POST]
+
++ Request V3 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v3+json;
+            
+    + Body
+    
+            {
+                "referenceId": "030B4A82-1B7C-11CF-9D53-00AA003C9CB6",
+                "assetCode": "AC1",
+                "costCodeId": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "priorityId": "123"
+            }
+            
++ Response 200 (application/vnd.agility.api.v3+json)
+
+        {
+            "helpdeskRequestCode": ""
+        }
+        
++ Request V2 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v2+json;
+            
+    + Body
+    
+            {
+                "assetCode": "AC1",
+                "costCodeId": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "priorityId": "123"
+            }
+            
++ Response 200 (application/vnd.agility.api.v2+json)
+
+        {
+            "helpdeskRequestCode": ""
+        }
+        
+        
++ Request V1 (application/json)
+
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v1+json;
+            
+    + Body
+    
+            {
+                "assetId": "123",
+                "costCodeId": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "priorityId": "123"
+            }
+        
+
+    
++ Response 200 (application/vnd.agility.api.v1+json)
+
+        {
+            "helpdeskRequestCode": ""
+        }
+
+ 
+## Create a Helpdesk Request attachment [/helpdesk-requests/:referenceId/attachments/create]
+        
+### /helpdesk-requests/:referenceId/attachments/create [POST]
+
++ Request V3 (multipart/form-data; boundary={unique boundary text}) 
+    
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v3+json;
+    + Body
+    
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentData"
+            Content-Type: application/json
+            
+            {
+                "createDate": "2018-06-15T10:00:00",
+                "description": "user text",
+                "fileName": "filename.jpg"
+            }
+            
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentFile"
+            Content-Type: image/jpeg
+            Content-Transfer-Encoding: base64
+            Content-Size: 1000
+    
+            SDFKJHWEFKJ;SDC,NSA.,VJNA;DSFJKAJKGFSDVFKDS;FGJKLHSW;GAS;DJKFHKSAJDGHKSAJDHGFKSAJDHGSAJDFKSAJDF
+            --{unique boundary text}--
+            
++ Response 200 (application/vnd.agility.api.v3+json)
+
+    + Body
+
+            {
+                "id": "123"
+            }
+            
+## Create a Helpdesk Request attachment [/helpdesk-requests/:helpDeskRequestCode/attachments/create]
+
+### /helpdesk-requests/:helpDeskRequestCode/attachments/create [POST]    
+
++ Request V1 (multipart/form-data; boundary={unique boundary text}) 
+
+    + Headers
+    
+            Acccept: application/vnd.agility.api.v1+json;
+
+    + Body
+            
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentData"
+            Content-Type: application/json
+            
+            {
+                "createDate": "2018-06-15T10:00:00",
+                "description": "user text",
+                "fileName": "filename.jpg"
+            }
+            
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentFile"
+            Content-Type: image/jpeg
+            Content-Transfer-Encoding: base64
+            Content-Size: 1000
+    
+            SDFKJHWEFKJ;SDC,NSA.,VJNA;DSFJKAJKGFSDVFKDS;FGJKLHSW;GAS;DJKFHKSAJDGHKSAJDHGFKSAJDHGSAJDFKSAJDF
+            --{unique boundary text}--
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": "123"
+            }
+            
+# Group RouteSheet
+
+## Find a RouteSheets  [/routesheets/:routesheetId/find]
+        
+### /routesheets/:routesheetId/find [GET]  
++ Response 200 (application/json)
+
+        {
+            "id" : "123",
+            "items" : 
+                [
+                    {
+                        "asset": ""
+                        "location": "",
+                        "site": "",
+                        "subLocation": "",
+                        "isCompleted": false,
+                        "isPassed": false
+             
+                    }
+                ]
+        }
+
+## Complete Routesheet item [/routesheets/:routesheetId/item/:routesheetitemid/complete]
+
+### /routesheets/:routesheetId/item/:routesheetitemid/complete [POST]    
+
++ Request V5 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v5+json;
+            
+    + Body
+    
+            {
+                "completionComments": "Some completion comments",
+                "isPassed": true,
+                "completionDate": "2018-06-15T10:00:00",
+            }
+            
++ Response 204
