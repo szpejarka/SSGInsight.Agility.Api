@@ -1292,19 +1292,30 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
         {
             "id" : "123",
-            "items" : 
+            "openItems" : 
                 [
                     {
                         "routeSheetItemId": "342",
                         "asset": ""
                         "location": "",
                         "site": "",
+                        "subLocation": ""
+                    }
+                ],
+            "completedItems" : 
+                [
+                    {
+                        "routeSheetItemId": "343",
+                        "asset": ""
+                        "location": "",
+                        "site": "",
                         "subLocation": "",
-                        "isCompleted": false,
-                        "isPassed": false
-             
+                        "isPassed": false,
+                        "completionComments": "Some completion comments",
+                        "completionDate": "2018-06-15T10:00:00",
                     }
                 ]
+                
         }
 
 ## Complete Routesheet item [/routesheets/:routesheetId/item/:routesheetitemid/complete]
