@@ -315,9 +315,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                        "description" : "abc"
                    }
                 ],
-                "routeSheet" : {
-                    "id" : "123"
-                }
+                "hasRouteSheet" : true
             }
         ]
         
@@ -599,28 +597,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             
 + Response 204
 
-## Submit a checklist result for a route sheet item [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit]
-
-### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit [PUT]
-
-+ Request (application/json)
-
-        {
-            "resultDate": "2018-06-15T10:00:00",
-            "results":  [
-                        {
-                          "checklistItemId": "123",
-                          "value" : "abc"
-                        }
-                    ]
-        }
-        
-+ Response 201 (application/json)
-
-        {
-            "id": "checklist results id"
-        }
-        
 ## Find a checklist definition attached to a route sheet item [/user/assigned-jobs/:jobid/routesheet/checklists/:checklistId/find]
         
 ### /user/assigned-jobs/:jobid/routesheet/checklists/:checklistId/find [GET]  
@@ -714,7 +690,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         - checksum : NoChecksum, Element, Total (optional)
         - datatype : string, int, decimal, currency, interval, date, datetime (optional)
 
-## Submit a checklist result [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit]
+## Submit a checklist result for Routesheet item [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit]
 
 - In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
 
@@ -1086,9 +1062,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "description" : "abc"
                 }
             ],
-            "routeSheet" : {
-                "id" : "123"
-            }
+            "hasRouteSheet" : truechanged 
         }
 
 ## Create a job attachment [/jobs/:referenceId/attachments/create]
