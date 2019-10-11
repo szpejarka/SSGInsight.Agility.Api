@@ -540,6 +540,205 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "isChecklistSubmitted": false
         }
 
+## Find a RouteSheets  [/user/assigned-jobs/:jobid/routesheet/find]
+        
+### /user/assigned-jobs/:jobid/routesheet/find [GET]  
++ Response 200 (application/json)
+
+        {
+            "id" : "123",
+            "openItems" : 
+                [
+                    {
+                        "routeSheetItemId": "342",
+                        "asset": ""
+                        "location": "",
+                        "site": "",
+                        "subLocation": ""
+                    }
+                ],
+            "completedItems" : 
+                [
+                    {
+                        "routeSheetItemId": "343",
+                        "asset": ""
+                        "location": "",
+                        "site": "",
+                        "subLocation": "",
+                        "isPassed": false,
+                        "completionComments": "Some completion comments",
+                        "completionDate": "2018-06-15T10:00:00",
+                    }
+                ],
+            "checklists" : 
+                [
+                   {
+                        "id" : "123",
+                        "description" : "abc"
+                   }
+                ]
+        }
+
+## Complete Routesheet item [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/complete]
+
+### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/complete [POST]    
+
++ Request V5 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v5+json;
+            
+    + Body
+    
+            {
+                "completionComments": "Some completion comments",
+                "isPassed": true,
+                "completionDate": "2018-06-15T10:00:00",
+            }
+            
++ Response 204
+
+## Submit a checklist result for a route sheet item [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit]
+
+### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit [PUT]
+
++ Request (application/json)
+
+        {
+            "resultDate": "2018-06-15T10:00:00",
+            "results":  [
+                        {
+                          "checklistItemId": "123",
+                          "value" : "abc"
+                        }
+                    ]
+        }
+        
++ Response 201 (application/json)
+
+        {
+            "id": "checklist results id"
+        }
+        
+## Find a checklist definition attached to a route sheet item [/user/assigned-jobs/:jobid/routesheet/checklists/:checklistId/find]
+        
+### /user/assigned-jobs/:jobid/routesheet/checklists/:checklistId/find [GET]  
++ Response 200 (application/json)
+
+        {
+            "id" : "123",
+            "description" : "abc",
+            "mustComplete": true,
+            "completeBeforeStatusId": "123",
+            "items" : [
+                {
+                    "id" : "123",
+                    "controlType": "Example",
+                    "label" : "abc",
+                    "datatype": "string",
+                    "sortOrder" : 1,
+                    "options": [
+                        {
+                          "id" : "123",
+                          "description" : "abc"
+                        }
+                    ],
+                    "validationRules" : {
+                            "isMandatory": true,
+                            "minLenght" : 0,
+                            "maxLenght" : 12,
+                            "checksum" : "element"
+                        }
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Label",
+                    "label" : "abc",
+                    "sortOrder" : 2
+                },
+                {
+                    "id" : "123",
+                    "controlType": "TextBox",
+                    "label" : "abc",
+                    "datatype": "string",
+                    "sortOrder" : 3,
+                    "validationRules" : {
+                            "isMandatory": true,
+                            "minLenght" : 0,
+                            "maxLenght" : 12,
+                            "checksum" : "element"
+                        }
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Checkbox",
+                    "label" : "abc",
+                    "sortOrder" : 4
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Checkbox",
+                    "label" : "abc",
+                    "sortOrder" : 5
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Combobox",
+                    "label" : "abc",
+                    "sortOrder" : 6,
+                    "options": [
+                        {
+                          "id" : "123",
+                          "description" : "abc"
+                        }
+                    ],
+                    "validationRules" : {
+                            "isMandatory": true
+                        }
+                },
+                {
+                    "id" : "123",
+                    "controlType": "Signature",
+                    "label" : "abc",
+                    "sortOrder" : 7,
+                    "validationRules" : {
+                            "isMandatory": true
+                        }
+                }
+            ]
+        }
+            
+        - controlType : Label, TextBox, CheckBox, ComboBox, Signature (mandatory)
+        - options (only for Combobox, optional)
+        - checksum : NoChecksum, Element, Total (optional)
+        - datatype : string, int, decimal, currency, interval, date, datetime (optional)
+
+## Submit a checklist result [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit]
+
+- In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
+
+### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/submit [PUT]
+
++ Request (application/json)
+
+        {
+            "resultDate": "2018-06-15T10:00:00",
+            "results":  [
+                        {
+                          "checklistItemId": "123",
+                          "value" : "abc"
+                        }
+                    ]
+        }
+        
++ Response 201 (application/json)
+
+        {
+            "id": "checklist results id"
+        }
+
+
 ## Notify about a job assigned for the user [/user/notify/jobassigned]
 
 ### /user/notify/jobassigned [POST]
@@ -1282,58 +1481,3 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             {
                 "id": "123"
             }
-            
-# Group RouteSheets
-
-## Find a RouteSheets  [/routesheets/:routesheetId/find]
-        
-### /routesheets/:routesheetId/find [GET]  
-+ Response 200 (application/json)
-
-        {
-            "id" : "123",
-            "openItems" : 
-                [
-                    {
-                        "routeSheetItemId": "342",
-                        "asset": ""
-                        "location": "",
-                        "site": "",
-                        "subLocation": ""
-                    }
-                ],
-            "completedItems" : 
-                [
-                    {
-                        "routeSheetItemId": "343",
-                        "asset": ""
-                        "location": "",
-                        "site": "",
-                        "subLocation": "",
-                        "isPassed": false,
-                        "completionComments": "Some completion comments",
-                        "completionDate": "2018-06-15T10:00:00",
-                    }
-                ]
-                
-        }
-
-## Complete Routesheet item [/routesheets/:routesheetId/item/:routesheetitemid/complete]
-
-### /routesheets/:routesheetId/item/:routesheetitemid/complete [POST]    
-
-+ Request V5 (application/json)
-
-    + Headers
-            
-            Acccept: application/vnd.agility.api.v5+json;
-            
-    + Body
-    
-            {
-                "completionComments": "Some completion comments",
-                "isPassed": true,
-                "completionDate": "2018-06-15T10:00:00",
-            }
-            
-+ Response 204
