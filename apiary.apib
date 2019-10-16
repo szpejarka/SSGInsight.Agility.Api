@@ -315,9 +315,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                        "description" : "abc"
                    }
                 ],
-                "routeSheet" : {
-                    "id" : "123"
-                }
+                "hasRouteSheet" : true
             }
         ]
         
@@ -718,7 +716,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /user/notify/jobassigned [POST]
 
-+ Request (application/json)Removed duplicated 
++ Request (application/json)
 
         {
             "userSubClaim": "",
@@ -1061,9 +1059,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "description" : "abc"
                 }
             ],
-            "routeSheet" : {
-                "id" : "123"
-            }
+            "hasRouteSheet" :true
         }
 
 ## Create a job attachment [/jobs/:referenceId/attachments/create]
