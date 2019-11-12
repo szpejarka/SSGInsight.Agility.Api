@@ -621,6 +621,35 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "id": "checklist results id"
         }
         
+## Issued inventory items for job  [/user/assigned-jobs/:jobid/inventory/list]
+
+### /user/assigned-jobs/:jobid/inventory/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "12345",
+                "item": {
+                    "code": "ACE23",
+                    "description": "some item"
+                },
+                "binLocation": {
+                    "code": "bin location code",
+                    "store": {
+                        "code": "store code"
+                    }
+                },
+                "quantity": {
+                    "value": 1234.234,
+                    "uom": {
+                        "code": "Each"
+                    }
+                }
+            }
+        ]
+
+
 ## Notify about a job assigned for the user [/user/notify/jobassigned]
 
 ### /user/notify/jobassigned [POST]
