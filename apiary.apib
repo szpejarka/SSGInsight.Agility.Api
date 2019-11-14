@@ -362,6 +362,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
+# Group User Assigned Jobs / Attachments
+
 ## Find a job attachments [/user/assigned-jobs/:jobId/attachments/list]
         
 ### /user/assigned-jobs/:jobId/attachments/list [GET]
@@ -459,6 +461,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }            
         ]
         
+# Group User Assigned Jobs / Checklists
+        
 ## Submit a checklist result [/user/assigned-jobs/:jobid/checklists/:checklistId/results/submit]
 
 - In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
@@ -537,6 +541,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         {
             "isChecklistSubmitted": false
         }
+
+# Group User Assigned Jobs / Routesheet
 
 ## Find a RouteSheets  [/user/assigned-jobs/:jobid/routesheet/find]
         
@@ -621,9 +627,15 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "id": "checklist results id"
         }
         
-## List issued parts for job  [/user/assigned-jobs/:jobid/parts/list]
+# Group User Assigned Jobs / Parts        
+        
+## List issued parts for job  [/user/assigned-jobs/{jobid}/parts/list]
 
-### /user/assigned-jobs/:jobid/parts/list [GET]
+### /user/assigned-jobs/{jobid}/parts/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
 
 + Response 200 (application/json)
 
@@ -653,9 +665,14 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }
         ]
 
-## Issue part for job  [/user/assigned-jobs/:jobid/parts/issue]
+## Issue part for job  [/user/assigned-jobs/{jobid}/parts/issue]
 
-### /user/assigned-jobs/:jobid/parts/issue [POST]  
+### /user/assigned-jobs/{jobid}/parts/issue [POST]  
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
 
 + Request (application/json)
 
@@ -677,9 +694,15 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "id": "2341234"
         }
 
-## Return part from job  [/user/assigned-jobs/:jobid/parts/:issueid/return]
+## Return part from job  [/user/assigned-jobs/{jobid}/parts/{issueid}/return]
 
 ### /user/assigned-jobs/:jobid/parts/:issueid/return [POST]  
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
+    + issueid:"123" (required,string) - issue id to return from
 
 + Request (application/json)
 
@@ -705,6 +728,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "partsCount": 7
             }
         ]
+        
+# Group User Assgined Jobs / Notifications
 
 ## Notify about a job assigned for the user [/user/notify/jobassigned]
 
@@ -1448,17 +1473,17 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group Inventory
 
-## Items List  [/inventory/items/list{?code,stores*,bins*}]
+## Items List  [/inventory/items/list{?code,stores,bins}]
 
-### /inventory/items/list{?code,stores*,bins*} [GET]
+### /inventory/items/list{?code,stores,bins} [GET]
 
 + Parameters
 
-    + code: (string,optional) - item code filter
+    + code:"abc" (optional,string) - item code filter
 
-    + stores: (array[string],optional) - list of store ids to filter on
+    + stores:"123" (optional,array[string]) - list of store ids to filter on
 
-    + bins: (array[string],optional) - list of bin ids to filter on
+    + bins:"123" (optional,array[string]) - list of bin ids to filter on
 
 + Response 200 (application/vnd.agility.api.v2+json)
 
@@ -1502,15 +1527,15 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 }
             ]
 
-## Bins List [/inventory/bins/list{?code,stores*}]
+## Bins List [/inventory/bins/list{?code,stores}]
 
-### /inventory/bins/list{?code,stores*} [GET]
+### /inventory/bins/list{?code,stores} [GET]
 
 + Parameters
 
-    + code: (string,optional) - bin code filter
+    + code:"abc" (optional,string) - bin code filter
 
-    + stores: (array[string],optional) - List of store ids
+    + stores:"123 (optional,array[string]) - List of store ids
 
 
 + Response 200 (application/vnd.agility.api.v5+json)
