@@ -1446,133 +1446,124 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "id": "123"
             }
 
-# Inventory
+# Group Inventory
 
-## List Inventory Items [/inventory/items/list?itemCodeFilter=item]
+## Items List  [/inventory/items/list{?code,stores*,bins*}]
 
-### /inventory/items/list?itemCodeFilter=item [GET]
+### /inventory/items/list{?code,stores*,bins*} [GET]
 
-+ Request V5 (application/json)
++ Parameters
 
-    + Body
+    + code: (string,optional) - item code filter
 
-        {
-            "stores": 
-            [
-                {
-                    "id": "2314123",
-                    "bins": 
-                    [
-                        "id": "binid12314"
-                    ]
-                }
-            ]
-        }
-            
+    + stores: (array[string],optional) - list of store ids to filter on
+
+    + bins: (array[string],optional) - list of bin ids to filter on
+
 + Response 200 (application/vnd.agility.api.v2+json)
 
     + Body
 
-        [
-            {
-                "id": "123412",
-                "code": "ASD233",
-                "description": "Some item description",
-                "uom": {
-                    "id": "12342",
-                    "code": "uom code"
-                },
-                "bin": {
-                    "id": "12312412",
-                    "code": "bin code",
-                    "store": {
-                        "id": "12345",
-                        "code": "store code"
-                    }
-                },
-                "availableQuantity": {
-                    "value": 1234.234
-                }                
-            }
-        ]
-        
-## List Inventory Stores [/inventory/stores/list]
-
-### /inventory/stores/list [GET]
-
-+ Request V5 
-
-+ Response 200 (application/vnd.agility.api.v5+json)
-
-    + Body
-
-        [
-            {
-                "id": "123412",
-                "code": "ASD233"
-            }
-        ]
-
-## List Inventory Bins [/inventory/bins/list?binCodeFilter=query]
-
-### /inventory/bins/list?binCodeFilter=query [GET]
-
-+ Request V5 
-
-        {
-            "stores": [
-                {
-                    "id": "2314123",
-                }
-            ]
-        }
-+ Response 200 (application/vnd.agility.api.v5+json)
-
-    + Body
-
-        [
-            {
-                "id": "123412",
-                "code": "ASD233",
-                "store": {
-                    "id": "123142",
-                    "code": "store code"
-                }
-            }
-        ]
-        
-## Find Inventory Kit [/inventory/kits/:kitid/find]
-
-### /inventory/kits/:kitid/find [GET]
-
-+ Response 200 (application/vnd.agility.api.v5+json)
-
-    + Body
-
-        {
-            "id": "123412",
-            "code": "ASD233",
-            "description": "Some item description",
-            "kitItems": 
             [
                 {
-                    "item": {
-                        "id": "12314",
-                        "code": "item code",
-                        "description": "item description",
-                        "uom": {
-                            "id": "12342",
-                            "code": "uom code"
-                        }
+                    "id": "123412",
+                    "code": "ASD233",
+                    "description": "Some item description",
+                    "uom": {
+                        "id": "12342",
+                        "code": "uom code"
                     },
                     "bin": {
                         "id": "12312412",
                         "code": "bin code",
                         "store": {
                             "id": "12345",
-                            "code": "store code",
+                            "code": "store code"
                         }
+                    },
+                    "availableQuantity": {
+                        "value": 1234.234
+                    }                
+                }
+            ]
+        
+## Stores List [/inventory/stores/list]
+
+### /inventory/stores/list [GET]
+
++ Response 200 (application/vnd.agility.api.v5+json)
+
+    + Body
+
+            [
+                {
+                    "id": "123412",
+                    "code": "ASD233"
+                }
+            ]
+
+## Bins List [/inventory/bins/list{?code,stores*}]
+
+### /inventory/bins/list{?code,stores*} [GET]
+
++ Parameters
+
+    + code: (string,optional) - bin code filter
+
+    + stores: (array[string],optional) - List of store ids
+
+
++ Response 200 (application/vnd.agility.api.v5+json)
+
+    + Body
+
+            [
+                {
+                    "id": "123412",
+                    "code": "ASD233",
+                    "store": {
+                        "id": "123142",
+                        "code": "store code"
                     }
                 }
             ]
-        }
+        
+## Kit Find [/inventory/kits/{kitid}/find]
+
+### /inventory/kits/{kitid}/find [GET]
+
++ Parameters
+    
+    + kitid - Kit identifier
+
++ Response 200 (application/vnd.agility.api.v5+json)
+
+    + Body
+
+            {
+                "id": "123412",
+                "code": "ASD233",
+                "description": "Some item description",
+                "kitItems": 
+                [
+                    {
+                        "item": {
+                            "id": "12314",
+                            "code": "item code",
+                            "description": "item description",
+                            "uom": {
+                                "id": "12342",
+                                "code": "uom code"
+                            }
+                        },
+                        "bin": {
+                            "id": "12312412",
+                            "code": "bin code",
+                            "store": {
+                                "id": "12345",
+                                "code": "store code",
+                            }
+                        }
+                    }
+                ]
+            }
