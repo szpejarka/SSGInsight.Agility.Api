@@ -696,7 +696,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ## Return part from job  [/user/assigned-jobs/{jobid}/parts/{issueid}/return]
 
-### /user/assigned-jobs/:jobid/parts/:issueid/return [POST]  
+### /user/assigned-jobs/{jobid}/parts/{issueid}/return [POST]  
 
 + Parameters
 
@@ -714,9 +714,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204 (application/json)
 
-## List part kits assigned job  [/user/assigned-jobs/:jobid/kits/list]
+## List part kits assigned job  [/user/assigned-jobs/{jobid}/kits/list]
 
-### /user/assigned-jobs/:jobid/kits/list [GET]
+### /user/assigned-jobs/{jobid}/kits/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
 
 + Response 200 (application/json)
 
