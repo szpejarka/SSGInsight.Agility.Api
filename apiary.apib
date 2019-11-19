@@ -362,6 +362,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
+# Group User Assigned Jobs / Attachments
+
 ## Find a job attachments [/user/assigned-jobs/:jobId/attachments/list]
         
 ### /user/assigned-jobs/:jobId/attachments/list [GET]
@@ -459,6 +461,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }            
         ]
         
+# Group User Assigned Jobs / Checklists
+        
 ## Submit a checklist result [/user/assigned-jobs/:jobid/checklists/:checklistId/results/submit]
 
 - In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
@@ -537,6 +541,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         {
             "isChecklistSubmitted": false
         }
+
+# Group User Assigned Jobs / Routesheet
 
 ## Find a RouteSheets  [/user/assigned-jobs/:jobid/routesheet/find]
         
@@ -621,9 +627,15 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "id": "checklist results id"
         }
         
-## Issued inventory items for job  [/user/assigned-jobs/:jobid/inventory/list]
+# Group User Assigned Jobs / Parts        
+        
+## List issued parts for job  [/user/assigned-jobs/{jobid}/parts/list]
 
-### /user/assigned-jobs/:jobid/inventory/list [GET]
+### /user/assigned-jobs/{jobid}/parts/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
 
 + Response 200 (application/json)
 
@@ -631,24 +643,97 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             {
                 "id": "12345",
                 "item": {
+                    "id": "1234",
                     "code": "ACE23",
-                    "description": "some item"
+                    "description": "some item",
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    }
                 },
-                "binLocation": {
+                "bin": {
+                    "id": "123456",
                     "code": "bin location code",
                     "store": {
-                        "code": "store code"
+                        "id": "12342",
+                        "code": "store code",
                     }
                 },
                 "quantity": {
-                    "value": 1234.234,
-                    "uom": {
-                        "code": "Each"
-                    }
+                    "value": 1234.234
                 }
             }
         ]
 
+## Issue part for job  [/user/assigned-jobs/{jobid}/parts/issue]
+
+### /user/assigned-jobs/{jobid}/parts/issue [POST]    
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
+
++ Request (application/json)
+
+        {
+            "item": {
+                "id": "12345"
+            },
+            "bin": {
+                "id": "123"
+            },
+            "quantity": {
+                "value": 1234.234
+            }
+        }
+
++ Response 201 (application/json)
+
+        {
+            "id": "2341234"
+        }
+
+## Return part from job  [/user/assigned-jobs/{jobid}/parts/{issueid}/return]
+
+### /user/assigned-jobs/{jobid}/parts/{issueid}/return [POST]  
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
+    + issueid:"123" (required,string) - issue id to return from
+
++ Request (application/json)
+
+        {
+            "quantity": {
+                "value": 1234.234
+            }
+        }
+
++ Response 204 (application/json)
+
+## List part kits assigned job  [/user/assigned-jobs/{jobid}/kits/list]
+
+### /user/assigned-jobs/{jobid}/kits/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "12345",
+                "code": "kid code",
+                "itemsCount": 23,
+                "partsCount": 7
+            }
+        ]
+        
+# Group User Assgined Jobs / Notifications
 
 ## Notify about a job assigned for the user [/user/notify/jobassigned]
 
@@ -664,7 +749,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         }
 
 + Response 204
-
 
 ## Notify that a job, already assigned to the user, has been changed [/user/notify/jobchanged]
 
@@ -1389,4 +1473,100 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
             {
                 "id": "123"
+            }
+
+# Group Inventory
+
+## Items List  [/inventory/items/list{?code,stores,bins}]
+
+### /inventory/items/list{?code,stores,bins} [GET]
+
++ Parameters
+
+    + code:"abc" (optional,string) - item code or description filter
+
+    + stores:"123" (optional,array[string]) - list of store ids to filter on
+
+    + binCode:"123" (optional,string) - bin code to filter on
+
++ Response 200 (application/vnd.agility.api.v2+json)
+
+    + Body
+
+            [
+                {
+                    "id": "123412",
+                    "code": "ASD233",
+                    "description": "Some item description",
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    },
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code"
+                        }
+                    },
+                    "availableQuantity": {
+                        "value": 1234.234
+                    }                
+                }
+            ]
+        
+## Stores List [/inventory/stores/list]
+
+### /inventory/stores/list [GET]
+
++ Response 200 (application/vnd.agility.api.v5+json)
+
+    + Body
+
+            [
+                {
+                    "id": "123412",
+                    "code": "ASD233"
+                }
+            ]
+
+## Kit Find [/inventory/kits/{kitid}/find]
+
+### /inventory/kits/{kitid}/find [GET]
+
++ Parameters
+    
+    + kitid - Kit identifier
+
++ Response 200 (application/vnd.agility.api.v5+json)
+
+    + Body
+
+            {
+                "id": "123412",
+                "code": "ASD233",
+                "description": "Some item description",
+                "kitItems": 
+                [
+                    {
+                        "item": {
+                            "id": "12314",
+                            "code": "item code",
+                            "description": "item description",
+                            "unitOfMeasure": {
+                                "id": "12342",
+                                "code": "uom code"
+                            }
+                        },
+                        "bin": {
+                            "id": "12312412",
+                            "code": "bin code",
+                            "store": {
+                                "id": "12345",
+                                "code": "store code",
+                            }
+                        }
+                    }
+                ]
             }
