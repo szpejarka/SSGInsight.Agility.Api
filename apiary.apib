@@ -1477,19 +1477,17 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group Inventory
 
-## Items List  [/inventory/items/list{?code,stores,binCode}]
+## Items List  [/inventory/items/list{?code,stores}]
 
-### /inventory/items/list{?code,stores,bins} [GET]
+### /inventory/items/list{?code,stores} [GET]
 
 + Parameters
 
-    + code:"abc" (optional,string) - item code or description filter
+    + code:"abc" (optional,string) - item code/description filter
 
     + stores:"123" (optional,array[string]) - list of store ids to filter on
 
-    + binCode:"123" (optional,string) - bin code to filter on
-
-+ Response 200 (application/vnd.agility.api.v2+json)
++ Response 200 (application/vnd.agility.api.v5+json)
 
     + Body
 
@@ -1515,6 +1513,44 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     }                
                 }
             ]
+
+## Bin's Items List  [/inventory/bins/items/list{?code,stores}]
+
+### /inventory/bins/items/list{?code,stores} [GET]
+
++ Parameters
+
+    + code:"abc" (optional,string) - bin location filter
+
+    + stores:"123" (optional,array[string]) - list of store ids to filter on
+
++ Response 200 (application/vnd.agility.api.v5+json)
+
+    + Body
+
+            [
+                {
+                    "id": "123412",
+                    "code": "ASD233",
+                    "description": "Some item description",
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    },
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code"
+                        }
+                    },
+                    "availableQuantity": {
+                        "value": 1234.234
+                    }                
+                }
+            ]
+
         
 ## Stores List [/inventory/stores/list]
 
