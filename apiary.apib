@@ -1483,11 +1483,11 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Parameters
 
-    + code:"abc" (optional,string) - item code filter
+    + code:"abc" (optional,string) - item code or description filter
 
     + stores:"123" (optional,array[string]) - list of store ids to filter on
 
-    + bins:"123" (optional,array[string]) - list of bin ids to filter on
+    + binCode:"123" (optional,string) - bin code to filter on
 
 + Response 200 (application/vnd.agility.api.v2+json)
 
@@ -1531,32 +1531,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 }
             ]
 
-## Bins List [/inventory/bins/list{?code,stores}]
-
-### /inventory/bins/list{?code,stores} [GET]
-
-+ Parameters
-
-    + code:"abc" (optional,string) - bin code filter
-
-    + stores:"123 (optional,array[string]) - List of store ids
-
-
-+ Response 200 (application/vnd.agility.api.v5+json)
-
-    + Body
-
-            [
-                {
-                    "id": "123412",
-                    "code": "ASD233",
-                    "store": {
-                        "id": "123142",
-                        "code": "store code"
-                    }
-                }
-            ]
-        
 ## Kit Find [/inventory/kits/{kitid}/find]
 
 ### /inventory/kits/{kitid}/find [GET]
