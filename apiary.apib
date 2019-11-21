@@ -1477,15 +1477,15 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group Inventory
 
-## Items List  [/inventory/items/list{?code,stores}]
+## Items List  [/inventory/items/list{?code,storeid}]
 
-### /inventory/items/list{?code,stores} [GET]
+### /inventory/items/list{?code,storeid} [GET]
 
 + Parameters
 
     + code:"abc" (required,string) - item code/description filter
 
-    + stores:"123" (optional,array[string]) - list of store ids to filter on
+    + storeid:"123" (optional,array[string]) - list of store ids to filter on
 
 + Response 200 (application/vnd.agility.api.v5+json)
 
@@ -1512,15 +1512,15 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 }
             ]
 
-## Bin's Items List  [/inventory/bins/items/list{?code,stores}]
+## Bin's Items List  [/inventory/bins/items/list{?code,storeid}]
 
-### /inventory/bins/items/list{?code,stores} [GET]
+### /inventory/bins/items/list{?code,storeid} [GET]
 
 + Parameters
 
     + code:"abc" (required,string) - bin location filter
 
-    + stores:"123" (optional,array[string]) - list of store ids to filter on
+    + storeid:"123" (optional,array[string]) - list of store ids to filter on
 
 + Response 200 (application/vnd.agility.api.v5+json)
 
