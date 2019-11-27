@@ -659,9 +659,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                         "code": "store code",
                     }
                 },
-                "quantity": {
-                    "value": 1234.234
-                }
+                "quantity": "value": 1234.234
             }
         ]
 
@@ -677,34 +675,31 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 + Request (application/json)
 
         {
-            "item": {
-                "id": "12345"
-            },
-            "bin": {
-                "id": "123"
-            },
+            "availableItemId": "123112as",
             "quantity": 1234.234
         }
 
-+ Response 204 (application/json)
++ Response 201 (application/json)
+        
+        {
+            "id": "1231234we"
+        }
 
 
-## Return part from job  [/user/assigned-jobs/{jobid}/parts/{issueid}/return]
+## Return part from job  [/user/assigned-jobs/{jobid}/parts/{partid}/return]
 
-### /user/assigned-jobs/{jobid}/parts/{issueid}/return [POST]  
+### /user/assigned-jobs/{jobid}/parts/{partid}/return [POST]  
 
 + Parameters
 
     + jobid:"123" (required,string) - assigned job id
 
-    + issueid:"123" (required,string) - issue id to return from
+    + partid:"123" (required,string) - part id to return 
 
 + Request (application/json)
 
         {
-            "quantity": {
-                "value": 1234.234
-            }
+            "quantity": 1234.234
         }
 
 + Response 204 (application/json)
@@ -1472,9 +1467,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group Inventory
 
-## Items List  [/inventory/items/list{?code,storeid}]
+## Items List  [/inventory/available-items/list{?code,storeid}]
 
-### /inventory/items/list{?code,storeid} [GET]
+### /inventory/available-items/list{?code,storeid} [GET]
 
 + Parameters
 
@@ -1489,11 +1484,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             [
                 {
                     "id": "123412",
-                    "code": "ASD233",
-                    "description": "Some item description",
-                    "unitOfMeasure": {
-                        "id": "12342",
-                        "code": "uom code"
+                    "item": {
+                        "code": "ASD233",
+                        "description": "Some item description",
+                        "unitOfMeasure": {
+                            "id": "12342",
+                            "code": "uom code"
+                        }
                     },
                     "bin": {
                         "id": "12312412",
@@ -1509,7 +1506,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ## Bin's Items List  [/inventory/bins/items/list{?code,storeid}]
 
-### /inventory/bins/items/list{?code,storeid} [GET]
+### /inventory/bins/available-items/list{?code,storeid} [GET]
 
 + Parameters
 
@@ -1524,11 +1521,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             [
                 {
                     "id": "123412",
-                    "code": "ASD233",
-                    "description": "Some item description",
-                    "unitOfMeasure": {
-                        "id": "12342",
-                        "code": "uom code"
+                    "item": {
+                        "code": "ASD233",
+                        "description": "Some item description",
+                        "unitOfMeasure": {
+                            "id": "12342",
+                            "code": "uom code"
+                        }
                     },
                     "bin": {
                         "id": "12312412",
@@ -1538,7 +1537,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                             "code": "store code"
                         }
                     },
-                    "availableQuantity": 1234.234
+                    "quantity": 1234.234
                 }
             ]
 
