@@ -351,10 +351,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /user/assigned-jobs/:jobId/complete [POST]
 
-+ `completionComments` (optional)...
-+ `completionTypeId` (optional)...
-+ `faultTypeId` (optional)...
-
 + Request (application/json)
 
         {
@@ -362,6 +358,18 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "completionTypeId": "123",
             "completedDate": "2018-06-15T10:00:00",
             "faultTypeId": "123"
+        }
+
++ Response 204
+
+## Complete a job assigned to the the user without parameters [/user/assigned-jobs/:jobId/complete-basic]
+
+### /user/assigned-jobs/:jobId/complete-basic [POST]
+
++ Request (application/json)
+
+        {
+            "completedDate": "2018-06-15T10:00:00",
         }
 
 + Response 204
