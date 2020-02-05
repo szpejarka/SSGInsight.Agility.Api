@@ -1322,8 +1322,49 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             Acccept: application/vnd.agility.api.v4+json;
             
 + Response 204
-        
+  
 
+## Find a available job [/available-jobs/:availableJobId/find]
+        
+### /available-jobs/:availableJobId/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "active": false,
+            "completionTargetDate": "2018-06-15T10:00:00",
+            "completionWarningDate": "2018-06-15T10:00:00",
+            "costCode": "",
+            "hasBeenRespondedTo": true,
+            "id": "123",
+            "jobCode": "",
+            "jobType": "",
+            "location": {
+                    "asset": ""
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+            },
+            "priority": "",
+            "responseTargetDate": "2018-06-15T10:00:00",
+            "responseWarningDate": "2018-06-15T10:00:00",
+            "scheduleStartDate": "2018-06-15T10:00:00",
+            "startDate": "2018-06-15T10:00:00",
+            "status": {
+                "description": "Accepted",
+                "id": "456"
+            },
+            "taskDescription": "",
+            "workOrderDescription": "",
+            "checklists" : [
+                {
+                    "id" : "123",
+                    "description" : "abc"
+                }
+            ],
+            "hasRouteSheet" :true
+        }
+        
 # Group Helpdesk Requests
 
 ## Create a helpdesk request [/helpdesk-requests/create]
