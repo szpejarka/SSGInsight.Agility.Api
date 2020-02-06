@@ -1331,7 +1331,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 + Response 200 (application/json)
 
         {
-            "active": false,
             "completionTargetDate": "2018-06-15T10:00:00",
             "completionWarningDate": "2018-06-15T10:00:00",
             "costCode": "",
@@ -1340,10 +1339,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "jobCode": "",
             "jobType": "",
             "location": {
-                    "asset": ""
-                    "location": "",
-                    "site": "",
-                    "subLocation": ""
+                "location": "",
+                "site": "",
+                "subLocation": ""
+            },
+            "asset": {
+                "code": "",
+                "description": ""
             },
             "priority": "",
             "responseTargetDate": "2018-06-15T10:00:00",
