@@ -278,8 +278,58 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /user/assigned-jobs/list [GET]
 
-+ Response 200 (application/json)
++ Request (application/json)
 
++ Response 200 (application/json)
+    
+        [
+            {
+                "active": false,
+                "completionTargetDate": "2018-06-15T10:00:00",
+                "completionWarningDate": "2018-06-15T10:00:00",
+                "costCode": "",
+                "hasBeenRespondedTo": true,
+                "id": "123",
+                "jobCode": "",
+                "jobType": "",
+                "location": {
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+                },
+                "asset": {
+                    "id": "",
+                    "name": ""
+                },
+                "priority": "",
+                "responseTargetDate": "2018-06-15T10:00:00",
+                "responseWarningDate": "2018-06-15T10:00:00",
+                "scheduleStartDate": "2018-06-15T10:00:00",
+                "startDate": "2018-06-15T10:00:00",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                },
+                "taskDescription": "",
+                "workOrderDescription": "",
+                "checklists" : [
+                   {
+                        "id" : "123",
+                       "description" : "abc"
+                   }
+                ],
+                "hasRouteSheet" : true
+            }
+        ]
+
++ Request V5 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v5+json;
+
++ Response 200 (application/vnd.agility.api.v5+json)
+    
         [
             {
                 "active": false,
@@ -860,7 +910,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             ]
         }
         
-## Find an asset attachments assigned to job [/assets/{assetId}/attachments/list]
+## Find an asset attachments [/assets/{assetId}/attachments/list]
         
 ### /assets/{assetId}/attachments/list [GET]
 
@@ -1081,11 +1131,68 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         - checksum : NoChecksum, Element, Total (optional)
         - datatype : string, int, decimal, currency, interval, date, datetime (optional)
 
-## Find a job [/jobs/:jobId/find]
+## Find a job [/jobs/{jobId}/find]
         
-### /jobs/:jobId/find [GET]
+### /jobs/{jobId}/find [GET]
+
++ Parameters
+
+    + jobId:"123" (required,string) - assigned job id
+
++ Request (application/json)
 
 + Response 200 (application/json)
+
+        {
+            "active": false,
+            "completionTargetDate": "2018-06-15T10:00:00",
+            "completionWarningDate": "2018-06-15T10:00:00",
+            "costCode": "",
+            "hasBeenRespondedTo": true,
+            "id": "123",
+            "jobCode": "",
+            "jobType": "",
+            "location": {
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+            },
+            "asset": {
+                "id": "123",
+                "name": ""
+            },
+            "priority": "",
+            "responseTargetDate": "2018-06-15T10:00:00",
+            "responseWarningDate": "2018-06-15T10:00:00",
+            "scheduleStartDate": "2018-06-15T10:00:00",
+            "startDate": "2018-06-15T10:00:00",
+            "status": {
+                "description": "Accepted",
+                "id": "456"
+            },
+            "taskDescription": "",
+            "workOrderDescription": "",
+            "checklists" : [
+                {
+                    "id" : "123",
+                    "description" : "abc"
+                }
+            ],
+            "hasRouteSheet" :true
+        }
+        
+
++ Request V5 (application/json)
+
+    + Parameters
+
+        + jobid:"123" (required,string) - assigned job id
+    
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v5+json;
+
++ Response 200 (application/vnd.agility.api.v5+json)
 
         {
             "active": false,
