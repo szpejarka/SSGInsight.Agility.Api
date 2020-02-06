@@ -859,6 +859,41 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 }
             ]
         }
+        
+## Find an asset attachments assigned to job [/assets/{assetId}/attachments/list]
+        
+### /assets/{assetId}/attachments/list [GET]
+
++ Parameters
+
+    + assetId:"123" (required,string) - asset id
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://agility.api/api/blobs/sdfkjhweoi34/find",
+                "urlIsInternal": true
+            },
+            {
+                "id": "1212343",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description different one",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://google.com/some.jpg",
+                "urlIsInternal": false
+            }            
+        ]
 
 # Group Users
         
@@ -1357,8 +1392,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "id": "456"
             },
             "taskDescription": "",
-            "workOrderDescription": "",
-            "hasRouteSheet" :true
+            "workOrderDescription": ""
         }
         
 # Group Helpdesk Requests
