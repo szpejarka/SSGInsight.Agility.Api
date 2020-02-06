@@ -298,7 +298,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "subLocation": ""
                 },
                 "asset": {
-                    "id": "",
+                    "id": "123",
                     "name": ""
                 },
                 "priority": "",
@@ -1327,6 +1327,89 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /available-jobs/list?assetFilter=belt [POST]
 
++ Request (application/json)
+
+    + Body
+    
+            {
+                "crafts": [
+                    {
+                        "id": "123"
+                    }
+                ],
+                "locationFilter":
+                {
+                    "sites": [
+                    {
+                        "id": "123"
+                    }
+                    ],
+                    "locations": [
+                    {
+                        "id": "123"
+                    }
+                    ],
+                    "sublocations": [
+                    {
+                        "id": "123"
+                    }
+                    ]
+                },
+                "jobTypes": [
+                    {
+                        "id": "123"
+                    }
+                ],
+                "statuses": [
+                    {
+                        "id": "123"
+                    }
+                ],
+                "startDate":
+                {
+                    "from": "2019-01-15T10:00:00",
+                    "to": "2019-06-15T10:00:00"
+                },
+                "dueDate":
+                {
+                    "from": "2019-05-15T10:00:00",
+                    "to": "2019-10-15T10:00:00"
+                }                
+            }
+
++ Response 200 (application/json)
+
+        [
+            {
+                "completionTargetDate": "2018-06-15T10:00:00",
+                "completionWarningDate": "2018-06-15T10:00:00",
+                "costCode": "",
+                "hasBeenRespondedTo": true,
+                "id": "123",
+                "jobCode": "",
+                "jobType": "",
+                "location": {
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+                },
+                "asset": {
+                    "id": "123",
+                    "name": ""
+                },
+                "priority": "",
+                "responseTargetDate": "2018-06-15T10:00:00",
+                "responseWarningDate": "2018-06-15T10:00:00",
+                "startDate": "2018-06-15T10:00:00",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                 },
+                "taskDescription": "",
+                "workOrderDescription": ""
+            }
+        ]
+
 + Request V5 (application/json)
 
     + Headers
@@ -1463,14 +1546,60 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             
             Acccept: application/vnd.agility.api.v4+json;
             
-+ Response 204
++ Response 204 
   
 
-## Find a available job [/available-jobs/:availableJobId/find]
+## Find a available job [/available-jobs/{availableJobId}/find]
         
-### /available-jobs/:availableJobId/find [GET]
+### /available-jobs/{availableJobId}/find [GET]
+
++ Parameters
+
+    + availableJobId:"123" (required,string) - available job id
+
++ Request (application/json)
 
 + Response 200 (application/json)
+
+        {
+            "completionTargetDate": "2018-06-15T10:00:00",
+            "completionWarningDate": "2018-06-15T10:00:00",
+            "costCode": "",
+            "hasBeenRespondedTo": true,
+            "id": "123",
+            "jobCode": "",
+            "jobType": "",
+            "location": {
+                "location": "",
+                "site": "",
+                "subLocation": ""
+            },
+            "asset": {
+                "id": "123",
+                "name": ""
+            },
+            "priority": "",
+            "responseTargetDate": "2018-06-15T10:00:00",
+            "responseWarningDate": "2018-06-15T10:00:00",
+            "scheduleStartDate": "2018-06-15T10:00:00",
+            "startDate": "2018-06-15T10:00:00",
+            "status": {
+                "description": "Accepted",
+                "id": "456"
+            },
+            "taskDescription": "",
+            "workOrderDescription": "",
+            "hasRouteSheet" : true
+        }
+
++ Request V5 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v5+json;
+
+
++ Response 200 (application/vnd.agility.api.v5+json)
 
         {
             "completionTargetDate": "2018-06-15T10:00:00",
