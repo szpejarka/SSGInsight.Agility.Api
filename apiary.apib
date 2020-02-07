@@ -279,7 +279,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 ### /user/assigned-jobs/list [GET]
 
 + Request (application/json)
-
+versioning 
 + Response 200 (application/json)
     
         [
@@ -322,13 +322,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }
         ]
 
-+ Request V5 (application/json)
++ Request V1 (application/json)
 
     + Headers
             
-            Acccept: application/vnd.agility.api.v5+json;
+            Acccept: application/vnd.agility.api.v1+json;
 
-+ Response 200 (application/vnd.agility.api.v5+json)
++ Response 200 (application/vnd.agility.api.v1+json)
     
         [
             {
@@ -497,7 +497,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         
 ### /user/assigned-jobs/:jobId/asset/attachments/list [GET]
 
-+ Response 200 (application/json)
++ Request V1 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v1+json;
+
++ Response 200 (application/vnd.agility.api.v1+json)
 
         [
             {
@@ -1182,7 +1188,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         }
         
 
-+ Request V5 (application/json)
++ Request V1 (application/json)
 
     + Parameters
 
@@ -1190,9 +1196,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
     
     + Headers
             
-            Acccept: application/vnd.agility.api.v5+json;
+            Acccept: application/vnd.agility.api.v1+json;
 
-+ Response 200 (application/vnd.agility.api.v5+json)
++ Response 200 (application/vnd.agility.api.v1+json)
 
         {
             "active": false,
