@@ -774,7 +774,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204 (application/json)
 
-## List part kits assigned job  [/user/assigned-jobs/{jobid}/kits/list]
+## List planned kits for assigned job  [/user/assigned-jobs/{jobid}/kits/list]
 
 ### /user/assigned-jobs/{jobid}/kits/list [GET]
 
@@ -787,12 +787,135 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         [
             {
                 "id": "12345",
-                "code": "kid code",
-                "itemsCount": 23,
-                "partsCount": 7
+                "name": "kid code",
+                "quantity" : 2,
+                "partsInTotal": 23,
+                "partsQuantity": 7
+            }
+        ]
+       
+## Find planned kit for assigned job  [/user/assigned-jobs/{jobid}/kits/find]
+
+### /user/assigned-jobs/{jobid}/kits/find [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123412",
+                "code": "KIT123",
+                "description": "Some kit description", 
+                "kitItems": 
+                [
+                    {
+                        "item": {
+                            "id": "12314",
+                            "code": "item code",
+                            "description": "item description",
+                            "unitOfMeasure": {
+                                "id": "12342",
+                                "code": "uom code"
+                            }
+                        },
+                        "bin": {
+                            "id": "12312412",
+                            "code": "bin code",
+                            "store": {
+                                "id": "12345",
+                                "code": "store code",
+                            }
+                        },
+                        "plannedQuantity" : 2
+                    }
+                ]
+            }
+        ]       
+        
+## Sumarize planned parts for job  [/user/assigned-jobs/{jobid}/planned-parts/summary]
+
+### /user/assigned-jobs/{jobid}/planned-parts/summary [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "quantity" : 2,
+                "partsInTotal": 23,
+                "partsQuantity": 7
+            }
+        ]
+
+## List planned parts for job  [/user/assigned-jobs/{jobid}/planned-parts/list]
+
+### /user/assigned-jobs/{jobid}/planned-parts/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "12345",
+                "item": {
+                    "id": "1234",
+                    "code": "ACE23",
+                    "description": "some item",
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    }
+                },
+                "bin": {
+                    "id": "123456",
+                    "code": "bin location code",
+                    "store": {
+                        "id": "12342",
+                        "code": "store code",
+                    }
+                },
+                "plannedQuantity" : 1234.234
             }
         ]
         
+## Issue kit for job  [/user/assigned-jobs/{jobid}/kit/{kitid}/issue]
+
+### /user/assigned-jobs/{jobid}/kit/{kitid}/issue [POST]    
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+    + kitid:"123" (required,string) - kit id
+
++ Response 201 (application/json)
+        
+        {
+            "id": "1231234we"
+        }
+
+## Issue planned parts for job  [/user/assigned-jobs/{jobid}/planned-parts/issue]
+
+### /user/assigned-jobs/{jobid}/planned-parts/issue [POST]    
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
++ Response 201 (application/json)
+        
+        {
+            "id": "1231234we"
+        }
+
 # Group User Assgined Jobs / Notifications
 
 ## Notify about a job assigned for the user [/user/notify/jobassigned]
