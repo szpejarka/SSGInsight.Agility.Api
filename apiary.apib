@@ -794,9 +794,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }
         ]
        
-## Find planned kit for assigned job  [/user/assigned-jobs/{jobid}/kits/find]
+## Find planned kit for assigned job  [/user/assigned-jobs/{jobid}/kits/{kitid}/find]
 
-### /user/assigned-jobs/{jobid}/kits/find [GET]
+### /user/assigned-jobs/{jobid}/kits/{kitid}/find [GET]
 
 + Parameters
 
@@ -887,9 +887,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }
         ]
         
-## Issue kit for job  [/user/assigned-jobs/{jobid}/kit/{kitid}/issue]
+## Issue kit for job  [/user/assigned-jobs/{jobid}/kits/{kitid}/issue]
 
-### /user/assigned-jobs/{jobid}/kit/{kitid}/issue [POST]    
+### /user/assigned-jobs/{jobid}/kits/{kitid}/issue [POST]    
 
 + Parameters
 
@@ -898,10 +898,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 201 (application/json)
         
-        {
-            "id": "1231234we"
-        }
-
 ## Issue planned parts for job  [/user/assigned-jobs/{jobid}/planned-parts/issue]
 
 ### /user/assigned-jobs/{jobid}/planned-parts/issue [POST]    
@@ -912,10 +908,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 201 (application/json)
         
-        {
-            "id": "1231234we"
-        }
-
 # Group User Assgined Jobs / Notifications
 
 ## Notify about a job assigned for the user [/user/notify/jobassigned]
