@@ -776,7 +776,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group User Assigned Jobs / Planned Parts    
 
-## List planned kits for assigned job  [/user/assigned-jobs/{jobid}/kits/list]
+## List planned kits for assigned job  [/user/assigned-jobs/{jobid}/planned/kits/list]
 
 ### /user/assigned-jobs/{jobid}/planned/kits/list [GET]
 
@@ -796,7 +796,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }
         ]
        
-## Find planned kit for assigned job  [/user/assigned-jobs/{jobid}/kits/{kitid}/find]
+## Find planned kit for assigned job  [/user/assigned-jobs/{jobid}/planned/kits/{kitid}/find]
 
 ### /user/assigned-jobs/{jobid}/planned/kits/{kitid}/find [GET]
 
@@ -837,7 +837,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }
         ]       
         
-## Sumarize planned parts for job  [/user/assigned-jobs/{jobid}/planned-parts/total]
+## Sumarize planned parts for job  [/user/assigned-jobs/{jobid}/planned/parts/total]
 
 ### /user/assigned-jobs/{jobid}/planned/parts/total [GET]
 
@@ -847,12 +847,12 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 200 (application/json)
 
-        [
-            {
-                "partsInTotal": 23,
-                "partsQuantity": 7
-            }
-        ]
+        
+        {
+            "partsInTotal": 23,
+            "partsQuantity": 7
+        }
+        
 
 ## List planned parts for job  [/user/assigned-jobs/{jobid}/planned-parts/list]
 
