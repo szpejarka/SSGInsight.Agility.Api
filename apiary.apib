@@ -803,39 +803,39 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 + Parameters
 
     + jobid:"123" (required,string) - assigned job id
+    + kitid:"123" (required,string) - kit id
 
 + Response 200 (application/json)
 
-        [
-            {
-                "id": "123412",
-                "name": "kid code",
-                "kitItems": 
-                [
-                    {
+
+        {
+            "id": "123412",
+            "name": "kid code",
+            "kitItems": 
+            [
+                {
+                    "id": "12314",
+                    "item": {
                         "id": "12314",
-                        "item": {
-                            "id": "12314",
-                            "code": "item code",
-                            "description": "item description",
-                            "unitOfMeasure": {
-                                "id": "12342",
-                                "code": "uom code"
-                            }
-                        },
-                        "bin": {
-                            "id": "12312412",
-                            "code": "bin code",
-                            "store": {
-                                "id": "12345",
-                                "code": "store code",
-                            }
-                        },
-                        "quantity" : 2
-                    }
-                ]
-            }
-        ]       
+                        "code": "item code",
+                        "description": "item description",
+                        "unitOfMeasure": {
+                            "id": "12342",
+                            "code": "uom code"
+                        }
+                    },
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code",
+                        }
+                    },
+                    "quantity" : 2
+                }
+            ]
+        }
         
 ## Sumarize planned parts for job  [/user/assigned-jobs/{jobid}/planned/parts/total]
 
