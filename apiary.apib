@@ -10,7 +10,7 @@ This is the API for Agility. The initial release will only be consumed by one ap
 - Always suffix the URL with a verb (e.g. `/products/list`)
 - Don't envelope data - user headers for metadata (e.g. `X-Paging-PageCount: 1`)
 - Each request to the API should include the user's device id in the header (e.g. `X-Device-Id: 02:00:00:00:00:00`)
-- Each request to the API should include the user's agility base uri in the header (e.g. `X-Agility-BaseUri: https://uat.ssginsight.com/agility802`)
+- Each request to the API should include the user's agility base uri in the header (e.g.  `X-Agility-BaseUri: https://uat.ssginsight.com/agility802`)
 
 # Group Metadata
 
@@ -807,35 +807,37 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 200 (application/json)
 
-
-        {
-            "id": "123412",
-            "name": "kid code",
-            "kitItems": 
-            [
-                {
-                    "id": "12314",
-                    "item": {
+    + Attributes (object)
+    
+        + item (object) - not null
+        + store (object) - can be null
+    
+    + Body 
+    
+            {
+                "id": "123412",
+                "name": "kid code",
+                "kitItems": 
+                [
+                    {
                         "id": "12314",
-                        "code": "item code",
-                        "description": "item description",
-                        "unitOfMeasure": {
-                            "id": "12342",
-                            "code": "uom code"
-                        }
-                    },
-                    "bin": {
-                        "id": "12312412",
-                        "code": "bin code",
+                        "item": {
+                            "id": "12314",
+                            "code": "item code",
+                            "description": "item description",
+                            "unitOfMeasure": {
+                                "id": "12342",
+                                "code": "uom code"
+                            }
+                        },
                         "store": {
                             "id": "12345",
                             "code": "store code",
-                        }
-                    },
-                    "quantity" : 2
-                }
-            ]
-        }
+                        },
+                        "quantity" : 2
+                    }
+                ]
+            }
         
 ## Sumarize planned parts for job  [/user/assigned-jobs/{jobid}/planned/parts/total]
 
@@ -864,29 +866,32 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 200 (application/json)
 
-        [
-            {
-                "id": "12345",
-                "item": {
-                    "id": "1234",
-                    "code": "ACE23",
-                    "description": "some item",
-                    "unitOfMeasure": {
-                        "id": "12342",
-                        "code": "uom code"
-                    }
-                },
-                "bin": {
-                    "id": "123456",
-                    "code": "bin location code",
+    + Attributes (object)
+    
+        + item (object) - not null
+        + store (object) - can be null
+        
+    + Body
+
+            [
+                {
+                    "id": "12345",
+                    "item": {
+                        "id": "1234",
+                        "code": "ACE23",
+                        "description": "some item",
+                        "unitOfMeasure": {
+                            "id": "12342",
+                            "code": "uom code"
+                        }
+                    },
                     "store": {
                         "id": "12342",
                         "code": "store code",
-                    }
-                },
-                "quantity" : 1234.234
-            }
-        ]
+                    },
+                    "quantity" : 1234.234
+                }
+            ]
         
 ## Issue kit for job  [/user/assigned-jobs/{jobid}/planned/kits/{kitid}/issue]
 
@@ -1073,11 +1078,10 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 ## Find a user's avatar [/users/:userId/avatar/find]
 
 ### /users/:userId/avatar/find [GET]
+ This endpoint should return the PNG file for the user's avatar. 
+ This endpoint should not require authentication - i.e. it should be publicly available.
 
 + Response 200 (image/png)
-
-* This endpoint should return the PNG file for the user's avatar. 
-* This endpoint should not require authentication - i.e. it should be publicly available.
 
 # Group Jobs
 
