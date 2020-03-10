@@ -812,6 +812,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         + item (object) - not null
         + store (object) - can be null
     
+
     + Body 
     
             {
@@ -839,6 +840,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 ]
             }
         
+
 ## Sumarize planned parts for job  [/user/assigned-jobs/{jobid}/planned/parts/total]
 
 ### /user/assigned-jobs/{jobid}/planned/parts/total [GET]
@@ -871,6 +873,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         + item (object) - not null
         + store (object) - can be null
         
+
     + Body
 
             [
@@ -892,6 +895,64 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "quantity" : 1234.234
                 }
             ]
+
+## Kit Part Locations  [/user/assigned-jobs/{jobid}/planned/kits/{kitid}/{kitpartid}/locations]
+
+### /user/assigned-jobs/{jobid}/planned/kits/{kitid}/{kitpartid}/locations [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+    + kitid:"123" (required,string) - planned kit id
+    + kitpartid:"123" (required,string) - planned kit part id
+
++ Response 200 (application/vnd.agility.api.v6+json)
+
+    + Body
+
+            [
+                {
+                    "availableItemId": "123412",
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code"
+                        }
+                    },
+                    "availableQuantity":  1234.234
+                }
+            ]            
+
+## Planned Part Locations  [/user/assigned-jobs/{jobid}/planned/parts/{plannedpartid}/locations]
+
+### /user/assigned-jobs/{jobid}/planned/parts/{plannedpartid}/locations [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+    + plannedpartid:"123" (required,string) - planned part id
+
++ Response 200 (application/vnd.agility.api.v6+json)
+
+    + Body
+
+            [
+                {
+                    "availableItemId": "123412",
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code"
+                        }
+                    },
+                    "availableQuantity":  1234.234
+                }
+            ]            
+
         
 ## Issue kit for job  [/user/assigned-jobs/{jobid}/planned/kits/{kitid}/issue]
 
@@ -1977,36 +2038,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                             "id": "12342",
                             "code": "uom code"
                         }
-                    },
-                    "bin": {
-                        "id": "12312412",
-                        "code": "bin code",
-                        "store": {
-                            "id": "12345",
-                            "code": "store code"
-                        }
-                    },
-                    "availableQuantity":  1234.234
-                }
-            ]
-
-## Items List  [/inventory/available-items/listbyitemsid{itemid}]
-
-### /inventory/available-items/list/byitemsid{itemid} [GET]
-
-+ Parameters
-
-    + itemid:"123" (array[string]) - list of items ids to filter on
-
-+ Response 200 (application/vnd.agility.api.v6+json)
-
-    + Body
-
-            [
-                {
-                    "id": "123412",
-                    "item": {
-                        "id": "123412",
                     },
                     "bin": {
                         "id": "12312412",
