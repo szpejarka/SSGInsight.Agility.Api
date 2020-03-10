@@ -1990,6 +1990,36 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 }
             ]
 
+## Items List  [/inventory/available-items/listbyitemsid{itemid}]
+
+### /inventory/available-items/list/byitemsid{itemid} [GET]
+
++ Parameters
+
+    + itemid:"123" (array[string]) - list of items ids to filter on
+
++ Response 200 (application/vnd.agility.api.v6+json)
+
+    + Body
+
+            [
+                {
+                    "id": "123412",
+                    "item": {
+                        "id": "123412",
+                    },
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code"
+                        }
+                    },
+                    "availableQuantity":  1234.234
+                }
+            ]
+
 ## Bin's Items List  [/inventory/bins/items/list{?code,storeid}]
 
 ### /inventory/bins/available-items/list{?code,storeid} [GET]
