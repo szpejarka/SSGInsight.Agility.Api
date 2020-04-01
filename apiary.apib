@@ -1036,11 +1036,78 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group Assets
 
-## List assets [/assets/list?query=belt]
+## List assets [/assets/list?query={query}]
 
-### /assets/list?query=belt [GET]
+### /assets/list?query={query} [POST]
+
++ Parameters
+
+    + query:"fuse" (string) - asset query
+    
++ Request (application/json)
+    
+    + Body
+    
+            {
+                "locationFilter":
+                {
+                    "sites": [
+                    {
+                        "id": "123"
+                    }
+                    ],
+                    "locations": [
+                    {
+                        "id": "123"
+                    }
+                    ],
+                    "sublocations": [
+                    {
+                        "id": "123"
+                    }
+                    ]
+                },
+                "assetStatusFilter": [
+                    {
+                        "id": "123"
+                    }
+                ],
+                "equipmentGroupFilter": [
+                    {
+                        "id": "123"
+                    }
+                ]
+                
+            }
 
 + Response 200 (application/json)
+
+        [
+            {
+                "code": "12301",
+                "description": "Conveyor belt 001",
+                "name": "Conveyor belt 001",
+                "id": "123",
+                "imageUrl": "https://api/blobid",
+                "assetStatus": {
+                    "id": "123"
+                    "name": "In Use"
+                },
+                "location": {
+                  "location": "",
+                  "site": "",
+                  "subLocation": ""
+                }
+            }
+        ]
+
++ Request V6 (application/json)
+
+    + Headers
+        
+            Acccept: application/vnd.agility.api.v6+json;
+
++ Response 200 (application/vnd.agility.api.v6+json)
 
         [
             {
