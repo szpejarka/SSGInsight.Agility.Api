@@ -1143,9 +1143,40 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 }
             ]
         }
+
+## Find asset [/assets/{assetId}/find]
+
+### /assets/{assetId}/find [GET]
         
-## Find an asset attachments [/assets/{assetId}/attachments/list]
++ Parameters
+
+    + assetId:"123" (required,string) - asset id
+    
++ Response 200 (application/json)
+
+        {
+            "id": "123",
+            "code": "12301",
+            "description": "Conveyor belt 001",
+            "name": "Conveyor belt 001",
+            "assetStatus": {
+                "id": "123"
+                "name": "In Use"
+            },
+            "location": {
+              "location": "F1",
+              "site": "B1",
+              "subLocation": "R1"
+            },
+            "manufacturer" : "Conveyor belt company",
+            "model" : "CB/001"
+            "serialNumber" : "123ABC"
+            "equipmentGroup" : "Belts",
+            "lastModifiedAt" : "2018-06-15T10:00:00"
+        }
         
+   
+## Find an asset attachments [/assets/{assetId}/attachments/list]     
 ### /assets/{assetId}/attachments/list [GET]
 
 + Parameters
