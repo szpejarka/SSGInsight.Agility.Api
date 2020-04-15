@@ -162,6 +162,23 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }
         ]
 
+## List the asset statuses [/asset-statuses/list]
+
+### /asset-statuses/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "description": "Open",
+                "id": "123"
+            },
+            {
+                "description": "Awaiting",
+                "id": "456",
+            }
+        ]
+
 ## Find the scheduled status [/job-statuses/scheduled/find]
 
 ### /job-statuses/scheduled/find [GET]
