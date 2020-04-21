@@ -1247,6 +1247,41 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             }            
         ]
 
+## Create an asset attachment [/assets/{assetId}/attachments/create]
+        
+### /assets/{assetId}/attachments/create [POST]
+
++ Request (multipart/form-data; boundary={unique boundary text}) 
+
+    + Body
+    
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentData"
+            Content-Type: application/json
+            
+            {
+                "createDate": "2018-06-15T10:00:00",
+                "description": "user text",
+                "fileName": "filename.jpg"
+            }
+            
+            --{unique boundary text}
+            Content-Disposition: form-data; name="attachmentFile"
+            Content-Type: image/jpeg
+            Content-Transfer-Encoding: base64
+            Content-Size: 1000
+    
+            SDFKJHWEFKJ;SDC,NSA.,VJNA;DSFJKAJKGFSDVFKDS;FGJKLHSW;GAS;DJKFHKSAJDGHKSAJDHGFKSAJDHGSAJDFKSAJDF
+            --{unique boundary text}
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": "123"
+            }
+            
 # Group Users
         
 ## Find a user's avatar [/users/:userId/avatar/find]
