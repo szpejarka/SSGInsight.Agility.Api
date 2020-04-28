@@ -1282,13 +1282,15 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "id": "123"
             }
             
-## List an asset jobs [/assets/{assetId}/jobs/list]
+## List an asset jobs [/assets/{assetId}/jobs/list?take={take}&skip={skip}]
 
 ### /assets/{assetId}/jobs/list [GET]
         
 + Parameters
 
     + assetId:"123" (required,string) - asset id
+    + take: 5 (optional int) - get number of records
+    + skip: 10 (optional int) - skip number of recordskip take for asset
     
 + Response 200 (application/json)
         
