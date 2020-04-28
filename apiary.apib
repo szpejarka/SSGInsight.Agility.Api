@@ -1282,6 +1282,78 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "id": "123"
             }
             
+## List an asset jobs [/assets/{assetId}/jobs/list]
+
+### /assets/{assetId}/jobs/list [GET]
+        
++ Parameters
+
+    + assetId:"123" (required,string) - asset id
+    
++ Response 200 (application/json)
+        
+        [
+            {
+                "id": "123",
+                "assignedJobId": "123",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                },
+                "jobCode": "12301",
+                "jobType": "Planned Maintenance",
+                "code": "12301",
+                "taskDescription": "Task 1 check tyres",
+                "workOrderDescription": "Check tyres",
+                "lastUpdated": "2018-06-15T10:00:00"
+            }
+        ]
+        
+## Find an asset job [/assets/{assetId}/jobs/{assetJobId}/find]
+        
+### /assets/{assetId}/jobs/{assetJobId}/find [GET]
+
++ Parameters
+
+    + assetId:"123" (required,string) - asset id
+    + assetJobId:"123" (required,string) - asset job id
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "completionTargetDate": "2018-06-15T10:00:00",
+            "completionWarningDate": "2018-06-15T10:00:00",
+            "costCode": "",
+            "hasBeenRespondedTo": true,
+            "id": "123",
+            "jobCode": "",
+            "jobType": "",
+            "location": {
+                "location": "",
+                "site": "",
+                "subLocation": ""
+            },
+            "asset": {
+                "id": "123",
+                "name": ""
+            },
+            "priority": "",
+            "responseTargetDate": "2018-06-15T10:00:00",
+            "responseWarningDate": "2018-06-15T10:00:00",
+            "startDate": "2018-06-15T10:00:00",
+            "status": {
+                "description": "Accepted",
+                "id": "456"
+            },
+            "taskDescription": "",
+            "workOrderDescription": "",
+            "hasRouteSheet" : true,
+            "callerName": "Name"
+        }
+
+            
 # Group Users
         
 ## Find a user's avatar [/users/:userId/avatar/find]
