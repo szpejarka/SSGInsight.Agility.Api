@@ -271,16 +271,18 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /user/find [GET]
 
++ `isContractor` : false - Internal Labour
++ `isContractor` : true - External Labour
 + Response 200 (application/json)
 
         {
             "avatar": {
-                "url": "https://uat.ssginsight.com/avatars/elliotchaim.gif"
+                "url": "https://uat.ssginsight.com/avatars/bartekCossack.gif"
             },
-            "emailAddress": "elliot.chaim@razor.co.uk",
-            "name": "Elliot Chaim",
+            "emailAddress": "bartek.Cossack@ssginsight.co.uk",
+            "name": "Bartek Cossack",
             "id": "123",
-            "username": "elliotchaim",
+            "username": "bartekCossack",
             "isContractor" : true
         }
 
