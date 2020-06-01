@@ -1074,6 +1074,30 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 + Response 204
 
 
+# Group User Coworkers
+
+## List User Coworkers [/user/coworkers/list?query={query}]
+
+### /user/coworkers/list?query={query} [GET]
+        
++ Parameters
+
+    + query:"bob" (required,string) - coworker name part
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "coworkerId": "id123",
+                "name": "Bob Marley"
+            },
+            {
+                "coworkerId": "id123",
+                "name": "BB King"
+            }            
+        ]
+        
+
 # Group Assets
 
 ## List assets [/assets/list?query={query}]
@@ -1402,9 +1426,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 200 (image/png)
 
-## List users [/users/list?query={query}]
+## List coworkers [/users/coworkers/list?query={query}]
 
-### /users/list?query={query} [POST]
+### /users/coworkers/list?query={query} [POST]
 
 + This endpoint allows to search for other users in the same user groups
 
