@@ -466,6 +466,24 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
+#Group User Assigined Jobs / Coworker
+
+## Add time spent by coworker [/user/assigned-jobs/:jobId/coworker/:coworkerId/timespents/add]
+
+### /user/assigned-jobs/:jobId/coworker/:coworkerId/timespents/add [POST]
+
++ `workStartedAt` datetime with offset
++ `timeSpent` number of hours, minutes and seconds spend on job - HH:mm:ss
+
++ Request (application/json)
+
+        {
+            "workStartedAt": "2018-06-15T10:00:00",
+            "timeSpent" : "12:59:40"
+        }
+
++ Response 204
+
 # Group User Assigned Jobs / Attachments
 
 ## Find a job attachments [/user/assigned-jobs/:jobId/attachments/list]
