@@ -468,18 +468,18 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 #Group User Assigined Jobs / Coworker
 
-## Add time spent by coworker [/user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/add]
+## Set time spent by coworker on day [/user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/add]
 
-### /user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/add [POST]
+### /user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/setonday [POST]
 
-+ `workStartedAt` datetime with offset
-+ `timeSpent` number of hours, minutes and seconds spend on job - HH:mm:ss
++ `workStartedAt` day for which required timespent will be set
++ `timeSpentMinutes` number of minutes
 
 + Request (application/json)
 
         {
             "workStartedAt": "2018-06-15T10:00:00",
-            "timeSpent" : "12:59:40"
+            "timeSpentMinutes" : 123
         }
 
 + Response 204
