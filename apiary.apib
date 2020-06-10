@@ -468,7 +468,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 #Group User Assigined Jobs / Coworker
 
-## Set time spent by coworker on day [/user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/add]
+## Set time spent by coworker on day [/user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/setonday]
 
 ### /user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/setonday [POST]
 
@@ -483,6 +483,28 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         }
 
 + Response 204
+
+## Get coworker time spents grouped by day [/user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/list]
+
+### /user/assigned-jobs/:jobId/coworkers/timespents/list [GET]
+
++ `workStartedAt` day for which time spent is aggregated
++ `timeSpentMinutes` aggregated number of minutes for day
+
++ Response 200 (application/json)
+
+        [
+            {
+                "coworkerId": "123",
+                "workStartedAt": "2018-06-15T10:01:12",
+                "timeSpentMinutes": 120
+            },
+            {
+                "coworkerId": "123",
+                "workStartedAt": "2018-06-16T9:06:04",
+                "timeSpentMinutes": 15
+            },
+        ]
 
 # Group User Assigned Jobs / Attachments
 
