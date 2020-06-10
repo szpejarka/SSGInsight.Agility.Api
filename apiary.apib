@@ -484,10 +484,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
-## Get coworker time spents grouped by day [/user/assigned-jobs/:jobId/coworkers/:coworkerId/timespents/list]
+## List coworkers assigned to job with time spents grouped by day [/user/assigned-jobs/:jobId/coworkers/list]
 
-### /user/assigned-jobs/:jobId/coworkers/timespents/list [GET]
-
+### /user/assigned-jobs/:jobId/coworkers/list [GET]
 + `workStartedAt` day for which time spent is aggregated
 + `timeSpentMinutes` aggregated number of minutes for day
 
@@ -495,14 +494,19 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
         [
             {
-                "coworkerId": "123",
-                "workStartedAt": "2018-06-15T10:01:12",
-                "timeSpentMinutes": 120
-            },
-            {
-                "coworkerId": "123",
-                "workStartedAt": "2018-06-16T9:06:04",
-                "timeSpentMinutes": 15
+                "name": "Bartek Cossack",
+                "id": "123",
+                "timespents": 
+                [
+                    {
+                        "workStartedAt": "2018-06-15T10:01:12",
+                        "timeSpentMinutes": 120
+                    },
+                    {
+                        "workStartedAt": "2018-06-16T9:06:04",
+                        "timeSpentMinutes": 15
+                    },
+                ]
             },
         ]
 
