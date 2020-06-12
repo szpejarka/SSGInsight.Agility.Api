@@ -468,11 +468,11 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 #Group User Assigined Jobs / Coworker
 
-## Set time spent by coworker on day [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/timespents/setonday]
+## Add time spent by coworker on day [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/timespents/add]
 
-### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/timespents/setonday [POST]
+### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/timespents/add [POST]
 
-+ `workStartedAt` day for which required timespent will be set
++ `workStartedAt` date for which required timespent will be add
 + `timeSpentMinutes` number of minutes
 
 + Request (application/json)
@@ -483,6 +483,23 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         }
 
 + Response 204
+
+## Adjust time spent by coworker on day [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/timespents/adjust]
+
+### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/timespents/adjust [POST]
+
++ `workStartedAt` date for which required timespent will be adjusted
++ `timeSpentMinutes` number of minutes to set for the date
+
++ Request (application/json)
+
+        {
+            "workStartedAt": "2018-06-15T10:00:00",
+            "timeSpentMinutes" : 123
+        }
+
++ Response 204
+
 
 ## List coworkers assigned to job with time spents grouped by day [/user/assigned-jobs/:jobId/coworkers/list]
 
