@@ -318,6 +318,85 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
+# Group User Requests
+
+## List the user's requests [/user/requests/list]
+
+### /user/requests/list [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "active": false,
+                "completionTargetDate": "2018-06-15T10:00:00",
+                "completionWarningDate": "2018-06-15T10:00:00",
+                "costCode": "",
+                "hasBeenRespondedTo": true,
+                "id": "123",
+                "jobCode": "",
+                "jobType": "",
+                "location": {
+                    "location": "",
+                    "site": "",
+                    "subLocation": ""
+                },
+                "asset": {
+                    "id": "123",
+                    "name": ""
+                },
+                "priority": "",
+                "responseTargetDate": "2018-06-15T10:00:00",
+                "responseWarningDate": "2018-06-15T10:00:00",
+                "scheduleStartDate": "2018-06-15T10:00:00",
+                "startDate": "2018-06-15T10:00:00",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                },
+                "taskDescription": "",
+                "workOrderDescription": "",
+                "checklists" : [
+                   {
+                        "id" : "123",
+                       "description" : "abc"
+                   }
+                ],
+                "hasRouteSheet" : true,
+                "callerName": "Name"
+            }
+        ]
+
+## Accept request for a coworker [/user/requests/{requestId}/accept]
+
+### /user/requests/{requestId}/accept [POST]
+
++ `createDate` date when request was created
+
++ Request (application/json)
+
+        {
+            "createDate" : "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
+## Reject request for a coworker [/user/requests/{requestId}/reject]
+
+### /user/requests/{requestId}/reject [POST]
+
++ `createDate` date when request was created
+
++ Request (application/json)
+
+        {
+            "createDate" : "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
 # Group User Assigned Jobs
 
 ## List the user's assigned jobs [/user/assigned-jobs/list]
@@ -533,9 +612,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             },
         ]
 
-## Get all requests for a coworker [/user/assigned-jobs/:jobId/request/list]
+## Get all requests for a coworker [/user/assigned-jobs/:jobId/coworker-request/list]
 
-### /user/assigned-jobs/{jobId}/request/list [GET]
+### /user/assigned-jobs/{jobId}/coworker-request/list [GET]
 
 + Request (application/json)
 
@@ -554,41 +633,25 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
-## Add request for a coworker [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/add]
+## Add request for a coworker [/user/assigned-jobs/{jobId}/coworker-requests/add]
 
-### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/add [POST]
+### /user/assigned-jobs/{jobId}/coworker-requests/add [POST]
 
 + `createDate` date when request was created
-+ `reason` user explanation why this request is necessary 
++ `coworkerId` user for whom request is created
 
 + Request (application/json)
 
         {
             "createDate" : "2018-06-15T10:00:00"
-            "reason" : ""
+            "coworkerId" : "1234"
         }
 
 + Response 204
 
-## Accept request for a coworker [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/accept]
+## Cancel request for a coworker [/user/assigned-jobs/{jobId}/coworker-requests/{requestId}/cancel]
 
-### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/accept [POST]
-
-+ `createDate` date when request was created
-+ `reason` user explanation why this request is necessary 
-
-+ Request (application/json)
-
-        {
-            "createDate" : "2018-06-15T10:00:00"
-            "reason" : ""
-        }
-
-+ Response 204
-
-## Reject request for a coworker [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/reject]
-
-### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/reject [POST]
+### /user/assigned-jobs/{jobId}/coworker-requests/{requestId}/cancel [POST]
 
 + `createDate` date when request was created
 + `reason` user explanation why this request is necessary 
@@ -597,39 +660,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
         {
             "createDate" : "2018-06-15T10:00:00"
-            "reason" : ""
-        }
-
-+ Response 204
-
-## Cancel request for a coworker [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/cancel]
-
-### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/cancel [POST]
-
-+ `createDate` date when request was created
-+ `reason` user explanation why this request is necessary 
-
-+ Request (application/json)
-
-        {
-            "createDate" : "2018-06-15T10:00:00"
-            "reason" : ""
-        }
-
-+ Response 204
-
-## Complete request for a coworker [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/complete]
-
-### /user/assigned-jobs/{jobId}/coworkers/{coworkerId}/request/complete [POST]
-
-+ `createDate` date when request was created
-+ `reason` user explanation why this request is necessary 
-
-+ Request (application/json)
-
-        {
-            "createDate" : "2018-06-15T10:00:00"
-            "reason" : ""
+            "coworkerId" : "1234"
         }
 
 + Response 204
