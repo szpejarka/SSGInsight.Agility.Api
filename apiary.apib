@@ -612,9 +612,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             },
         ]
 
-## Get all requests for a coworker [/user/assigned-jobs/:jobId/coworker-request/list]
+## Get all requests for a coworker [/user/assigned-jobs/:jobId/coworker-requests/list]
 
-### /user/assigned-jobs/{jobId}/coworker-request/list [GET]
+### /user/assigned-jobs/{jobId}/coworker-requests/list [GET]
 
 + Request (application/json)
 
@@ -655,7 +655,21 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 ### /user/assigned-jobs/{jobId}/coworker-requests/{requestId}/cancel [POST]
 
 + `createDate` date when request was created
-+ `reason` user explanation why this request is necessary 
+
++ Request (application/json)
+
+        {
+            "createDate" : "2018-06-15T10:00:00"
+            "coworkerId" : "1234"
+        }
+
++ Response 204
+
+## Resend request for a coworker [/user/assigned-jobs/{jobId}/coworker-requests/{requestId}/resend]
+
+### /user/assigned-jobs/{jobId}/coworker-requests/{requestId}/resend [POST]
+
++ `createDate` date when request was created
 
 + Request (application/json)
 
