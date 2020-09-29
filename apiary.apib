@@ -23,6 +23,7 @@ This is the API for Agility. The initial release will only be consumed by one ap
         {
             "costCodesMandatory": true,
             "faultTypesMandatory": true,
+            "routeSheetsMandatory": true,
             "availableJobsEnabled": true,
             "attachmentsWhiteList": [ "JPG", "PNG" ],
             "useCompletionForm": false
@@ -330,12 +331,18 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
         [
             {
+                "id": "123",
+                "requestor": {
+                    "id": "qwe12",
+                    "name": "Albert Einstain"
+                },
+                "requestComments": "",
+
                 "active": false,
                 "completionTargetDate": "2018-06-15T10:00:00",
                 "completionWarningDate": "2018-06-15T10:00:00",
                 "costCode": "",
                 "hasBeenRespondedTo": true,
-                "id": "123",
                 "jobCode": "",
                 "jobType": "",
                 "location": {
