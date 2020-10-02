@@ -2012,59 +2012,60 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group Available Jobs
 
+## Data Structures
+### Sort (object)
++ sortBy (SortBy)
++ sortOrder (SortOrder)
+
+### SortBy (enum)
++ StartDate
++ DueDate
++ JobId
++ Status
++ Description
++ AssetName
++ JobType
++ Location
++ Priority
++ ResponseDate
+
+### SortOrder (enum)
++ Ascending
++ Descending
+
 ## List available jobs [/available-jobs/list?assetFilter=belt]
 
 ### /available-jobs/list?assetFilter=belt [POST]
 
 + Request (application/json)
+    + Attributes
+        + crafts (array)
+            + (object)
+                + id: 123
+        + locationFilter (object)
+            + sites (array)
+                + (object)
+                    + id: 123
+            + locations (array)
+                + (object)
+                    + id: 123
+            + sublocations (array)
+                + (object)
+                    + id: 123
+        + jobTypes (array)
+            + (object)
+                + id: 123
+        + statuses (array)
+            + (object)
+                + id: 123
+        + startDate (object)
+            + from: `2019-01-15T10:00:00`
+            + to: `2019-06-15T10:00:00`
+        + dueDate (object)
+            + from: `2019-05-15T10:00:00`
+            + to: `2019-10-15T10:00:00`
+        + sort (Sort)
 
-    + Body
-    
-            {
-                "crafts": [
-                    {
-                        "id": "123"
-                    }
-                ],
-                "locationFilter":
-                {
-                    "sites": [
-                    {
-                        "id": "123"
-                    }
-                    ],
-                    "locations": [
-                    {
-                        "id": "123"
-                    }
-                    ],
-                    "sublocations": [
-                    {
-                        "id": "123"
-                    }
-                    ]
-                },
-                "jobTypes": [
-                    {
-                        "id": "123"
-                    }
-                ],
-                "statuses": [
-                    {
-                        "id": "123"
-                    }
-                ],
-                "startDate":
-                {
-                    "from": "2019-01-15T10:00:00",
-                    "to": "2019-06-15T10:00:00"
-                },
-                "dueDate":
-                {
-                    "from": "2019-05-15T10:00:00",
-                    "to": "2019-10-15T10:00:00"
-                }                
-            }
 
 + Response 200 (application/json)
 
