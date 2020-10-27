@@ -435,7 +435,10 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "name": ""
                 },
                 "priority": "",
-                "priorityId": "ref-231412",
+                "priorityData": {
+                    "id": "ref-231412",
+                    "description": "Urgent"
+                },
                 "responseTargetDate": "2018-06-15T10:00:00",
                 "responseWarningDate": "2018-06-15T10:00:00",
                 "scheduleStartDate": "2018-06-15T10:00:00",
@@ -556,6 +559,22 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
         {
             "completedDate": "2018-06-15T10:00:00",
+        }
+
++ Response 204
+
+## Adjust time spent by user on day [/user/assigned-jobs/{jobId}/timespents/adjust]
+
+### /user/assigned-jobs/{jobId}/timespents/adjust [POST]
+
++ `workStartedAt` date for which required timespent will be adjusted
++ `timeSpentMinutes` number of minutes to set for the date
+
++ Request (application/json)
+
+        {
+            "workStartedAt": "2018-06-15T10:00:00",
+            "timeSpentMinutes" : 123
         }
 
 + Response 204
