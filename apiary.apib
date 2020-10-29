@@ -563,7 +563,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
-## Adjust time spent by user on day [/user/assigned-jobs/{jobId}/timespents/adjust]
+## Adjust time spent by user on day [/user/assigned-jobs/:jobId/timespents/adjust]
 
 ### /user/assigned-jobs/{jobId}/timespents/adjust [POST]
 
@@ -578,6 +578,25 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         }
 
 + Response 204
+
+## List user time spents grouped by day [/user/assigned-jobs/:jobId/timespents/list]
+
+### /user/assigned-jobs/:jobId/timespents/list [GET]
++ `workStartedAt` day for which time spent is aggregated
++ `timeSpentMinutes` aggregated number of minutes for day
+
++ Response 200 (application/json)
+
+        [
+            {
+                "workStartedAt": "2018-06-15T10:01:12",
+                "timeSpentMinutes": 120
+            },
+            {
+                "workStartedAt": "2018-06-16T9:06:04",
+                "timeSpentMinutes": 15
+            }
+        ]
 
 #Group User Assigined Jobs / Coworker
 
