@@ -129,8 +129,12 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         [
             {
                 "description": "Job Accepted by Engineer",
-                "id": "123",,
-                "isAnActiveStatus": false
+                "id": "123",
+                "isAnActiveStatus": false,
+                "measurement":
+                    {
+                        "labourTime" : false
+                    },
                 "followingStatuses": [
                     {
                         "description": "Rejected",
@@ -447,6 +451,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "description": "Accepted",
                     "id": "456"
                 },
+                "statusChangeDate": "2018-06-15T10:00:00",
                 "taskDescription": "",
                 "workOrderDescription": "",
                 "checklists" : [
@@ -563,7 +568,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
-## Adjust time spent by user on day [/user/assigned-jobs/:jobId/timespents/adjust]
+## Adjust time spent by user on day [/user/assigned-jobs/{jobId}/timespents/adjust]
 
 ### /user/assigned-jobs/{jobId}/timespents/adjust [POST]
 
@@ -579,9 +584,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + Response 204
 
-## List user time spents grouped by day [/user/assigned-jobs/:jobId/timespents/list]
+## List user time spents grouped by day [/user/assigned-jobs/{jobId}/timespents/list]
 
-### /user/assigned-jobs/:jobId/timespents/list [GET]
+### /user/assigned-jobs/{jobId}/timespents/list [GET]
 + `workStartedAt` day for which time spent is aggregated
 + `timeSpentMinutes` aggregated number of minutes for day
 
@@ -1897,6 +1902,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "description": "Accepted",
                 "id": "456"
             },
+            "statusChangeDate": "2018-06-15T10:00:00",
             "taskDescription": "",
             "workOrderDescription": "",
             "checklists" : [
