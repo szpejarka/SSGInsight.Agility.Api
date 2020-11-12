@@ -549,13 +549,18 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /user/assigned-jobs/:jobId/complete [POST]
 
+
 + Request (application/json)
 
         {
-            "completionComments": "",
+            "completionComments": "some text comment",
             "completionTypeId": "123",
             "completedDate": "2018-06-15T10:00:00",
-            "faultTypeId": "123"
+            "faultTypeId": "123",
+            "adjustOngoingTime": {
+                "workStartedAt": "2018-06-15T10:00:00",
+                "timeSpentMinutes": 120
+            }
         }
 
 + Response 204
