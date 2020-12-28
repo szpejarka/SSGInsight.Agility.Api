@@ -21,32 +21,72 @@ This is the API for Agility. The initial release will only be consumed by one ap
 + Response 200 (application/json)
 
         {
-            "costCodesMandatory": true,
-            "faultTypesMandatory": true,
-            "routeSheetsMandatory": true,
-            "availableJobsEnabled": true,
-            "attachmentsWhiteList": [ "JPG", "PNG" ],
-            "useCompletionForm": false,
-            "permissions":
+            "configuration":
             {
-                "useJobTimeConfirmation": false
-            },
-            "assignedJobs":
-            {
-                "scheduledDate":
-                {
-                    "on" : true
+                "availableJobs": {
+                    "enabled": true,
+                    "keywordSearch": true,
+                    "barcodeReader": true,
+                    "filters": true,
+
                 },
-                "startDate":
+                "issueReturn":{
+                    "enabled": true,
+                    "barcodeReader": true
+                },
+                "addTimeManually":{
+                    "enabled": true
+                },
+                "sendCoworkerRequest":{
+                    "enabled": true
+                },
+                "searchAssets":{
+                     "enabled": true,
+                     "barcodeReader": true
+                },
+                "createJob": {
+                    "enabled": true
+                },
+                "createRequest": {
+                    "enabled": true
+                },
+                "sortOrder":
                 {
-                    "on" : true
+                    "sortBy": "DueDate",
+                    "sortDirection": "Descending"
                 }
             },
-            "availableJobs":
+            "information-display":
             {
-                "startDate":
+                "jobCard":
                 {
-                    "on" : true
+                    "scheduledDate":
+                    {
+                        "on" : true
+                    },
+                    "startDate":
+                    {
+                        "on" : true
+                    }
+                },
+                "availableJobCard":
+                {
+                    "startDate":
+                    {
+                        "on" : true
+                    }
+                }
+            },
+            "system-settings":
+            {
+                "costCodesMandatory": true,
+                "faultTypesMandatory": true,
+                "routeSheetsMandatory": true,
+                "attachmentsWhiteList": [ "JPG", "PNG" ],
+                "useCompletionForm": false,
+                "permissions":
+                {
+                    "useJobTimeConfirmation": false
                 }
             }
         }
