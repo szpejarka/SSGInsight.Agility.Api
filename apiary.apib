@@ -50,7 +50,7 @@ This is the API for Agility. The initial release will only be consumed by one ap
                 }
             }
         }
-
+        
 ## List the crafts [/crafts/list]
 
 ### /crafts/list [GET]
@@ -319,7 +319,50 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "coworkerManualTimeSpent": true
             }
         }
+        
+## Find the user configuration [/user/configuration/find]
 
+### /user/configuration/find [GET]
+
++ Response 200 (application/json)
+
+        {
+            "assignedJobs":
+            {
+                "sortOrder":
+                {
+                    "sortBy": "DueDate",
+                    "sortDirection": "Descending"
+                }
+            },
+            "availableJobs": {
+                "enabled": true,
+                "keywordSearch": true,
+                "barcodeReader": true,
+                "filters": true,
+            },
+            "issueReturn":{
+                "enabled": true,
+                "barcodeReader": true
+            },
+            "addTimeManually":{
+                "enabled": true
+            },
+            "sendCoworkerRequest":{
+                "enabled": true
+            },
+            "searchAssets":{
+                 "enabled": true,
+                 "barcodeReader": true
+            },
+            "createJob": {
+                "enabled": true
+            },
+            "createRequest": {
+                "enabled": true
+            }
+        }
+        
 # Group User Device Id
         
 ## Update the user's PDA ID [/user/device-id/update]
