@@ -324,13 +324,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /user/configuration/find [GET]
 
++ Request (application/json)
+
 + Response 200 (application/json)
 
         {
-            "assignedJobs":
-            {
-                "sortOrder":
-                {
+            "assignedJobs": {
+                "sortOrder": {
                     "sortBy": "DueDate",
                     "sortDirection": "Descending"
                 }
@@ -341,17 +341,17 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "barcodeReader": true,
                 "filters": true,
             },
-            "issueReturn":{
+            "issueReturn": {
                 "enabled": true,
                 "barcodeReader": true
             },
-            "addTimeManually":{
+            "addTimeManually": {
                 "enabled": true
             },
-            "sendCoworkerRequest":{
+            "sendCoworkerRequest": {
                 "enabled": true
             },
-            "searchAssets":{
+            "searchAssets": {
                  "enabled": true,
                  "barcodeReader": true
             },
