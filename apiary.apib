@@ -1582,22 +1582,28 @@ Request:
 + Response 200 (application/json)
 
         {
-            "sites" : [
+            "sites" : 
+            [
                 {
-                "description": "Conveyor belt 001",
-                "id": "123",
-                "locations" : [
-                    {
-                        "description": "Conveyor belt 002",
-                        "id": "123",
-                        "sublocations" : [
+                    "id": "123",
+                    "code": "CB001",
+                    "description": "Conveyor belt 001",
+                    "locations" : 
+                    [
                         {
-                            "description": "Conveyor belt 003",
-                            "id": "123"
+                            "id": "123",
+                            "code": "CB001",
+                            "description": "Conveyor belt 002",
+                            "sublocations" : 
+                            [
+                                {
+                                    "id": "123",
+                                    "code": "CB001",
+                                    "description": "Conveyor belt 003"
+                                }
+                            ]
                         }
                     ]
-                    }
-                ]
                 }
             ]
         }
