@@ -366,6 +366,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             },
             "createRequest":{
                 "enabled":true
+            },
+            "addFollowOnJob":{
+                "enabled": true
             }
         }
         
@@ -1521,8 +1524,8 @@ Request:
                     {
                         "id": "123"
                     }
-                ]
-                
+                ],
+                "availableForWorkFilter": true; 
             }
 
 + Response 200 (application/json)
@@ -1645,7 +1648,8 @@ Request:
             "model" : "CB/001"
             "serialNumber" : "123ABC"
             "equipmentGroup" : "Belts",
-            "lastModifiedAt" : "2018-06-15T10:00:00"
+            "lastModifiedAt" : "2018-06-15T10:00:00",
+            "availableForWork": true
         }
         
    
