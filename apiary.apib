@@ -709,6 +709,32 @@ Request:
             }
         ]
 
+#Group User Assigined Jobs / Follow On Jobs 
+
+## Create follow on job [/user/assigned-jobs/{jobid}/followonjobs/create]
+
+### /user/assigned-jobs/{jobid}/followonjobs/create [POST]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "costCodeId": "123",
+                "craftId": "123",,
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "jobTypeId": "123",
+                "priorityId": "123",
+                "assignToSelf": false
+            }
+
++ Response 204 (application/json)
+
 #Group User Assigined Jobs / Coworker
 
 ## Add time spent by coworker on day [/user/assigned-jobs/{jobId}/coworkers/{coworkerId}/timespents/add]
@@ -1399,7 +1425,8 @@ Request:
                     },
                     "availableQuantity":  1234.234
                 }
-            ]            
+            ]
+            
 
 # Group User Assgined Jobs / Notifications
 
