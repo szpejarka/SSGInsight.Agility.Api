@@ -2941,3 +2941,27 @@ Request:
                     "code": "ASD233"
                 }
             ]
+            
+# Group Standard Jobs
+
+## Standard Jobs List [/standard-jobs/list?{filter}]
+
+### /standard-jobs/list?{filter} [GET]
++ Parameters
+
+    + filter:"abc" (string) - standard job description part
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123456",
+                "code": "CODE-123",
+                "description": "Vehicle check 1m"
+            },
+            {
+                "id": "2-123456",
+                "code": "CODE-23",
+                "description": "PlantStandra check 1m"
+            }
+        ]
