@@ -2944,12 +2944,12 @@ Request:
             
 # Group Standard Jobs
 
-## Standard Jobs List [/standard-jobs/list?filter={filter}]
+## Standard Jobs List [/standard-jobs/list?descriptionFilter={descriptionFilter}]
 
 ### /standard-jobs/list [GET]
 + Parameters
 
-    + filter:"abc" (string) - standard job description part
+    + descriptionFilter:"abc" (string) - standard job description part
 
 + Response 200 (application/json)
 
@@ -2957,11 +2957,45 @@ Request:
             {
                 "id": "123456",
                 "code": "CODE-123",
-                "description": "Vehicle check 1m"
+                "description": "Vehicle check 1m",
+                "jobType": {
+                    "id": "12341",
+                    "name": "Break"
+                },
+                "priority": {
+                    "id": "123124",
+                    "name": "Normal"
+                },
+                crafts: [
+                    {
+                        "id": "213141",
+                        "name": "Engineer"
+                    }
+                ],
+                "scheduleToSelfAllowed": "true"
             },
             {
                 "id": "2-123456",
                 "code": "CODE-23",
-                "description": "PlantStandra check 1m"
+                "description": "PlantStandra check 1m",
+                "jobType": {
+                    "id": "12341",
+                    "description": "Break"
+                },
+                "priority": {
+                    "id": "123124",
+                    "description": "Normal"
+                },
+                crafts: [
+                    {
+                        "id": "21245",
+                        "name": "Plumber"
+                    },
+                    {
+                        "id": "213141",
+                        "name": "Engineer"
+                    }
+                ],
+                "scheduleToSelfAllowed": "false"
             }
         ]
