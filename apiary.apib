@@ -2944,12 +2944,14 @@ Request:
             
 # Group Standard Jobs
 
-## Standard Jobs List [/standard-jobs/list?descriptionFilter={descriptionFilter}]
+## Standard Jobs List [/standard-jobs/list?descriptionFilter={descriptionFilter}&skip={skip}&take={take}]
 
 ### /standard-jobs/list [GET]
 + Parameters
 
     + descriptionFilter:"abc" (string) - standard job description part
+    + skip: 0 (integer) - skip n records
+    + take: 50 (integer) - take n records
 
 + Response 200 (application/json)
 
@@ -2966,12 +2968,11 @@ Request:
                     "id": "123124",
                     "name": "Normal"
                 },
-                crafts: [
-                    {
-                        "id": "213141",
-                        "name": "Engineer"
-                    }
-                ],
+                "mainCraft":  {
+                    "id": "213141",
+                    "name": "Engineer"
+                },
+                "multiCraftJob": "false",
                 "scheduleToSelfAllowed": "true"
             },
             {
@@ -2986,16 +2987,11 @@ Request:
                     "id": "123124",
                     "name": "Normal"
                 },
-                crafts: [
-                    {
-                        "id": "21245",
-                        "name": "Plumber"
-                    },
-                    {
-                        "id": "213141",
-                        "name": "Engineer"
-                    }
-                ],
+                "mainCraft":  {
+                    "id": "213141",
+                    "name": "Engineer"
+                },
+                "multiCraftJob": "true",
                 "scheduleToSelfAllowed": "false"
             }
         ]
