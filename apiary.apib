@@ -2995,3 +2995,25 @@ Request:
                 "scheduleToSelfAllowed": "false"
             }
         ]
+        
+## Create a job [/standard-jobs/:id/create-job]
+
+### /standard-jobs/:id/create-job [POST]
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "assetCode": "AC1",
+                "costCodeId": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "scheduleToSelf": true
+            }
+
++ Response 200 (application/vnd.agility.api.v8+json)
+
+        {
+            "jobCode": ""
+        }
