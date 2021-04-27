@@ -152,6 +152,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "description": "Job Accepted by Engineer",
                 "id": "123",
                 "isAnActiveStatus": false,
+                "allowTransfer": false,
                 "measurement":
                     {
                         "labourTime" : false
@@ -160,7 +161,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     {
                         "description": "Rejected",
                         "id": "456",
-                        "isAnActiveStatus": false
+                        "isAnActiveStatus": false,
+                        "allowTransfer": false,
                     }
                 ]
             },
@@ -168,6 +170,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "description": "Rejected",
                 "id": "456",
                 "isAnActiveStatus": false,
+                "allowTransfer": false,
                 "followingStatuses": []
             }
         ]
@@ -1937,7 +1940,14 @@ Request:
         [
             {
                 "name": "Bartek Cossack",
-                "id": "123"
+                "id": "123",
+                "crafts":
+                [
+                    {
+                        "id": 123,
+                        "description": "PlumB"
+                    }
+                ]added
             }
         ]
 
