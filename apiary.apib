@@ -686,6 +686,18 @@ Request:
 
 + Response 204
 
+## Transfer a job assigned to the the user to other user [/user/assigned-jobs/:jobId/transfer]
+
+### /user/assigned-jobs/:jobId/transfer-to/:userid [POST]
++ Request (application/json)
+
+        {
+            "comments": "some text comment",
+            "createDate": "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
 ## Adjust time spent by user on day [/user/assigned-jobs/{jobId}/timespents/adjust]
 
 ### /user/assigned-jobs/{jobId}/timespents/adjust [POST]
