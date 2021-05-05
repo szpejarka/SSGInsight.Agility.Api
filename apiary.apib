@@ -688,15 +688,23 @@ Request:
 
 ## Transfer a job assigned to the the user to other user [/user/assigned-jobs/:jobId/transfer]
 
-### /user/assigned-jobs/:jobId/transfer-to/:userid [POST]
+### /user/assigned-jobs/:jobId/transfer [POST]
 + Request (application/json)
 
         {
-            "comments": "some text comment",
-            "createDate": "2018-06-15T10:00:00"
+            "user":
+            {
+                id: "1234"
+            },
+            "transferDate": "2018-06-15T10:00:00",
+            "comments": "some text comment"
         }
 
-+ Response 204
++ Response 200 (application/json)
+
+        {
+            jobCode: "asdaq"
+        }
 
 ## Adjust time spent by user on day [/user/assigned-jobs/{jobId}/timespents/adjust]
 
