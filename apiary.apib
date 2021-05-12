@@ -3064,3 +3064,26 @@ Request:
         {
             "jobCode": ""
         }
+        
+## Create a follow on job [/standard-jobs/:id/create-follow-on]
+### /standard-jobs/:id/create-follow-on [POST]
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "referenceId": "030B4A82-1B7C-11CF-9D53-00AA003C9CB6",
+                "jobId" : "1234"
+                "assetCode": "AC1",
+                "costCodeId": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "assignToSelf": true
+            }
+
++ Response 200 (application/vnd.agility.api.v8+json)
+
+        {
+            "jobCode": ""
+        }
