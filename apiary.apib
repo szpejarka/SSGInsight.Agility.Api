@@ -378,7 +378,10 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "standardJob":{
                     "enabled":true
                 }
-            }
+            },
+            "ammendAsset":{
+                "enabled":true
+            },
         }
         
 # Group User Device Id
@@ -708,6 +711,21 @@ Request:
         {
             jobCode: "asdaq"
         }
+
+## Amend asset on a job assigned to the user   [/user/assigned-jobs/{jobId}/asset/amend]
+
+### /user/assigned-jobs/{jobId}/asset/amend [POST]
++ Request (application/json)
+
+        {
+            "asset": {
+                "id": "assetid-1234"
+            },
+            "amendDate": "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
 
 ## Adjust time spent by user on day [/user/assigned-jobs/{jobId}/timespents/adjust]
 
