@@ -1853,11 +1853,12 @@ Request:
     + skip: 10 (optional int) - skip number of recordskip take for asset
     
 + Response 200 (application/json)
-        
+
         [
             {
                 "id": "123",
                 "assignedJobId": "123",
+                "availableJobId": "123",
                 "status": {
                     "description": "Accepted",
                     "id": "456"
@@ -1868,7 +1869,7 @@ Request:
                 "workOrderDescription": "Check tyres",
                 "lastUpdated": "2018-06-15T10:00:00"
             }
-        ]
+        ]        
         
 ## Find an asset job [/assets/{assetId}/jobs/{assetJobId}/find]
         
