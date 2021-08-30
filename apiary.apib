@@ -14,6 +14,20 @@ This is the API for Agility. The initial release will only be consumed by one ap
 
 # Group Metadata
 
+## Get the client-id [/identity/client-id/find]
+
+- Used by mobile app to satisfy IDServer code grant type (authorisation code flow).
+
+### /identity/client-id/find [GET]
+
++ Request (application/json)
+
++ Response 200
+
+        {
+            "id": "123"
+        }
+
 ## Find the system configuration metadata [/system-configuration/find]
 
 ### /system-configuration/find [GET]
@@ -382,20 +396,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "ammendAsset":{
                 "enabled":true
             },
-        }
-
-# Group Client Id
-
-## Get the clientId [/clientId/find]
-
-### /clientId/find [GET]
-
-+ Request (application/json)
-
-+ Response 200
-
-        {
-            "id": "123"
         }
 
 # Group User Device Id
