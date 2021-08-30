@@ -383,7 +383,21 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "enabled":true
             },
         }
-        
+
+# Group Client Id
+
+## Get the clientId [/clientId]
+
+### /clientId [GET]
+
++ Request (application/json)
+
++ Response 200
+
+        {
+            "id": "123"
+        }
+
 # Group User Device Id
         
 ## Update the user's PDA ID [/user/device-id/update]
@@ -406,7 +420,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 + Request (application/json)
 
         {
+            "id": "123"
         }
+        
 
 + Response 204
 
@@ -1601,6 +1617,66 @@ Request:
 
 + Response 204
 
+# Group User Completed Jobs
+
+## List the user's completed jobs [/user/completed-jobs/list]
+
+### /user/completed-jobs/list [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "completionComments": "",
+                "costCode": "",
+                "id": "123",
+                "jobCode": "",
+                "jobType": "",
+                "location": {
+                    "location": {
+                        "id": "123",
+                        "code": "",
+                        "description": ""
+                    },
+                    "site": {
+                        "id": "123",
+                        "code": "",
+                        "description": ""
+                    },
+                    "subLocation": {
+                        "id": "123",
+                        "code": "",
+                        "description": ""
+                    }
+                },
+                "asset": {
+                    "id": "123",
+                    "code": "",
+                    "description": ""
+                },
+                "priority": {
+                    "id": "ref-231412",
+                    "description": "Urgent"
+                },
+                "craft": {
+                    "id": "123",
+                    "description": "Air Conditioning Engineer"
+                },
+                "scheduleStartDate": "2018-06-15T10:00:00",
+                "startDate": "2018-06-15T10:00:00",
+                "status": {
+                    "description": "Accepted",
+                    "id": "456"
+                },
+                "statusChangeDate": "2018-06-15T10:00:00",
+                "taskDescription": "",
+                "workOrderDescription": "",
+                "hasChecklists" : true,
+                "hasRouteSheet" : true
+            }
+        ]
 
 # Group Assets
 
