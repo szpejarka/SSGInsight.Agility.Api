@@ -432,6 +432,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 ### /user/requests/list [GET]
 
+#### Deprecated response properties:
+- `callerName`
+
 + Request (application/json)
 
 + Response 200 (application/json)
@@ -493,7 +496,12 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                    }
                 ],
                 "hasRouteSheet" : true,
-                "callerName": "Name"
+                "callerName": "Name",
+                "caller": {
+                  "name": "John Doe",
+                  "phone": "+48 12345678",
+                  "email": "john.doe@ssginsight.com"
+                }
             }
         ]
 
@@ -530,6 +538,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 ## List the user's assigned jobs [/user/assigned-jobs/list]
 
 ### /user/assigned-jobs/list [GET]
+
+#### Deprecated response properties:
+- `callerName`
 
 + Request (application/json)
 
@@ -1956,6 +1967,9 @@ Request:
         
 ### /assets/{assetId}/jobs/{assetJobId}/find [GET]
 
+#### Deprecated response properties:
+- `callerName`
+
 + Parameters
 
     + assetId:"123" (required,string) - asset id
@@ -2265,6 +2279,9 @@ Request:
 ## Find a job [/jobs/{jobId}/find]
         
 ### /jobs/{jobId}/find [GET]
+
+#### Deprecated response properties:
+- `callerName`
 
 + Parameters
 
@@ -2726,6 +2743,9 @@ Request:
 ## Find an available job [/available-jobs/{availableJobId}/find]
         
 ### /available-jobs/{availableJobId}/find [GET]
+
+#### Deprecated response properties:
+- `callerName`
 
 + Parameters
 
