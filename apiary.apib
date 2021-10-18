@@ -1691,10 +1691,32 @@ Request:
                 "workOrderDescription": "",
                 "hasChecklists" : true,
                 "hasRouteSheet" : true,
-                "cmplompletionTargetDate": "2018-06-15T10:00:00",
+                "completionTargetDate": "2018-06-15T10:00:00",
                 "responseTargetDate": "2018-06-15T10:00:00",
             }
         ]
+
+## Issue part for completed job  [/user/completed-jobs/{jobid}/parts/issue]
+
+### /user/completed-jobs/{jobid}/parts/issue [POST]    
+
++ Parameters
+
+    + jobid:"123" (required,string) - completed job id
+
+
++ Request (application/json)
+
+        {
+            "availableItemId": "123112as",
+            "quantity": 1234.234
+        }
+
++ Response 201 (application/json)
+        
+        {
+            "id": "1231234we"
+        }
 
 # Group Assets
 
