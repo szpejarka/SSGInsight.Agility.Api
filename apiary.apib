@@ -1298,40 +1298,6 @@ Request:
         
 # Group User Assigned Jobs / Parts        
         
-## List issued parts for job  [/user/assigned-jobs/{jobid}/parts/list]
-
-### /user/assigned-jobs/{jobid}/parts/list [GET]
-
-+ Parameters
-
-    + jobid:"123" (required,string) - assigned job id
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": "12345",
-                "item": {
-                    "id": "1234",
-                    "code": "ACE23",
-                    "description": "some item",
-                    "unitOfMeasure": {
-                        "id": "12342",
-                        "code": "uom code"
-                    }
-                },
-                "bin": {
-                    "id": "123456",
-                    "code": "bin location code",
-                    "store": {
-                        "id": "12342",
-                        "code": "store code",
-                    }
-                },
-                "quantity": 1234.234
-            }
-        ]
-
 ## Issue part for job  [/user/assigned-jobs/{jobid}/parts/issue]
 
 ### /user/assigned-jobs/{jobid}/parts/issue [POST]    
@@ -1372,186 +1338,6 @@ Request:
         }
 
 + Response 204 (application/json)
-
-# Group User Assigned Jobs / Planned Parts    
-
-## List planned kits for assigned job  [/user/assigned-jobs/{jobid}/planned/kits/list]
-
-### /user/assigned-jobs/{jobid}/planned/kits/list [GET]
-
-+ Parameters
-
-    + jobid:"123" (required,string) - assigned job id
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": "12345",
-                "name": "kid code",
-                "quantity" : 2,
-                "partsInTotal": 23,
-                "partsQuantity": 7
-            }
-        ]
-       
-## Find planned kit for assigned job  [/user/assigned-jobs/{jobid}/planned/kits/{kitid}/find]
-
-### /user/assigned-jobs/{jobid}/planned/kits/{kitid}/find [GET]
-
-+ Parameters
-
-    + jobid:"123" (required,string) - assigned job id
-    + kitid:"123" (required,string) - kit id
-
-+ Response 200 (application/json)
-
-    + Attributes (object)
-    
-        + item (object) - not null
-        + store (object) - can be null
-    
-
-    + Body 
-    
-            {
-                "id": "123412",
-                "name": "kid code",
-                "kitItems": 
-                [
-                    {
-                        "id": "12314",
-                        "item": {
-                            "id": "12314",
-                            "code": "item code",
-                            "description": "item description",
-                            "unitOfMeasure": {
-                                "id": "12342",
-                                "code": "uom code"
-                            }
-                        },
-                        "store": {
-                            "id": "12345",
-                            "code": "store code",
-                        },
-                        "quantity" : 2
-                    }
-                ]
-            }
-        
-
-## Sumarize planned parts for job  [/user/assigned-jobs/{jobid}/planned/parts/total]
-
-### /user/assigned-jobs/{jobid}/planned/parts/total [GET]
-
-+ Parameters
-
-    + jobid:"123" (required,string) - assigned job id
-
-+ Response 200 (application/json)
-
-        
-        {
-            "partsInTotal": 23,
-            "partsQuantity": 7
-        }
-        
-
-## List planned parts for job  [/user/assigned-jobs/{jobid}/planned/parts/list]
-
-### /user/assigned-jobs/{jobid}/planned/parts/list [GET]
-
-+ Parameters
-
-    + jobid:"123" (required,string) - assigned job id
-
-+ Response 200 (application/json)
-
-    + Attributes (object)
-    
-        + item (object) - not null
-        + store (object) - can be null
-        
-
-    + Body
-
-            [
-                {
-                    "id": "12345",
-                    "item": {
-                        "id": "1234",
-                        "code": "ACE23",
-                        "description": "some item",
-                        "unitOfMeasure": {
-                            "id": "12342",
-                            "code": "uom code"
-                        }
-                    },
-                    "store": {
-                        "id": "12342",
-                        "code": "store code",
-                    },
-                    "quantity" : 1234.234
-                }
-            ]
-
-## List Kit Part Locations  [/user/assigned-jobs/{jobid}/planned/kits/{kitid}/parts/{kitpartid}/locations/list]
-
-### /user/assigned-jobs/{jobid}/planned/kits/{kitid}/parts/{kitpartid}/locations/list [GET]
-
-+ Parameters
-
-    + jobid:"123" (required,string) - assigned job id
-    + kitid:"123" (required,string) - planned kit id
-    + kitpartid:"123" (required,string) - planned kit part id
-
-+ Response 200 (application/vnd.agility.api.v6+json)
-
-    + Body
-
-            [
-                {
-                    "availableItemId": "123412",
-                    "bin": {
-                        "id": "12312412",
-                        "code": "bin code",
-                        "store": {
-                            "id": "12345",
-                            "code": "store code"
-                        }
-                    },
-                    "availableQuantity":  1234.234
-                }
-            ]            
-
-## List Planned Part Locations  [/user/assigned-jobs/{jobid}/planned/parts/{plannedpartid}/locations/list]
-
-### /user/assigned-jobs/{jobid}/planned/parts/{plannedpartid}/locations/list [GET]
-
-+ Parameters
-
-    + jobid:"123" (required,string) - assigned job id
-    + plannedpartid:"123" (required,string) - planned part id
-
-+ Response 200 (application/vnd.agility.api.v6+json)
-
-    + Body
-
-            [
-                {
-                    "availableItemId": "123412",
-                    "bin": {
-                        "id": "12312412",
-                        "code": "bin code",
-                        "store": {
-                            "id": "12345",
-                            "code": "store code"
-                        }
-                    },
-                    "availableQuantity":  1234.234
-                }
-            ]
-            
 
 # Group User Assgined Jobs / Notifications
 
@@ -1632,6 +1418,226 @@ Request:
         }
 
 + Response 204
+
+# Group User Jobs / Parts    
+
+## List issued parts for user job  [/user/jobs/{jobid}/parts/list]
+
+### /user/jobs/{jobid}/parts/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "12345",
+                "item": {
+                    "id": "1234",
+                    "code": "ACE23",
+                    "description": "some item",
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    }
+                },
+                "bin": {
+                    "id": "123456",
+                    "code": "bin location code",
+                    "store": {
+                        "id": "12342",
+                        "code": "store code",
+                    }
+                },
+                "quantity": 1234.234
+            }
+        ]
+
+
+
+# Group User Jobs / Planned Parts    
+
+## List planned kits for user job  [/user/jobs/{jobid}/planned/kits/list]
+
+### /user/jobs/{jobid}/planned/kits/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "12345",
+                "name": "kid code",
+                "quantity" : 2,
+                "partsInTotal": 23,
+                "partsQuantity": 7
+            }
+        ]
+       
+## Find planned kit for user job  [/user/jobs/{jobid}/planned/kits/{kitid}/find]
+
+### /user/jobs/{jobid}/planned/kits/{kitid}/find [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - user job id
+    + kitid:"123" (required,string) - kit id
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+    
+        + item (object) - not null
+        + store (object) - can be null
+    
+
+    + Body 
+    
+            {
+                "id": "123412",
+                "name": "kid code",
+                "kitItems": 
+                [
+                    {
+                        "id": "12314",
+                        "item": {
+                            "id": "12314",
+                            "code": "item code",
+                            "description": "item description",
+                            "unitOfMeasure": {
+                                "id": "12342",
+                                "code": "uom code"
+                            }
+                        },
+                        "store": {
+                            "id": "12345",
+                            "code": "store code",
+                        },
+                        "quantity" : 2
+                    }
+                ]
+            }
+        
+
+## Sumarize planned parts for user job  [/user/jobs/{jobid}/planned/parts/total]
+
+### /user/jobs/{jobid}/planned/parts/total [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - user job id
+
++ Response 200 (application/json)
+
+        
+        {
+            "partsInTotal": 23,
+            "partsQuantity": 7
+        }
+        
+
+## List planned parts for user job  [/user/jobs/{jobid}/planned/parts/list]
+
+### /user/jobs/{jobid}/planned/parts/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - user job id
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+    
+        + item (object) - not null
+        + store (object) - can be null
+        
+
+    + Body
+
+            [
+                {
+                    "id": "12345",
+                    "item": {
+                        "id": "1234",
+                        "code": "ACE23",
+                        "description": "some item",
+                        "unitOfMeasure": {
+                            "id": "12342",
+                            "code": "uom code"
+                        }
+                    },
+                    "store": {
+                        "id": "12342",
+                        "code": "store code",
+                    },
+                    "quantity" : 1234.234
+                }
+            ]
+
+## List Kit Part Locations  [/user/jobs/{jobid}/planned/kits/{kitid}/parts/{kitpartid}/locations/list]
+
+### /user/jobs/{jobid}/planned/kits/{kitid}/parts/{kitpartid}/locations/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - user job id
+    + kitid:"123" (required,string) - planned kit id
+    + kitpartid:"123" (required,string) - planned kit part id
+
++ Response 200 (application/vnd.agility.api.v6+json)
+
+    + Body
+
+            [
+                {
+                    "availableItemId": "123412",
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code"
+                        }
+                    },
+                    "availableQuantity":  1234.234
+                }
+            ]            
+
+## List Planned Part Locations  [/user/jobs/{jobid}/planned/parts/{plannedpartid}/locations/list]
+
+### /user/jobs/{jobid}/planned/parts/{plannedpartid}/locations/list [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string) - user job id
+    + plannedpartid:"123" (required,string) - planned part id
+
++ Response 200 (application/vnd.agility.api.v6+json)
+
+    + Body
+
+            [
+                {
+                    "availableItemId": "123412",
+                    "bin": {
+                        "id": "12312412",
+                        "code": "bin code",
+                        "store": {
+                            "id": "12345",
+                            "code": "store code"
+                        }
+                    },
+                    "availableQuantity":  1234.234
+                }
+            ]
+            
+
+
 
 # Group User Completed Jobs
 
@@ -1719,6 +1725,24 @@ Request:
             "id": "1231234we"
         }
 
+## Return part from completed job  [/user/completed-jobs/{jobid}/parts/{partid}/return]
+
+### /user/completed-jobs/{jobid}/parts/{partid}/return [POST]  
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+
+    + partid:"123" (required,string) - part id to return 
+
++ Request (application/json)
+
+        {
+            "quantity": 1234.234,
+            "returnDate": "2018-06-15T10:00:00"
+        }
+
++ Response 204 (application/json)
 # Group Assets
 
 ## List assets [/assets/list?query={query}]
@@ -2099,6 +2123,8 @@ Request:
 
 + Response 200 (image/png)
 
+# Group Users/Coworkers 
+
 ## List coworkers [/user/coworkers/list?query={query}]
 
 ### /user/coworkers/list?query={query} [GET]
@@ -2121,6 +2147,81 @@ Request:
                         "id": 123
                     }
                 ]added
+            }
+        ]
+        
+## Issue part for coworker  [/user/coworkers/{coworkerid}/parts/issue]
+
+### /user/coworkers/{coworkerid}/parts/issue [POST]    
+
++ Parameters
+
+    + coworkerid:"123" (required,string) - coworker id
+
+
++ Request (application/json)
+
+        {
+            "availableItemId": "123112as",
+            "quantity": 1234.234
+        }
+
++ Response 201 (application/json)
+        
+        {
+            "id": "1231234we"
+        }
+
+
+## Return part from job  [/user/coworkers/{coworkerid}/parts/{partid}/return]
+
+### /user/coworkers/{coworkerid}/parts/{partid}/return [POST]  
+
++ Parameters
+
+    + coworkerid:"123" (required,string) - coworker id
+
+    + partid:"123" (required,string) - part id to return 
+
++ Request (application/json)
+
+        {
+            "quantity": 1234.234
+        }
+
++ Response 204 (application/json)
+
+## List issued parts for coworker  [/user/coworkers/{coworkerid}/parts/list]
+
+### /user/coworkers/{coworkerid}/parts/list [GET]
+
++ Parameters
+
+    + coworkerid:"123" (required,string) - coworker id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "12345",
+                "item": {
+                    "id": "1234",
+                    "code": "ACE23",
+                    "description": "some item",
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    }
+                },
+                "bin": {
+                    "id": "123456",
+                    "code": "bin location code",
+                    "store": {
+                        "id": "12342",
+                        "code": "store code",
+                    }
+                },
+                "quantity": 1234.234
             }
         ]
 
