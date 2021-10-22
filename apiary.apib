@@ -1771,83 +1771,6 @@ Request:
             }
         ]
         
-## Issue part for coworker  [/user/coworkers/{coworkerid}/parts/issue]
-
-### /user/coworkers/{coworkerid}/parts/issue [POST]    
-
-+ Parameters
-
-    + coworkerid:"123" (required,string) - coworker id
-
-
-+ Request (application/json)
-
-        {
-            "availableItemId": "123112as",
-            "quantity": 1234.234,
-            "issueDate": "2018-06-15T10:00:00"
-        }
-
-+ Response 201 (application/json)
-        
-        {
-            "id": "1231234we"
-        }
-
-
-## Return part from job  [/user/coworkers/{coworkerid}/parts/{partid}/return]
-
-### /user/coworkers/{coworkerid}/parts/{partid}/return [POST]  
-
-+ Parameters
-
-    + coworkerid:"123" (required,string) - coworker id
-
-    + partid:"123" (required,string) - part id to return 
-
-+ Request (application/json)
-
-        {
-            "quantity": 1234.234,
-            "returnDate": "2018-06-15T10:00:00"
-        }
-
-+ Response 204 (application/json)
-
-## List issued parts for coworker  [/user/coworkers/{coworkerid}/parts/list]
-
-### /user/coworkers/{coworkerid}/parts/list [GET]
-
-+ Parameters
-
-    + coworkerid:"123" (required,string) - coworker id
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": "12345",
-                "item": {
-                    "id": "1234",
-                    "code": "ACE23",
-                    "description": "some item",
-                    "unitOfMeasure": {
-                        "id": "12342",
-                        "code": "uom code"
-                    }
-                },
-                "bin": {
-                    "id": "123456",
-                    "code": "bin location code",
-                    "store": {
-                        "id": "12342",
-                        "code": "store code",
-                    }
-                },
-                "quantity": 1234.234
-            }
-        ]
-
 # Group Assets
 
 ## List assets [/assets/list?query={query}]
@@ -2227,6 +2150,84 @@ Request:
  This endpoint should not require authentication - i.e. it should be publicly available.
 
 + Response 200 (image/png)
+
+## Issue part for user  [/users/{userId}/parts/issue]
+
+### /users/{userId}/parts/issue [POST]    
+
++ Parameters
+
+    + userId:"123" (required,string) - user id
+
+
++ Request (application/json)
+
+        {
+            "availableItemId": "123112as",
+            "quantity": 1234.234,
+            "issueDate": "2018-06-15T10:00:00"
+        }
+
++ Response 201 (application/json)
+        
+        {
+            "id": "1231234we"
+        }
+
+
+## Return part from user  [/users/{userId}/parts/{partid}/return]
+
+### /users/:userId/parts/{partid}/return [POST]  
+
++ Parameters
+
+    + userId:"123" (required,string) - user id
+
+    + partid:"123" (required,string) - part id to return 
+
++ Request (application/json)
+
+        {
+            "quantity": 1234.234,
+            "returnDate": "2018-06-15T10:00:00"
+        }
+
++ Response 204 (application/json)
+
+## List issued parts for user  [/users/{userId}/parts/list]
+
+### /users/{userId}/parts/list [GET]
+
++ Parameters
+
+    + userId:"123" (required,string) - coworker id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "12345",
+                "item": {
+                    "id": "1234",
+                    "code": "ACE23",
+                    "description": "some item",
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    }
+                },
+                "bin": {
+                    "id": "123456",
+                    "code": "bin location code",
+                    "store": {
+                        "id": "12342",
+                        "code": "store code",
+                    }
+                },
+                "quantity": 1234.234
+            }
+        ]
+
 
 # Group Jobs
 
