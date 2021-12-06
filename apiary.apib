@@ -87,7 +87,11 @@ This is the API for Agility. The initial release will only be consumed by one ap
         [
             {
                 "description": "Breakdown Repair",
-                "id": "123"
+                "id": "123",
+                "sound": {
+                     "id": "123",
+                     "checksum": "12345"
+                }
             }
         ]
 
@@ -554,6 +558,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 #### Deprecated response properties:
 - `callerName`
++ checklists.status : `Incomplete` `Saved` `Completed`
 
 + Request (application/json)
 
@@ -615,7 +620,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "checklists" : [
                    {
                         "id" : "123",
-                       "description" : "abc"
+                       "description" : "abc",
+                       "status": "Incomplete | Saved | Completed",
+                       "mandatory": false
                    }
                 ],
                 "hasRouteSheet" : true,
@@ -2393,6 +2400,7 @@ Request:
 
 #### Deprecated response properties:
 - `callerName`
++ checklists.status : `Incomplete` `Saved` `Completed`
 
 + Parameters
 
@@ -2453,7 +2461,10 @@ Request:
             "checklists" : [
                 {
                     "id" : "123",
-                    "description" : "abc"
+                    "description" : "abc",
+                    "status": "Incomplete | Saved | Completed",
+                    "mandatory": false
+
                 }
             ],
             "hasRouteSheet" :true,
