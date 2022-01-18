@@ -14,6 +14,29 @@ This is the API for Agility. The initial release will only be consumed by one ap
 
 # Group Metadata
 
+## Find language details [/language/:languageId/find]
+
+### /language/:languageId/find [GET]
+
++ Response 200 (application/json)
+
+   
+        {
+            "id": "123",
+            "name": "Polski",
+            "phrases": 
+            [
+                {
+                    "id": "page_context_field",
+                    "description": "Naciśnij tutaj"
+                },
+                {
+                    "id": "page_context_field",
+                     "description": "Naciśnij tutaj"
+                }
+            ]
+        }
+
 ## Get the client-id [/identity/client-id/find]
 
 - Used by mobile app to satisfy IDServer code grant type (authorisation code flow).
@@ -338,6 +361,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "id": "123",
             "username": "bartekCossack",
             "isContractor" : true,
+            "language" : {
+                "id": "123"
+            },
             "features": {
                 "coworkerManualTimeSpent": true
             }
