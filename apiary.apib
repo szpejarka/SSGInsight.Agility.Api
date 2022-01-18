@@ -14,28 +14,22 @@ This is the API for Agility. The initial release will only be consumed by one ap
 
 # Group Metadata
 
-## Find language details [/language/:languageId/find]
+## Find language translations [/language/:languageId/translations]
 
-### /language/:languageId/find [GET]
+### /language/:languageId/translations [GET]
 
 + Response 200 (application/json)
 
-   
-        {
-            "id": "123",
-            "name": "Polski",
-            "phrases": 
-            [
-                {
-                    "id": "page_context_field",
-                    "description": "Naciśnij tutaj"
-                },
-                {
-                    "id": "page_context_field",
-                     "description": "Naciśnij tutaj"
-                }
-            ]
-        }
+        [
+            {
+                "id": "page_context_field",
+                "description": "Naciśnij tutaj"
+            },
+            {
+                "id": "page_context_field",
+                 "description": "Naciśnij tutaj"
+            }
+        ]
 
 ## Get the client-id [/identity/client-id/find]
 
