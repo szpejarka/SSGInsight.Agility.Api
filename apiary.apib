@@ -640,11 +640,10 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 },
                 "statusChangeDate": "2018-06-15T10:00:00",
                 "taskDescription": "",
-                "task":
-                {
+                "task": {
                     "id": "123",
                     "code": "task01",
-                    "description": "task decription"
+                    "description": "desc"
                 },
                 "workOrderDescription": "",
                 "checklists" : [
@@ -2443,7 +2442,6 @@ Request:
 
 #### Deprecated response properties:
 - `callerName`
-- `taskDescription`
 
 + checklists.status : `Incomplete` `Saved` `Completed`
 
@@ -2502,12 +2500,6 @@ Request:
             },
             "statusChangeDate": "2018-06-15T10:00:00",
             "taskDescription": "",
-            "task":
-            {
-                    "id": "123",
-                    "code": "task01",
-                    "description": "task decription"
-            },
             "workOrderDescription": "",
             "checklists" : [
                 {
@@ -2696,6 +2688,9 @@ Request:
 
 ### /available-jobs/list?assetFilter=belt [POST]
 
+#### Deprecated response properties:
+- `taskDescription`
+
 + Request (application/json)
     + Attributes
         + crafts (array)
@@ -2769,6 +2764,11 @@ Request:
                     "id": "456"
                  },
                 "taskDescription": "",
+                "task": {
+                  "id": "123",
+                  "code": "task01",
+                  "description": "desc"
+                },
                 "workOrderDescription": "",
                 "callerName": "Name"
             }
