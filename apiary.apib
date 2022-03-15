@@ -2364,6 +2364,38 @@ Request:
 ## Find a checklist definition attached to a job [/jobs/:jobId/checklists/:checklistId/find]
         
 ### /jobs/:jobId/checklists/:checklistId/find [GET]  
+
+
+#### Checklist item definition
++ Common fields:
+   + id
+   + label
+   + controlType
+   + validationRules
+        + isMandatory
+   + sortOrder
+
++ ControlType 
+   + Label, 
+   + TextBox, 
+   + CheckBox, 
+   + ComboBox, 
+   + Signature, 
+   + CheckBoxWithCriticality
+
++ TextBox fields:
+    + dataType: string, int, decimal, date, datetime, interval, currency
+    + checksum : NoChecksum, Element, Total
+    + validationRules:
+        + minLength
+        + maxLength
+        
++ ComboBox fields:
+    + options (only for Combobox, optional)
+    
++ CheckBoxWithCriticality fields:
+   + criticality: green, amber, pink, red
+
 + Response 200 (application/json)
 
         {
@@ -2416,6 +2448,20 @@ Request:
                     "controlType": "Checkbox",
                     "label" : "abc",
                     "sortOrder" : 4
+                },                {
+                    "id" : "125",
+                    "controlType": "CheckboxWithCriticality",
+                    "label" : "abc",
+                    "sortOrder" : 4,
+                    "criticality": "red | ping | amber | green",
+                    "validationRules" : {
+                            "isMandatory": true
+                        }                },
+                {
+                    "id" : "123",
+                    "controlType": "Checkbox",
+                    "label" : "abc",
+                    "sortOrder" : 5
                 },
                 {
                     "id" : "123",
