@@ -2394,7 +2394,7 @@ Request:
     + options (only for Combobox, optional)
     
 + CheckBoxWithCriticality fields:
-   + criticality: GREEEN, AMBER, PINK, RED
+   + criticality: NONE, GREEEN, AMBER, PINK, RED
 
 + Response 200 (application/json)
 
@@ -2423,13 +2423,15 @@ Request:
                             "minLenght" : 0,
                             "maxLenght" : 12,
                             "checksum" : "element"
-                        }
+                        },
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
                     "controlType": "Label",
                     "label" : "abc",
                     "sortOrder" : 2
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
@@ -2442,13 +2444,15 @@ Request:
                             "minLenght" : 0,
                             "maxLenght" : 12,
                             "checksum" : "element"
-                        }
+                        },
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
                     "controlType": "Checkbox",
                     "label" : "abc",
-                    "sortOrder" : 4
+                    "sortOrder" : 4,
+                    "criticality": "NONE"
                 },                {
                     "id" : "125",
                     "controlType": "CheckboxWithCriticality",
@@ -2462,13 +2466,15 @@ Request:
                     "id" : "123",
                     "controlType": "Checkbox",
                     "label" : "abc",
-                    "sortOrder" : 5
+                    "sortOrder" : 5,
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
                     "controlType": "Checkbox",
                     "label" : "abc",
-                    "sortOrder" : 5
+                    "sortOrder" : 5,
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
@@ -2483,7 +2489,8 @@ Request:
                     ],
                     "validationRules" : {
                             "isMandatory": true
-                        }
+                        },
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
@@ -2492,7 +2499,8 @@ Request:
                     "sortOrder" : 7,
                     "validationRules" : {
                             "isMandatory": true
-                        }
+                        },
+                    "criticality": "NONE"
                 }
             ]
         }
