@@ -2381,7 +2381,7 @@ Request:
    + CheckBox, 
    + ComboBox, 
    + Signature, 
-   + CheckBoxWithCriticality
+   + CriticalityBox
 
 + TextBox fields:
     + dataType: string, int, decimal, date, datetime, interval, currency
@@ -2391,10 +2391,11 @@ Request:
         + maxLength
         
 + ComboBox fields:
-    + options (only for Combobox, optional)
+   + options (mandatory)
     
-+ CheckBoxWithCriticality fields:
++ CriticalityBox fields:
    + criticality: NONE, GREEEN, AMBER, PINK, RED
+   + options (mandatory)
 
 + Response 200 (application/json)
 
@@ -2455,10 +2456,20 @@ Request:
                     "criticality": "NONE"
                 },                {
                     "id" : "125",
-                    "controlType": "CheckboxWithCriticality",
+                    "controlType": "CriticalityBox",
                     "label" : "abc",
                     "sortOrder" : 4,
                     "criticality": "RED",
+                    "options": [
+                        {
+                          "id" : "123",
+                          "description" : "Yes"
+                        },
+                        {
+                          "id" : "123",
+                          "description" : "No"
+                        }
+                    ],
                     "validationRules" : {
                             "isMandatory": true
                         }                
