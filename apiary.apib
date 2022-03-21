@@ -2364,6 +2364,33 @@ Request:
 ## Find a checklist definition attached to a job [/jobs/:jobId/checklists/:checklistId/find]
         
 ### /jobs/:jobId/checklists/:checklistId/find [GET]  
+
+#### Checklist item definition
++ Common fields:
+   + id
+   + label
+   + controlType
+   + validationRules
+        + isMandatory
+   + sortOrder
+
++ ControlType 
+   + Label, 
+   + TextBox, 
+   + CheckBox, 
+   + ComboBox, 
+   + Signature, 
+
++ TextBox fields:
+    + dataType: string, int, decimal, date, datetime, interval, currency
+    + checksum : NoChecksum, Element, Total
+    + validationRules:
+        + minLength
+        + maxLength
+
++ ComboBox fields:
+   + options (mandatory)
+
 + Response 200 (application/json)
 
         {
@@ -2449,11 +2476,7 @@ Request:
                 }
             ]
         }
-            
-        - controlType : Label, TextBox, CheckBox, ComboBox, Signature (mandatory)
-        - options (only for Combobox, optional)
-        - checksum : NoChecksum, Element, Total (optional)
-        - datatype : string, int, decimal, currency, interval, date, datetime (optional)
+
 
 ## Find a job [/jobs/{jobId}/find]
         
