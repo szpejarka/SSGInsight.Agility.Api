@@ -2390,6 +2390,10 @@ Request:
 
 + ComboBox fields:
    + options (mandatory)
+   
++ CriticalityBox fields:
+   + criticality: NONE, GREEEN, AMBER, PINK, RED
+   + options (mandatory)
 
 + Response 200 (application/json)
 
@@ -2399,6 +2403,7 @@ Request:
             "description" : "abc",
             "mustComplete": true,
             "completeBeforeStatusId": "123",
+            "createdBySFG20": true,
             "items" : [
                 {
                     "id" : "123",
@@ -2417,13 +2422,15 @@ Request:
                             "minLenght" : 0,
                             "maxLenght" : 12,
                             "checksum" : "element"
-                        }
+                        },
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
                     "controlType": "Label",
                     "label" : "abc",
-                    "sortOrder" : 2
+                    "sortOrder" : 2,
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
@@ -2436,25 +2443,29 @@ Request:
                             "minLenght" : 0,
                             "maxLenght" : 12,
                             "checksum" : "element"
-                        }
+                        },
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
                     "controlType": "Checkbox",
                     "label" : "abc",
-                    "sortOrder" : 4
+                    "sortOrder" : 4,
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
                     "controlType": "Checkbox",
                     "label" : "abc",
-                    "sortOrder" : 5
+                    "sortOrder" : 5,
+                    "criticality": "NONE"
                 },
                 {
                     "id" : "123",
                     "controlType": "Combobox",
                     "label" : "abc",
                     "sortOrder" : 6,
+                    "criticality": "NONE",
                     "options": [
                         {
                           "id" : "123",
@@ -2470,12 +2481,38 @@ Request:
                     "controlType": "Signature",
                     "label" : "abc",
                     "sortOrder" : 7,
+                    "criticality": "NONE",
                     "validationRules" : {
                             "isMandatory": true
                         }
-                }
+                },
+                {
+                    "id" : "125",
+                    "controlType": "CriticalityBox",
+                    "label" : "abc",
+                    "sortOrder" : 4,
+                    "criticality": "RED",
+                    "options": [
+                        {
+                          "id" : "123",
+                          "description" : "Yes"
+                        },
+                        {
+                          "id" : "123",
+                          "description" : "No"
+                        }
+                    ],
+                    "validationRules" : {
+                            "isMandatory": true
+                        }                
+                },
             ]
         }
+        
+        - controlType : Label, TextBox, CheckBox, ComboBox, Signature (mandatory)
+        - options (only for Combobox, optional)
+        - checksum : NoChecksum, Element, Total (optional)
+        - datatype : string, int, decimal, currency, interval, date, datetime (optional)
 
 
 ## Find a job [/jobs/{jobId}/find]
