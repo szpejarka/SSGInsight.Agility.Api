@@ -2517,9 +2517,9 @@ Request:
         - datatype : string, int, decimal, currency, interval, date, datetime (optional)
 
 
-## Find a job [/jobs/{jobId}/find]
+## Find a job [/jobs/{assignedJobId}/find]
         
-### /jobs/{jobId}/find [GET]
+### /jobs/{assignedJobId}/find [GET]
 
 #### Deprecated response properties:
 - `callerName`
@@ -2528,7 +2528,7 @@ Request:
 
 + Parameters
 
-    + jobId:"123" (required,string) - assigned job id
+    + assignedJobId:"123" (required,string) - assigned job id
 
 + Request (application/json)
 
@@ -2656,9 +2656,7 @@ Request:
         
 ### /jobs/{jobId}/hazards [GET]
 
-### Work order ? 
-
-+ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
++ hazards.source : `CUSTOM` `ASSET` `SITE` `LOCATION` `SUBLOCATION`
 
 + Parameters
 
@@ -2671,12 +2669,10 @@ Request:
         [
             {
                 "name": "Thermal",
-                "source": "CUSTOM |ASSET | SITE | LOCATION | SUBLOCATION"
+                "source": "CUSTOM | ASSET | SITE | LOCATION | SUBLOCATION"
             }
         ]
         
- 
-
 ## Create a job attachment [/jobs/:referenceId/attachments/create]
         
 ### /jobs/:referenceId/attachments/create [POST]
