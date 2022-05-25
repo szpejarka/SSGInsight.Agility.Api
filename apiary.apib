@@ -602,7 +602,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 - `taskDescription`
 
 + checklists.status : `Incomplete` `Saved` `Completed`
-+ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
 
 + Request (application/json)
 
@@ -617,6 +616,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "costCode": "",
                 "hasBeenRespondedTo": true,
                 "id": "123",
+                "jobId": "234",
                 "jobCode": "",
                 "jobType": "",
                 "location": {
@@ -681,13 +681,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "phone": "+48 12345678",
                     "email": "john.doe@ssginsight.com"
                 },
-                "hasHazards" : false,
-                "hazards" : [
-                    {
-                        "name": "Thermal",
-                        "source": "CUSTOM | ASSET | SITE | LOCATION | SUBLOCATION"
-                    }
-                ]
+                "hasHazards" : false
             }
         ]
 
@@ -2531,7 +2525,6 @@ Request:
 - `callerName`
 
 + checklists.status : `Incomplete` `Saved` `Completed`
-+ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
 
 + Parameters
 
@@ -2549,6 +2542,7 @@ Request:
             "costCode": "",
             "hasBeenRespondedTo": true,
             "id": "123",
+            "jobId": "234",
             "jobCode": "",
             "jobType": "",
             "location": {
@@ -2607,13 +2601,7 @@ Request:
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
             },
-            "hasHazards" : false,
-            "hazards" : [
-                {
-                    "name": "Thermal",
-                    "source": "CUSTOM |ASSET | SITE | LOCATION | SUBLOCATION"
-                }
-            ]
+            "hasHazards" : false
         }
         
 
@@ -2663,6 +2651,31 @@ Request:
             ],
             "hasRouteSheet" :true
         }
+        
+## Find a job hazards [/jobs/{jobId}/hazards]
+        
+### /jobs/{jobId}/hazards [GET]
+
+### Work order ? 
+
++ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
+
++ Parameters
+
+    + jobId:"123" (required,string) - job id
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Thermal",
+                "source": "CUSTOM |ASSET | SITE | LOCATION | SUBLOCATION"
+            }
+        ]
+        
+ 
 
 ## Create a job attachment [/jobs/:referenceId/attachments/create]
         
@@ -3016,11 +3029,9 @@ Request:
 #### Deprecated response properties:
 - `callerName`
 
-+ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
-
 + Parameters
 
-    + availableJobId:"123" (required,string) - available job id+ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
+    + availableJobId:"123" (required,string) - available job id
 
 + Request (application/json)
 
@@ -3075,13 +3086,7 @@ Request:
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
             },
-            "hasHazards": false,
-            "hazards" : [
-                {
-                    "name": "Thermal",
-                    "source": "CUSTOM |ASSET | SITE | LOCATION | SUBLOCATION"
-                }
-            ]
+            "hasHazards": false
         }
 
 + Request V5 (application/json)
