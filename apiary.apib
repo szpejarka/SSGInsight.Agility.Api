@@ -602,6 +602,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 - `taskDescription`
 
 + checklists.status : `Incomplete` `Saved` `Completed`
++ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
 
 + Request (application/json)
 
@@ -680,7 +681,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "phone": "+48 12345678",
                     "email": "john.doe@ssginsight.com"
                 },
-                "hasHazards" : false
+                "hasHazards" : false,
+                "hazards" : [
+                    {
+                        "name": "Thermal",
+                        "source": "CUSTOM | ASSET | SITE | LOCATION | SUBLOCATION"
+                    }
+                ]
             }
         ]
 
@@ -2524,6 +2531,7 @@ Request:
 - `callerName`
 
 + checklists.status : `Incomplete` `Saved` `Completed`
++ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
 
 + Parameters
 
@@ -2599,7 +2607,13 @@ Request:
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
             },
-            "hasHazards" : false
+            "hasHazards" : false,
+            "hazards" : [
+                {
+                    "name": "Thermal",
+                    "source": "CUSTOM |ASSET | SITE | LOCATION | SUBLOCATION"
+                }
+            ]
         }
         
 
@@ -3002,9 +3016,11 @@ Request:
 #### Deprecated response properties:
 - `callerName`
 
++ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
+
 + Parameters
 
-    + availableJobId:"123" (required,string) - available job id
+    + availableJobId:"123" (required,string) - available job id+ hazards.source : `Custom` `Asset` `Site` `Location` `Sublocation`
 
 + Request (application/json)
 
@@ -3059,7 +3075,13 @@ Request:
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
             },
-            "hasHazards": false
+            "hasHazards": false,
+            "hazards" : [
+                {
+                    "name": "Thermal",
+                    "source": "CUSTOM |ASSET | SITE | LOCATION | SUBLOCATION"
+                }
+            ]
         }
 
 + Request V5 (application/json)
