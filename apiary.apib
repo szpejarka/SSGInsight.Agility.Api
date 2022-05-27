@@ -3042,6 +3042,7 @@ Request:
             "hasBeenRespondedTo": true,
             "id": "123",
             "jobCode": "",
+            "jobId": "1234",
             "jobType": "",
             "location": {
                 "location": {
@@ -3086,46 +3087,6 @@ Request:
             "hasHazards": false
         }
 
-+ Request V5 (application/json)
-
-    + Headers
-            
-            Acccept: application/vnd.agility.api.v5+json;
-
-
-+ Response 200 (application/vnd.agility.api.v5+json)
-
-        {
-            "completionTargetDate": "2018-06-15T10:00:00",
-            "completionWarningDate": "2018-06-15T10:00:00",
-            "costCode": "",
-            "hasBeenRespondedTo": true,
-            "id": "123",
-            "jobCode": "",
-            "jobType": "",
-            "location": {
-                "location": "",
-                "site": "",
-                "subLocation": ""
-            },
-            "asset": {
-                "code": "",
-                "description": ""
-            },
-            "priority": "",
-            "responseTargetDate": "2018-06-15T10:00:00",
-            "responseWarningDate": "2018-06-15T10:00:00",
-            "scheduleStartDate": "2018-06-15T10:00:00",
-            "startDate": "2018-06-15T10:00:00",
-            "status": {
-                "description": "Accepted",
-                "id": "456"
-            },
-            "taskDescription": "",
-            "workOrderDescription": "",
-            "hasRouteSheet" : true
-        }
-        
 ## Find a available job attachments [/available-jobs/{availableJobId}/attachments/list]
         
 ### /available-jobs/{availableJobId}/attachments/list [GET]
