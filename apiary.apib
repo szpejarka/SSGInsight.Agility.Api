@@ -58,10 +58,6 @@ This is the API for Agility. The initial release will only be consumed by one ap
             "routeSheetsMandatory": true,
             "attachmentsWhiteList": [ "JPG", "PNG" ],
             "useCompletionForm": false,
-            "permissions":
-            {
-                "useJobTimeConfirmation": false
-            },
             "assignedJobs":
             {
                 "scheduledDate":
@@ -359,7 +355,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "id": "123"
             },
             "features": {
-                "coworkerManualTimeSpent": true
+                "coworkerManualTimeSpent": true,
+                "useJobTimeConfirmation": false
             }
         }
         
