@@ -44,6 +44,21 @@ This is the API for Agility. The initial release will only be consumed by one ap
         {
             "id": "123"
         }
+        
+## Get the identity configuration [/identity/configuration/find]
+
+- Used by mobile app to satisfy IDServer uri and grant type (authorisation code flow).
+
+### /identity/configuration/find [GET]
+
++ Request (application/json)
+
++ Response 200
+
+        {
+            "clientId": "123",
+            "identityUrl": "https://agility-identity.com"
+        }
 
 ## Find the system configuration metadata [/system-configuration/find]
 
