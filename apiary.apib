@@ -3555,4 +3555,73 @@ Request:
 
         {
             "jobCode": ""
-        }ever
+        }
+        
+# Group Crowd Sourcing
+
+## List the user's crowd-sourcing jobs [/user/crowdsourcing-jobs/list]
+
+### /user/crowdsourcing-jobs/list [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123",
+                "jobId": "234",
+                "jobCode": "",
+                "description": "",
+                "jobType": {
+                    "id": "a2s",
+                    "description": "Planned Maintenance"
+                },
+                "asset": {
+                    "id": "123",
+                    "code": "",
+                    "description": ""
+                },
+                
+                "location": {
+                    "location": {
+                        "id": "123",
+                        "code": "",
+                        "description": ""
+                    },
+                    "site": {
+                        "id": "123",
+                        "code": "",
+                        "description": ""
+                    },
+                    "subLocation": {
+                        "id": "123",
+                        "code": "",
+                        "description": ""
+                    }
+                },
+
+                "priority": {
+                    "id": "ref-231412",
+                    "description": "Urgent",
+                    "isUrgent": true
+                },
+
+                "task": {
+                    "id": "123",
+                    "code": "task01",
+                    "description": "desc"
+                },
+
+                "startDate": "2018-06-15T10:00:00",
+                "completionTargetDate": "2018-06-15T10:00:00",
+                "completionWarningDate": "2018-06-15T10:00:00",
+                "hasBeenRespondedTo": true,
+                "responseTargetDate": "2018-06-15T10:00:00",
+                "responseWarningDate": "2018-06-15T10:00:00",
+
+                "hasChecklist" : true,
+                "hasRouteSheet" : true,
+                "hasHazards" : false
+            }
+        ]
