@@ -3625,3 +3625,34 @@ Request:
                 "hasHazards": true,
             }
         ]
+## Accept crowdsourced job [/user/crowdsourced-jobs/{id}/accept]
+        
+### /user/crowdsourced-jobs/{id}/accept [POST]
+
++ Parameters
+
+    + id:"123" (required,string) - crowdsourced job id
+    
++ Request (application/json)
+
+        {
+            "actionDateTime": "2018-06-15T10:00:00"
+        }
+
++ Response 204
+
+## Reject crowd sourced job [/user/crowdsourced-jobs/{id}/reject]
+
+### /user/crowdsourced-jobs/{id}/reject [POST]
+
++ Parameters
+
+    + id:"123" (required,string) - crowdsourced job id
+
++ Request (application/json)
+
+        {
+            "actionDateTime": "2018-06-15T10:00:00"
+        }
+
++ Response 204
