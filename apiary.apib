@@ -3661,7 +3661,7 @@ Request:
 
 ## Update or set brodacast definition for cs job [/events/crowd-sourced-jobs/{id}/broadcast/update]
 
-### /events/crowd-sourced-jobs/{id}/broadcast/update [PUT]
+### /events/crowd-sourced-jobs/{id}/update [PATCH]
 
 + Parameters
 
@@ -3671,6 +3671,8 @@ Request:
 
         {
             "startDate": "2022-06-16T10:00:00",
+            "statusId": "123",
+            "priorityId": "123",
             "eventDate": "2022-06-15T10:00:00"
         }
 
