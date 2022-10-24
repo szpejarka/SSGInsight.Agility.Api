@@ -2809,6 +2809,43 @@ Request:
 
 + Response 204
 
+## Find a job attachments [/jobs/{jobId}/attachments/list]
+        
+### /jobs/{jobId}/attachments/list [GET]
+
++ Parameters
+
+    + jobId:"123" (required,string) - job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://agility.api/api/blobs/sdfkjhweoi34/find",
+                "urlIsInternal": true,
+                "version":"1.1"
+            },
+            {
+                "id": "1212343",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description different one",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://google.com/some.jpg",
+                "urlIsInternal": false,
+                "version":"1.1"
+            }            
+        ]
+
 # Group Available Jobs
 
 ## Data Structures
@@ -3723,43 +3760,6 @@ Request:
             },
             "hasHazards" : false
         }
-
-## Find a crowd sourced job attachments [/user/crowdsourced-jobs/{id}/attachments/list]
-        
-### /user/crowdsourced-jobs/{id}/attachments/list [GET]
-
-+ Parameters
-
-    + id:"123" (required,string) - crowd sourced job id
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": "123",
-                "createDate": "2018-06-15T10:00:00",
-                "description": "some user description",
-                "authorName": "Billy Smith",
-                "authorUserId": "1234",
-                "size": 12345,
-                "name": "image.jpg",
-                "url": "https://agility.api/api/blobs/sdfkjhweoi34/find",
-                "urlIsInternal": true,
-                "version":"1.1"
-            },
-            {
-                "id": "1212343",
-                "createDate": "2018-06-15T10:00:00",
-                "description": "some user description different one",
-                "authorName": "Billy Smith",
-                "authorUserId": "1234",
-                "size": 12345,
-                "name": "image.jpg",
-                "url": "https://google.com/some.jpg",
-                "urlIsInternal": false,
-                "version":"1.1"
-            }            
-        ]
         
 
 # Group Events
