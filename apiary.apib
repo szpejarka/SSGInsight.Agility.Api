@@ -3657,6 +3657,109 @@ Request:
 
 + Response 204
 
+## Find a crowd sourced job [/user/crowdsourced-jobs/{id}/find]
+        
+### /user/crowdsourced-jobs/{id}/find [GET]
+
++ Parameters
+
+    + id:"123" (required,string) - crowd sourced job id
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "completionComments":""
+            "completionTargetDate": "2018-06-15T10:00:00",
+            "completionWarningDate": "2018-06-15T10:00:00",
+            "costCode": "",
+            "hasBeenRespondedTo": true,
+            "id": "123",
+            "jobCode": "",
+            "jobId": "1234",
+            "jobType": "",
+            "location": {
+                "location": {
+                    "id": "123",
+                    "code": "",
+                    "description": ""
+                },
+                "site": {
+                    "id": "123",
+                    "code": "",
+                    "description": ""
+                },
+                "subLocation": {
+                    "id": "123",
+                    "code": "",
+                    "description": ""
+                }
+            },
+            "asset": {
+                "id": "123",
+                "code": "",
+                "description": "",
+                "hasWarranty": false
+            },
+            "priority": "",
+            "responseTargetDate": "2018-06-15T10:00:00",
+            "responseWarningDate": "2018-06-15T10:00:00",
+            "startDate": "2018-06-15T10:00:00",
+            "status": {
+                "description": "Accepted",
+                "id": "456"
+            },
+            "taskDescription": "",
+            "workOrderDescription": "",
+            "hasRouteSheet" : true,
+            "caller": 
+            {
+                "name": "John Doe",
+                "phone": "+48 12345678",
+                "email": "john.doe@ssginsight.com"
+            },
+            "hasHazards": false
+        }
+
+## Find a crowd sourced job attachments [/user/crowdsourced-jobs/{id}/attachments/list]
+        
+### /user/crowdsourced-jobs/{id}/attachments/list [GET]
+
++ Parameters
+
+    + id:"123" (required,string) - crowd sourced job id
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://agility.api/api/blobs/sdfkjhweoi34/find",
+                "urlIsInternal": true,
+                "version":"1.1"
+            },
+            {
+                "id": "1212343",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "some user description different one",
+                "authorName": "Billy Smith",
+                "authorUserId": "1234",
+                "size": 12345,
+                "name": "image.jpg",
+                "url": "https://google.com/some.jpg",
+                "urlIsInternal": false,
+                "version":"1.1"
+            }            
+        ]
+        
+
 # Group Events
 
 ## Update or set brodacast definition for cs job [/events/crowd-sourced-jobs/{id}/broadcast/update]
