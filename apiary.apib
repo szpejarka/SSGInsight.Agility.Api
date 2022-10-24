@@ -3670,14 +3670,14 @@ Request:
 + Response 200 (application/json)
 
         {
-            "completionComments":""
+            "completionComments" : "",
             "completionTargetDate": "2018-06-15T10:00:00",
             "completionWarningDate": "2018-06-15T10:00:00",
             "costCode": "",
             "hasBeenRespondedTo": true,
             "id": "123",
+            "jobId": "234",
             "jobCode": "",
-            "jobId": "1234",
             "jobType": "",
             "location": {
                 "location": {
@@ -3710,16 +3710,18 @@ Request:
                 "description": "Accepted",
                 "id": "456"
             },
+            "statusChangeDate": "2018-06-15T10:00:00",
             "taskDescription": "",
             "workOrderDescription": "",
-            "hasRouteSheet" : true,
+            "hasRouteSheet" :true,
+            "startedAt" : "2018-06-15T10:00:00",
             "caller": 
             {
                 "name": "John Doe",
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
             },
-            "hasHazards": false
+            "hasHazards" : false
         }
 
 ## Find a crowd sourced job attachments [/user/crowdsourced-jobs/{id}/attachments/list]
