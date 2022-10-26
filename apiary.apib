@@ -3707,15 +3707,37 @@ Request:
 + Response 200 (application/json)
 
         {
-            "completionComments" : "",
-            "completionTargetDate": "2018-06-15T10:00:00",
-            "completionWarningDate": "2018-06-15T10:00:00",
-            "costCode": "",
-            "hasBeenRespondedTo": true,
+            
             "id": "123",
             "jobId": "234",
             "jobCode": "",
-            "jobType": "",
+            "description": "",
+            "costCode": "",
+            "completionComments" : "",
+            
+            "jobType": {
+                "id": "a2s",
+                "description": "Planned Maintenance"
+            },
+            
+            "priority": {
+                "id": "ref-231412",
+                "description": "Urgent",
+                "isHighPriority": true
+            },
+        
+            "status": {
+                "description": "Accepted",
+                "id": "456"
+            },
+            
+            "asset": {
+                "id": "123",
+                "code": "",
+                "description": "",
+                "hasWarranty": false
+            },
+            
             "location": {
                 "location": {
                     "id": "123",
@@ -3733,30 +3755,29 @@ Request:
                     "description": ""
                 }
             },
-            "asset": {
+
+            "task": {
                 "id": "123",
-                "code": "",
-                "description": "",
-                "hasWarranty": false
+                "code": "task01",
+                "description": "desc"
             },
-            "priority": "",
-            "responseTargetDate": "2018-06-15T10:00:00",
-            "responseWarningDate": "2018-06-15T10:00:00",
-            "startDate": "2018-06-15T10:00:00",
-            "status": {
-                "description": "Accepted",
-                "id": "456"
-            },
-            "taskDescription": "",
-            "workOrderDescription": "",
-            "hasRouteSheet" :true,
+            
             "caller": 
             {
                 "name": "John Doe",
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
             },
-            "hasHazards" : false
+            
+            "startDate": "2018-06-15T10:00:00",
+            "completionTargetDate": "2018-06-15T10:00:00",
+            "completionWarningDate": "2018-06-15T10:00:00",
+            "hasBeenRespondedTo": true,
+            "responseTargetDate": "2018-06-15T10:00:00",
+            "responseWarningDate": "2018-06-15T10:00:00",
+            
+            "hasRouteSheet" :true,
+            "hasHazards" : false,
         }
         
 ## List a crowd sourced job attachments [/user/crowdsourced-jobs/{id}/attachments/list]
