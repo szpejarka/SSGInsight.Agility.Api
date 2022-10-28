@@ -3815,7 +3815,22 @@ Request:
                 "version":"1.1"
             }            
         ]
+
+## Notify crowdsourced job users [/user/crowdsourced-jobs/{id}/notify]
         
+### /user/crowdsourced-jobs/{id}/accept [POST]
+
++ Parameters
+
+    + id:"123" (required,string) - crowdsourced job id
+    
++ Request (application/json)
+
+        {
+            "lastJobUpdateDate": "2018-06-15T10:00:00"
+        }
+
++ Response 204        
 
 # Group Events
 
