@@ -2845,6 +2845,83 @@ Request:
                 "version":"1.1"
             }            
         ]
+        
+## Find a RouteSheet  [/jobs/{jobid}/routesheet/find]
+        
+### /jobs/{jobid}/routesheet/find [GET]  
++ Response 200 (application/json)
+
+        {
+            "id" : "123",
+            "openItems" : 
+                [
+                    {
+                        "routeSheetItemId": "342",
+                        "asset": {
+                            "id": "123",
+                            "code": "",
+                            "description": ""
+                        },
+                        "location": {
+                            "location": {
+                                "id": "123",
+                                "code": "",
+                                "description": ""
+                            },
+                            "site": {
+                                "id": "123",
+                                "code": "",
+                                "description": ""
+                            },
+                            "subLocation": {
+                                "id": "123",
+                                "code": "",
+                                "description": ""
+                            }
+                        },
+                        "sortOrder": 11
+                    }
+                ],
+            "completedItems" : 
+                [
+                    {
+                        "routeSheetItemId": "343",
+                        "asset": {
+                            "id": "123",
+                            "code": "",
+                            "description": ""
+                        },
+                        "location": {
+                            "location": {
+                                "id": "123",
+                                "code": "",
+                                "description": ""
+                            },
+                            "site": {
+                                "id": "123",
+                                "code": "",
+                                "description": ""
+                            },
+                            "subLocation": {
+                                "id": "123",
+                                "code": "",
+                                "description": ""
+                            }
+                        },
+                        "isPassed": false,
+                        "completionComments": "Some completion comments",
+                        "completionDate": "2018-06-15T10:00:00",
+                         "sortOrder": 12
+                    }
+                ],
+            "checklists" : 
+                [
+                   {
+                        "id" : "123",
+                        "description" : "abc"
+                   }
+                ]
+        }        
 
 # Group Available Jobs
 
