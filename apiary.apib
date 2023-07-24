@@ -1330,10 +1330,14 @@ Request:
             
 + Response 204
 
-## Submit a checklist result for a route sheet item [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistid/results/submit]
+## Submit a checklist result for a route sheet item [/user/assigned-jobs/{jobid}/routesheet/item/{routesheetitemid}/checklists/{checklistid}/results/submit]
 
-### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistid/results/submit [PUT]
+### /user/assigned-jobs/{jobid}/routesheet/item/{routesheetitemid}/checklists/{checklistid}/results/submit [PUT]
 
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+ 
 + Request (application/json)
 
         {
