@@ -1337,6 +1337,8 @@ Request:
 + Parameters
 
     + jobid:"123" (required,string) - assigned job id
+    + routesheetitemid:"123" (required,string) 
+    + checklistid:"123" (required,string) 
  
 + Request (application/json)
 
@@ -1356,11 +1358,17 @@ Request:
             "id": "checklist results id"
         }
         
-## Save a checklist result for routesheet [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/save]
+## Save a checklist result for routesheet [/user/assigned-jobs/{jobid}/routesheet/item/{routesheetitemid}/checklists/{checklistid}/results/save]
 
 - In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
 
 ### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/save [PUT]
+
++ Parameters
+
+    + jobid:"123" (required,string) - assigned job id
+    + routesheetitemid:"123" (required,string) 
+    + checklistid:"123" (required,string) 
 
 + Request (application/json)
 
