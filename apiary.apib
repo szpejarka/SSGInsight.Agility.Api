@@ -1233,9 +1233,14 @@ Request:
 
 # Group User Assigned Jobs / Routesheet
 
-## Find a RouteSheets  [/user/assigned-jobs/:jobid/routesheet/find]
+## Find a RouteSheets  [/user/assigned-jobs/{jobid}/routesheet/find]
         
 ### /user/assigned-jobs/:jobid/routesheet/find [GET]  
+
++ Parameters
+
+    + jobid:"123" (required,string)
+
 + Response 200 (application/json)
 
         {
@@ -1310,9 +1315,14 @@ Request:
                 ]
         }
 
-## Complete Routesheet item [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/complete]
+## Complete Routesheet item [/user/assigned-jobs/{jobid}/routesheet/item/{routesheetitemid}/complete]
 
 ### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/complete [POST]    
+
++ Parameters
+
+    + jobid:"123" (required,string)
+    + routesheetitemid:"123" (required,string) 
 
 + Request V5 (application/json)
 
@@ -1336,7 +1346,7 @@ Request:
 
 + Parameters
 
-    + jobid:"123" (required,string) - assigned job id
+    + jobid:"123" (required,string)
     + routesheetitemid:"123" (required,string) 
     + checklistid:"123" (required,string) 
  
@@ -1388,11 +1398,17 @@ Request:
             "id": "checklist results id"
         }
         
-## Read previously saved routesheet checklist result [/user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/find]
+## Read previously saved routesheet checklist result [/user/assigned-jobs/{jobid}/routesheet/item/{routesheetitemid}/checklists/{checklistid}/results/find]
 
 - In case of checklist result of type SIGNATURE result value contains BASE64 string with image contents with type "image/png"
 
 ### /user/assigned-jobs/:jobid/routesheet/item/:routesheetitemid/checklists/:checklistId/results/find [GET]
+
++ Parameters
+
+    + jobid:"123" (required,string)
+    + routesheetitemid:"123" (required,string) 
+    + checklistid:"123" (required,string) 
 
 + Response 200 (application/json)
 
