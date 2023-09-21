@@ -346,6 +346,26 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "description": "Cancelled",
             "id": "123"
         }
+        
+## List the zones [/zones/list]
+
+### /zones/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "eqA12",
+                "name": "Zone 1"
+            },
+            {
+                "id": "PL1",
+                "name": "Zone 2"
+                
+            }
+        ]
+        
+        
 
 # Group Authenticated User
 
@@ -376,6 +396,11 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "features": {
                 "coworkerManualTimeSpent": true,
                 "useJobTimeConfirmation": false
+            },
+            "zone":{
+                 "id": "123",
+                 "code": "Zone1",
+                 "description": "Zone one"
             }
         }
         
