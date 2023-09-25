@@ -401,7 +401,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "zone":{
                  "id": "123",
                  "code": "Zone1",
-                 "description": "Zone one"
+                 "description": "Zone one",
+                 "isObsolete": false
             }
         }
         
@@ -492,6 +493,22 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "enabled" : false
             }
         }
+        
+        
+## Update the user [/user/update]
+
+### /user/update [POST]
++ validates if zone exists and is not obsolete
+    + ZoneNotExists - “Zone xxx do not exist”
+    + ZoneIsObsolete - “Zone xxx is obsolete”
++ Request (application/json)
+
+        {
+            "zone":{
+                "id": "1234"
+                }
+        }
++ Response 204        
 
 # Group User Device Id
         
@@ -520,6 +537,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         
 
 + Response 204
+
 
 # Group User Requests
 
