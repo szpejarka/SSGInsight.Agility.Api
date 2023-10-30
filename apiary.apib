@@ -378,7 +378,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 + `isContractor` : true - External Labour
 + `coworkerManualTimeSpent` : controlled by Agility system/user parameter AgilityMobile \ Features \ CoworkerManualTimespent or false for contractors
 + `useJobTimeConfirmation` : controlled by Agility system/user parameter AgilityMobile \ Features \ UseJobTimeConfirmation or false for contractors
-- 
++ `canScheduleToSelf`: controlled by !appSettings.ScheduleToSelfOnlyForInternalLabour || !emLabour.IsExternal
++ `canIssueReturnForEmployee`: controlled by !emLabour.IsExternal
     
 + Response 200 (application/json)
 
@@ -396,7 +397,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             },
             "features": {
                 "coworkerManualTimeSpent": true,
-                "useJobTimeConfirmation": false
+                "useJobTimeConfirmation": false,
+                "canScheduleToSelf": true,
+                "canIssueReturnForEmployee": false
             },
             "zone":{
                  "id": "123",
@@ -495,12 +498,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
         }
         
         
-## Update the user [/user/update]
+## Update the user zone [/user/zone/update]
 
-### /user/update [POST]
+### /user/zone/update [POST]
++ zone can be null and then user has no zone
 + validates if zone exists and is not obsolete
-    + ZoneNotExists - “Zone xxx do not exist”
-    + ZoneIsObsolete - “Zone xxx is obsolete”
+    + ZoneNotExists - “Zone does not exist”
+    + ZoneIsObsolete - “Zone is obsolete”
 + Request (application/json)
 
         {
@@ -3066,7 +3070,7 @@ Request:
 ### SortBy (enum)
 + StartDate
 + DueDate
-+ JobId
++ JobId 
 + Status
 + Description
 + AssetName
@@ -3074,7 +3078,6 @@ Request:
 + Location
 + Priority
 + ResponseDate
-+ JobCode
 
 ### SortOrder (enum)
 + Ascending
@@ -3083,6 +3086,7 @@ Request:
 ## List available jobs [/available-jobs/list?assetFilter=belt]
 
 ### /available-jobs/list?assetFilter=belt [POST]
++ JobId SortBy value means sort by JobCode value
 
 #### Deprecated response properties:
 - `taskDescription`
