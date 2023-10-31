@@ -397,9 +397,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             },
             "features": {
                 "coworkerManualTimeSpent": true,
-                "useJobTimeConfirmation": false,
-                "canScheduleToSelf": true,
-                "canIssueReturnForEmployee": false
+                "useJobTimeConfirmation": false
             },
             "zone":{
                  "id": "123",
@@ -462,6 +460,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             },
             "createJob":{
                 "enabled":true,
+                "scheduleToSelf": true,
                 "standardJob":{
                     "enabled":true
                 }
@@ -471,6 +470,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             },
             "addFollowOnJob":{
                 "enabled": true,
+                "scheduleToSelf": true,
                 "standardJob":{
                     "enabled":true
                 }
