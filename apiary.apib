@@ -94,6 +94,18 @@ This is the API for Agility. The initial release will only be consumed by one ap
             "crowdSourcing":
             {
                 "enabled": true
+            },
+            "features": 
+            {
+                "customContact": 
+                {
+                    "enabled": true,
+                    "fields":
+                    {
+                        "label1": "some label",
+                        "label2": "some other label"
+                    }
+                }
             }
         }
         
@@ -750,7 +762,9 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "caller": {
                     "name": "John Doe",
                     "phone": "+48 12345678",
-                    "email": "john.doe@ssginsight.com"
+                    "email": "john.doe@ssginsight.com",
+                    "info1": "some optioanl info",
+                    "info2": "some optioanl info"                   
                 },
                 "hasHazards" : false
             }
@@ -2775,7 +2789,9 @@ Request:
             {
                 "name": "John Doe",
                 "phone": "+48 12345678",
-                "email": "john.doe@ssginsight.com"
+                "email": "john.doe@ssginsight.com",
+                "info1": "some optioanl info",
+                "info2": "some optioanl info"  
             },
             "hasHazards" : false
         }
@@ -3381,7 +3397,9 @@ Request:
             {
                 "name": "John Doe",
                 "phone": "+48 12345678",
-                "email": "john.doe@ssginsight.com"
+                "email": "john.doe@ssginsight.com",
+                "info1": "some optioanl info",
+                "info2": "some optioanl info"  
             },
             "hasHazards": false
         }
