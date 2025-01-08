@@ -2165,7 +2165,7 @@ Request:
             "code": "12301",
             "description": "Conveyor belt 001",
             "assetStatus": {
-                "id": "123"
+                "id": "123",
                 "name": "In Use"
             },
             "location": {
@@ -2185,12 +2185,18 @@ Request:
                     "description": ""
                 }
             },
-            "hazards": 
+            "hazardTypes": 
             [
                 {
-                    "name": "Thermal",
-                    "description": "High temperature",
-                    "source": "CUSTOM | ASSET | SITE | LOCATION | SUBLOCATION"
+                    "code": "Thermal",
+                    "description": "The thermal type of hazard",
+                    "hazards":
+                    [
+                        {
+                            "name": "Hight Temperature",
+                            "description": "Temperature over 100"
+                        }
+                    ]
                 }
             ],
             "warranty": {
@@ -2198,8 +2204,8 @@ Request:
                 "providerName": "DH Express"
             },
             "manufacturer" : "Conveyor belt company",
-            "model" : "CB/001"
-            "serialNumber" : "123ABC"
+            "model" : "CB/001",
+            "serialNumber" : "123ABC",
             "equipmentGroup" : "Belts",
             "lastModifiedAt" : "2018-06-15T10:00:00",
             "availableForWork": true
