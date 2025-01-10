@@ -2185,18 +2185,16 @@ Request:
                     "description": ""
                 }
             },
-            "hazardTypes": 
+            "hazards": 
             [
                 {
-                    "code": "Thermal",
-                    "description": "The thermal type of hazard",
-                    "hazards":
-                    [
-                        {
-                            "code": "High Temperature",
-                            "description": "Temperature over 100"
-                        }
-                    ]
+                    "code": "High Temperature",
+                    "description": "Temperature over 100",
+                    "type":
+                    {
+                        "code": "Thermal",
+                        "description": "The thermal type of hazard"
+                    }
                 }
             ],
             "warranty": {
@@ -2862,8 +2860,14 @@ Request:
 
         [
             {
-                "name": "Thermal",
-                "source": "CUSTOM | ASSET | SITE | LOCATION | SUBLOCATION | JOB"
+                "code": "High Temperature",
+                "description": "Temperature over 100",
+                "type": 
+                {
+                  
+                    "code": "Thermal",
+                    "description": "The thermal type of hazard"
+                }
             }
         ]
         
