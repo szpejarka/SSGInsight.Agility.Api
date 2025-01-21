@@ -944,6 +944,24 @@ Request:
             }
         ]
 
+## Acknowledge a job hazards [/user/assigned-jobs/{jobId}/hazards/acknowledge]
+        
+### /user/assigned-jobs/{jobId}/hazards/acknowledge [POST]
+
++ Parameters
+
+    + jobId:"123" (required,string) - assigned job id
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "actionDateTime": "2024-01-20T09:13:00"
+            }
+
++ Response 204 (application/json)
+
 #Group User Assigined Jobs / Follow On Jobs 
 
 ## Create follow on job [/user/assigned-jobs/{jobId}/follow-on-jobs/create]
@@ -2787,22 +2805,6 @@ Request:
             }
         ]
         
-## Acknowledge a job hazards [/jobs/{jobId}/hazards/acknowledge]
-        
-### /jobs/{jobId}/hazards/acknowledge [POST]
-
-+ Parameters
-
-    + jobId:"123" (required,string) - job id
-
-+ Request (application/json)
-
-        {
-            "actionDateTime": "2024-01-20T09:13:00"
-        }
-
-+ Response 204 (application/json)
-
 ## Create a job attachment [/jobs/:referenceId/attachments/create]
         
 ### /jobs/:referenceId/attachments/create [POST]
