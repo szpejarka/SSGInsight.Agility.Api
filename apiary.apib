@@ -855,7 +855,7 @@ Request:
             "completionComments": "some text comment",
             "completionTypeId": "123",
             "completedDate": "2018-06-15T10:00:00",
-            "faultTypes": [
+            "faults": [
                 { 
                     "id": "123"
                 },
@@ -981,8 +981,8 @@ Request:
     + jobId:"123" (required,string) - assigned job id
 
 + Request (application/json)
-
-    + Body
+    + assetId: "321" (optional)...
+    + Body 
     
             {
                 "referenceId": "030B4A82-1B7C-11CF-9D53-00AA003C9CB6", 
@@ -992,7 +992,8 @@ Request:
                 "description": "",
                 "jobTypeId": "123",
                 "priorityId": "123",
-                "assignToSelf": false
+                "assignToSelf": false,
+                "assetId":"321"
             }
 
 + Response 201 (application/json)
@@ -1443,7 +1444,7 @@ Request:
     + routesheetitemid:"123 (required,string) - job route sheet item id
 
 + Request (application/json)
-
+    + assetId: "321" (optional)...
     + Body
     
             {
@@ -1454,7 +1455,8 @@ Request:
                 "description": "",
                 "jobTypeId": "123",
                 "priorityId": "123",
-                "assignToSelf": false
+                "assignToSelf": false,
+                "assetId": "321"
             }
 
 + Response 201 (application/json)
