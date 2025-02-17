@@ -100,6 +100,17 @@ This is the API for Agility. The initial release will only be consumed by one ap
                 "customContact": 
                 {
                     "enabled": true
+                },
+                "triages":
+                {
+                    "caller" :{
+                        "Name" : true,
+                        "ContactMethod" : true,
+                        "CustomContactInfo1" : true,
+                        "CustomContactInfo2" : true,
+                        "EmailAddr" : true,
+                        "PhoneNumber" : true
+                    }
                 }
             }
         }
@@ -374,7 +385,25 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "description": "Zone 2 description"
             }
         ]
-        
+       
+## List contact methods [/contact-methods/list]
+
+### /contact-methods/list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "cmA12",
+                "code": "method 1",
+                "description": "method 1 display field"
+            },
+            {
+                "id": "cmPL1",
+                "code": "method 2",
+                "description": "method 2 display field"
+            }
+        ] 
         
 
 # Group Authenticated User
@@ -398,6 +427,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "name": "Bartek Cossack",
             "id": "123",
             "username": "bartekCossack",
+            "customContactInfo1": "label 1",
+            "customContactInfo2": "label 2",
             "isContractor" : true,
             "language" : {
                 "id": "123"
