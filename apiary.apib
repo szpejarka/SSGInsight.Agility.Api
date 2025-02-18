@@ -64,6 +64,8 @@ This is the API for Agility. The initial release will only be consumed by one ap
 
 ### /system-configuration/find [GET]
 
++ fieldDisplayEnum: `Visible` `Mandatory` `Hidden`
+
 + Response 200 (application/json)
 
         {
@@ -104,12 +106,12 @@ This is the API for Agility. The initial release will only be consumed by one ap
                 "triages":
                 {
                     "caller" :{
-                        "Name" : true,
-                        "ContactMethod" : true,
-                        "CustomContactInfo1" : true,
-                        "CustomContactInfo2" : true,
-                        "EmailAddr" : true,
-                        "PhoneNumber" : true
+                        "Name" : fieldDisplayEnum,
+                        "ContactMethod" : fieldDisplayEnum,
+                        "CustomContactInfo1" : fieldDisplayEnum,
+                        "CustomContactInfo2" : fieldDisplayEnum,
+                        "EmailAddr" : fieldDisplayEnum,
+                        "PhoneNumber" : fieldDisplayEnum
                     }
                 }
             }
