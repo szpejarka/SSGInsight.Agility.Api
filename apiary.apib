@@ -97,23 +97,19 @@ This is the API for Agility. The initial release will only be consumed by one ap
             {
                 "enabled": true
             },
+            "helpdesk":
+            {
+                "caller" :{
+                    "Name" : fieldDisplayEnum,
+                    "ContactMethod" : fieldDisplayEnum,
+                    "Info1" : fieldDisplayEnum,
+                    "Info2" : fieldDisplayEnum,
+                    "EmailAddr" : fieldDisplayEnum,
+                    "PhoneNumber" : fieldDisplayEnum
+                }
+            },
             "features": 
             {
-                "customContact": 
-                {
-                    "enabled": true
-                },
-                "triages":
-                {
-                    "caller" :{
-                        "Name" : fieldDisplayEnum,
-                        "ContactMethod" : fieldDisplayEnum,
-                        "Info1" : fieldDisplayEnum,
-                        "Info2" : fieldDisplayEnum,
-                        "EmailAddr" : fieldDisplayEnum,
-                        "PhoneNumber" : fieldDisplayEnum
-                    }
-                }
             }
         }
         
@@ -387,26 +383,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "description": "Zone 2 description"
             }
         ]
-       
-## List contact methods [/contact-methods/list]
-
-### /contact-methods/list [GET]
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": "cmA12",
-                "code": "method 1",
-                "description": "method 1 display field"
-            },
-            {
-                "id": "cmPL1",
-                "code": "method 2",
-                "description": "method 2 display field"
-            }
-        ] 
-        
 
 # Group Authenticated User
 
@@ -429,8 +405,6 @@ An empty list will be returned if `FaultCodeVisibility` is false.
             "name": "Bartek Cossack",
             "id": "123",
             "username": "bartekCossack",
-            "info1": "some optioanal info",
-            "info2": "some optioanal info"       
             "isContractor" : true,
             "language" : {
                 "id": "123"
