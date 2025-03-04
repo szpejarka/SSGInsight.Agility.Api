@@ -383,7 +383,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "description": "Zone 2 description"
             }
         ]
-
+        
 # Group Authenticated User
 
 ## Find the user [/user/find]
@@ -3578,6 +3578,121 @@ Request:
             {
                 "id": "123"
             }
+
+
+## List helpdesk triage question sets [/helpdesk-requests/triage/questionsets/list]
+Retrieve a list of question sets.
+
+### List All Question Sets [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (array[QuestionSetSummary])
+    + Body
+
+            [
+                {
+                    "id": "1",
+                    "description": "Question Set 1"
+                },
+                {
+                    "id": "2",
+                    "description": "Question Set 2"
+                },
+                {
+                    "id": "3",
+                    "description": "Question Set 3"
+                }
+            ]
+            
+
+## Find helpdesk triage question set [/helpdesk-requests/triage/questionsets/{id}/find]
+Retrieve a specific question set by its ID.
+
+### Retrieve Question Set [GET]
++ Parameters
+    + id: `1` (string) - The ID of the question set to retrieve
+
++ Response 200 (application/json)
+    + Attributes (QuestionSet)
+    + Body
+
+            {
+              "id": "1",
+              "description": "Question Set 1",
+              "questionLabel": "Select answer for question set",
+              "targetDate": "NotRequired",
+              "isBreakdownDatesRequired": false,
+              "isAnsweringQuestionMandatory": true,
+              "answers": [
+                {
+                  "id": "1.1",
+                  "description": "Question 1",
+                  "questionLabel": null,
+                  "targetDate": "StartBy",
+                  "isBreakdownDatesRequired": true,
+                  "isAnsweringQuestionMandatory": false,
+                  "answers": []
+                },
+                {
+                  "id": "1.2",
+                  "description": "Question 2",
+                  "questionLabel": "Select answer for question 2",
+                  "targetDate": "CompleteBy",
+                  "isBreakdownDatesRequired": false,
+                  "isAnsweringQuestionMandatory": false,
+                  "answers": [
+                    {
+                      "id": "1.2.1",
+                      "description": "Question 2.1",
+                      "questionLabel": null,
+                      "targetDate": "NotRequired",
+                      "isBreakdownDatesRequired": false,
+                      "isAnsweringQuestionMandatory": true,
+                      "answers": []
+                    },
+                    {
+                      "id": "1.2.2",
+                      "description": "Question 2.2",
+                      "questionLabel": null,
+                      "targetDate": "NotRequired",
+                      "isBreakdownDatesRequired": false,
+                      "isAnsweringQuestionMandatory": true,
+                      "answers": []
+                    }
+                  ]
+                }
+              ]
+            }
+
+
+# Data Structures
+
+## QuestionSetSummary
++ id: `1` (string) - The unique identifier for the question set
++ description: `Question Set 1` (string) - The description of the question set
+
+# Data Structures
+
+## QuestionSet
++ id: `1` (string) - The unique identifier for the question set
++ description: `Question Set 1` (string) - The description of the question set
++ questionLabel: `Select answer for question set` (string) - The label for the question set
++ targetDate: `NotRequired` (enum[string]) - The target date for the question set (NotRequired, StartBy, CompleteBy)
++ isBreakdownDatesRequired: false (boolean) - Flag indicating if breakdown dates are required
++ isAnsweringQuestionMandatory: true (boolean) - Flag indicating if answering the question is mandatory
++ answers (array[Question]) - List of questions within the question set
+
+## Question
++ id: `1.1` (string) - The unique identifier for the question
++ description: `Question 1` (string) - The description of the question
++ questionLabel: `null` (string, nullable) - The label for the question
++ targetDate: `StartBy` (enum[string]) - The target date for the question (NotRequired, StartBy, CompleteBy)
++ isBreakdownDatesRequired: true (boolean) - Flag indicating if breakdown dates are required
++ isAnsweringQuestionMandatory: false (boolean) - Flag indicating if answering the question is mandatory
++ answers (array[Question]) - List of sub-questions within the question
+
+
 
 # Group Inventory
 
