@@ -3614,55 +3614,51 @@ Retrieve a specific question set by its ID.
     + id: `1` (string) - The ID of the question set to retrieve
 
 + Response 200 (application/json)
-    + Attributes (QuestionSet)
+    + Attributes (QuestionSetDetails)
     + Body
 
             {
               "id": "1",
               "description": "Question Set 1",
-              "questionLabel": "Select answer for question set",
-              "targetDate": "NotRequired",
-              "isBreakdownDatesRequired": false,
-              "isAnsweringQuestionMandatory": true,
-              "answers": [
-                {
-                  "id": "1.1",
-                  "description": "Question 1",
-                  "questionLabel": null,
-                  "targetDate": "StartBy",
-                  "isBreakdownDatesRequired": true,
-                  "isAnsweringQuestionMandatory": false,
-                  "answers": []
-                },
-                {
-                  "id": "1.2",
-                  "description": "Question 2",
-                  "questionLabel": "Select answer for question 2",
-                  "targetDate": "CompleteBy",
-                  "isBreakdownDatesRequired": false,
-                  "isAnsweringQuestionMandatory": false,
-                  "answers": [
-                    {
-                      "id": "1.2.1",
-                      "description": "Question 2.1",
-                      "questionLabel": null,
-                      "targetDate": "NotRequired",
-                      "isBreakdownDatesRequired": false,
-                      "isAnsweringQuestionMandatory": true,
-                      "answers": []
-                    },
-                    {
-                      "id": "1.2.2",
-                      "description": "Question 2.2",
-                      "questionLabel": null,
-                      "targetDate": "NotRequired",
-                      "isBreakdownDatesRequired": false,
-                      "isAnsweringQuestionMandatory": true,
-                      "answers": []
+              "question": {
+                "label": "Select answer for question set",
+                "isMandatory": true,
+                "options": [
+                  {
+                    "id": "1.1",
+                    "description": "Option 1",
+                    "targetDate": "StartBy",
+                    "isBreakdown": true,
+                    "question": null
+                  },
+                  {
+                    "id": "1.2",
+                    "description": "Option 2",
+                    "targetDate": "CompleteBy",
+                    "isBreakdown": false,
+                    "question": {
+                      "label": "Select sub option for option 2",
+                      "isMandatory": true,
+                      "options": [
+                        {
+                          "id": "1.2.1",
+                          "description": "Option 2.1",
+                          "targetDate": "NotRequired",
+                          "isBreakdown": false,
+                          "question": null
+                        },
+                        {
+                          "id": "1.2.2",
+                          "description": "Option 2.2",
+                          "targetDate": "NotRequired",
+                          "isBreakdown": false,
+                          "question": null
+                        }
+                      ]
                     }
-                  ]
-                }
-              ]
+                  }
+                ]
+              }
             }
 
 
@@ -3672,25 +3668,22 @@ Retrieve a specific question set by its ID.
 + id: `1` (string) - The unique identifier for the question set
 + description: `Question Set 1` (string) - The description of the question set
 
-# Data Structures
-
-## QuestionSet
+## QuestionSetDetails
 + id: `1` (string) - The unique identifier for the question set
 + description: `Question Set 1` (string) - The description of the question set
-+ questionLabel: `Select answer for question set` (string) - The label for the question set
-+ targetDate: `NotRequired` (enum[string]) - The target date for the question set (NotRequired, StartBy, CompleteBy)
-+ isBreakdownDatesRequired: false (boolean) - Flag indicating if breakdown dates are required
-+ isAnsweringQuestionMandatory: true (boolean) - Flag indicating if answering the question is mandatory
-+ answers (array[Question]) - List of questions within the question set
++ question (Question) - The main question of the question set
 
 ## Question
-+ id: `1.1` (string) - The unique identifier for the question
-+ description: `Question 1` (string) - The description of the question
-+ questionLabel: `null` (string, nullable) - The label for the question
-+ targetDate: `StartBy` (enum[string]) - The target date for the question (NotRequired, StartBy, CompleteBy)
-+ isBreakdownDatesRequired: true (boolean) - Flag indicating if breakdown dates are required
-+ isAnsweringQuestionMandatory: false (boolean) - Flag indicating if answering the question is mandatory
-+ answers (array[Question]) - List of sub-questions within the question
++ label: `Select answer for question set` (string) - The label for the question
++ isMandatory: true (boolean) - Flag indicating if answering the question is mandatory
++ options (array[Option]) - List of options for the question
+
+## Option
++ id: `1.1` (string) - The unique identifier for the option
++ description: `Option 1` (string) - The description of the option
++ targetDate: `StartBy` (enum[string]) - The target date for the option (NotRequired, StartBy, CompleteBy)
++ isBreakdown: true (boolean) - Flag indicating if breakdown dates are required
++ question (Question, nullable) - The sub-question for the option, if any
 
 
 
