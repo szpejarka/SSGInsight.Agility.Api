@@ -3593,15 +3593,15 @@ Retrieve a list of question sets.
             [
                 {
                     "id": "1",
-                    "description": "Question Set 1"
+                    "name": "Question Set 1"
                 },
                 {
                     "id": "2",
-                    "description": "Question Set 2"
+                    "name": "Question Set 2"
                 },
                 {
                     "id": "3",
-                    "description": "Question Set 3"
+                    "name": "Question Set 3"
                 }
             ]
             
@@ -3619,21 +3619,21 @@ Retrieve a specific question set by its ID.
 
             {
               "id": "1",
-              "description": "Question Set 1",
+              "name": "Question Set 1",
               "question": {
                 "label": "Select answer for question set",
                 "isMandatory": true,
                 "options": [
                   {
                     "id": "1.1",
-                    "description": "Option 1",
+                    "name": "Option 1",
                     "targetDate": "StartBy",
                     "isBreakdown": true,
                     "question": null
                   },
                   {
                     "id": "1.2",
-                    "description": "Option 2",
+                    "name": "Option 2",
                     "targetDate": "CompleteBy",
                     "isBreakdown": false,
                     "question": {
@@ -3642,14 +3642,14 @@ Retrieve a specific question set by its ID.
                       "options": [
                         {
                           "id": "1.2.1",
-                          "description": "Option 2.1",
+                          "name": "Option 2.1",
                           "targetDate": "NotRequired",
                           "isBreakdown": false,
                           "question": null
                         },
                         {
                           "id": "1.2.2",
-                          "description": "Option 2.2",
+                          "name": "Option 2.2",
                           "targetDate": "NotRequired",
                           "isBreakdown": false,
                           "question": null
@@ -3666,11 +3666,11 @@ Retrieve a specific question set by its ID.
 
 ## QuestionSetSummary
 + id: `1` (string) - The unique identifier for the question set
-+ description: `Question Set 1` (string) - The description of the question set
++ name: `Question Set 1` (string) - The name of the question set
 
 ## QuestionSetDetails
 + id: `1` (string) - The unique identifier for the question set
-+ description: `Question Set 1` (string) - The description of the question set
++ name: `Question Set 1` (string) - The name of the question set
 + question (Question) - The main question of the question set
 
 ## Question
@@ -3680,7 +3680,7 @@ Retrieve a specific question set by its ID.
 
 ## Option
 + id: `1.1` (string) - The unique identifier for the option
-+ description: `Option 1` (string) - The description of the option
++ name: `Option 1` (string) - The name of the option
 + targetDate: `StartBy` (enum[string]) - The target date for the option (NotRequired, StartBy, CompleteBy)
 + isBreakdown: true (boolean) - Flag indicating if breakdown dates are required
 + question (Question, nullable) - The sub-question for the option, if any
