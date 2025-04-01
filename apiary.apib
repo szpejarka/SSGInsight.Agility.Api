@@ -3504,7 +3504,69 @@ Request:
         {
             "helpdeskRequestCode": ""
         }
+        
+## Create a helpdesk request with triage [/helpdesk-requests/create-with-triage]
 
+### Create a helpdesk request using triage answers [POST]
+
++ Request V1 (application/json)
+
+    + Headers
+            
+            Acccept: application/vnd.agility.api.v3+json;
+            
+    + Body
+    
+            {
+                "referenceId": "030B4A82-1B7C-11CF-9D53-00AA003C9CB6",
+                "assetCode": "AC1",
+                "costCodeId": "123",
+                "createDate": "2018-06-15T10:00:00",
+                "description": "",
+                "targetDate":
+                {
+                    "type": "CompleteBy | StartBy | NotRequired",
+                    "date": "2018-06-15T10:00:00"
+                },                
+                "caller":
+                {
+                    "name": "user name",
+                    "email": "user@email.com",
+                    "phone": "123451232",
+                    "method": "NotSet | Email | Call | FaceToFace | System | SelfService",
+                    "customContact1": "custom info",
+                    "customContact2": "custom info"                    
+                },
+                "breakdownDate": "2018-06-15T10:00:00",
+                "breakdownReportedDate": "2018-06-15T10:00:00",
+                "comment": "some comment text",
+                "triage":
+                {
+                    "questionSetId": "123",
+                    "answer":
+                    {
+                        "id": "123",
+                        "answer": 
+                        {
+                            "id": "232",
+                            "answer":
+                            {
+                                "id": "567",
+                                "answer": null
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.agility.api.v3+json)
+
+        {
+            "helpdeskRequestCode": ""
+        }
+        
+
+ 
  
 ## Create a Helpdesk Request attachment [/helpdesk-requests/:referenceId/attachments/create]
         
