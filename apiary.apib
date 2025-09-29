@@ -3008,6 +3008,11 @@ Request:
                           }
                         }
                         ],
+                        "warranty":
+                        {
+                           "expiryDate": "2018-06-15T10:00:00",
+                           "providerName": "DH Express"
+                        },
                         "sortOrder": 11
                     }
                 ],
@@ -3048,6 +3053,11 @@ Request:
                           }
                         }
                         ],
+                        "warranty":
+                        {
+                           "expiryDate": "2018-06-15T10:00:00",
+                           "providerName": "DH Express"
+                        },
                         "isPassed": false,
                         "completionComments": "Some completion comments",
                         "completionDate": "2018-06-15T10:00:00",
@@ -4249,3 +4259,25 @@ Retrieve a specific question set by its ID.
         }
 
 + Response 204
+
+# Group Scheduler
+
+## List all unassigned tasks [/scheduler/tasks/unassigned-tasks?PageNumber={PageNumber}&PageSize={PageSize}&SortOptions={SortOptions}]
+
+### /scheduler/tasks/unassigned-tasks [GET]
+
++ Parameters
+
+    + PageNumber: 1 (integer) - page number
+    + PageSize: 10 (integer) - pages size
+    + SortOptions: "DueDate,DueDateDesc,Status,StatusDesc" (string)
+
++ Response 200 (application/json)
+
+        {
+            "tasks": [
+                {
+                    "id": "task-id"
+                }
+            ]
+        }
