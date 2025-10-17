@@ -697,6 +697,8 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 + checklists.status : `Incomplete` `Saved` `Completed`
 
++ estimatedTime : Time in minutes
+
 + Request (application/json)
 
 + Response 200 (application/json)
@@ -753,6 +755,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "responseTargetDate": "2018-06-15T10:00:00",
                 "responseWarningDate": "2018-06-15T10:00:00",
                 "scheduleStartDate": "2018-06-15T10:00:00",
+                "estimatedTime": 30,
                 "startDate": "2018-06-15T10:00:00",
                 "status": {
                     "description": "Accepted",
@@ -783,55 +786,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "info1": "some optioanl info",
                     "info2": "some optioanl info"                   
                 },
-                "hasHazards" : false
-            }
-        ]
-
-+ Request V1 (application/json)
-
-    + Headers
-            
-            Acccept: application/vnd.agility.api.v1+json;
-
-+ Response 200 (application/vnd.agility.api.v1+json)
-    
-        [
-            {
-                "active": false,
-                "completionTargetDate": "2018-06-15T10:00:00",
-                "completionWarningDate": "2018-06-15T10:00:00",
-                "costCode": "",
-                "hasBeenRespondedTo": true,
-                "id": "123",
-                "jobCode": "",
-                "jobType": "",
-                "location": {
-                    "location": "",
-                    "site": "",
-                    "subLocation": ""
-                },
-                "asset": {
-                    "code": "",
-                    "description": ""
-                },
-                "priority": "",
-                "responseTargetDate": "2018-06-15T10:00:00",
-                "responseWarningDate": "2018-06-15T10:00:00",
-                "scheduleStartDate": "2018-06-15T10:00:00",
-                "startDate": "2018-06-15T10:00:00",
-                "status": {
-                    "description": "Accepted",
-                    "id": "456"
-                },
-                "taskDescription": "",
-                "workOrderDescription": "",
-                "checklists" : [
-                   {
-                        "id" : "123",
-                       "description" : "abc"
-                   }
-                ],
-                "hasRouteSheet" : true
+                "hasHazards" : false,
+                "triageAnswers": [
+                    {
+                        "question": "How are you?",
+                        "answer": "Good, thanks!"
+                    }
+                ]
             }
         ]
         
@@ -2740,6 +2701,7 @@ Request:
             "responseWarningDate": "2018-06-15T10:00:00",
             "scheduleStartDate": "2018-06-15T10:00:00",
             "startDate": "2018-06-15T10:00:00",
+            "estimatedTime": 30
             "status": {
                 "description": "Accepted",
                 "id": "456"
@@ -2767,7 +2729,13 @@ Request:
                 "info1": "some optioanl info",
                 "info2": "some optioanl info"  
             },
-            "hasHazards" : false
+            "hasHazards" : false,
+            "triageAnswers": [
+                    {
+                        "question": "How are you?",
+                        "answer": "Good, thanks!"
+                    }
+                ]
         }
         
 
