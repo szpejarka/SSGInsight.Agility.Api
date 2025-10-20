@@ -2304,7 +2304,13 @@ Request:
                 "name": "John Doe",
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
-            }
+            },
+            "triageAnswers": [
+                {
+                    "question": "How are you?",
+                    "answer": "Good, thanks!"
+                }
+            ]
         }
         
 ## List asset job attachments [/assets/{assetId}/jobs/{assetJobId}/attachments/list]     
@@ -3377,7 +3383,13 @@ Request:
                 "info1": "some optioanl info",
                 "info2": "some optioanl info"  
             },
-            "hasHazards": false
+            "hasHazards": false,
+            "triageAnswers": [
+                {
+                    "question": "How are you?",
+                    "answer": "Good, thanks!"
+                }
+            ]
         }
 
 ## Find a available job attachments [/available-jobs/{availableJobId}/attachments/list]
@@ -4158,6 +4170,12 @@ Retrieve a specific question set by its ID.
             
             "hasRouteSheet" :true,
             "hasHazards" : false,
+            "triageAnswers": [
+                {
+                    "question": "How are you?",
+                    "answer": "Good, thanks!"
+                }
+            ]
         }
         
 ## List a crowd sourced job attachments [/user/crowdsourced-jobs/{id}/attachments/list]
