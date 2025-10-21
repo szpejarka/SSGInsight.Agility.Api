@@ -629,6 +629,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                 "responseWarningDate": "2018-06-15T10:00:00",
                 "scheduleStartDate": "2018-06-15T10:00:00",
                 "startDate": "2018-06-15T10:00:00",
+                "estimatedTime": 30,
                 "status": {
                     "description": "Accepted",
                     "id": "456"
@@ -653,7 +654,13 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                   "phone": "+48 12345678",
                   "email": "john.doe@ssginsight.com"
                 },
-                "hasHazards": false
+                "hasHazards": false,
+                "triageAnswers": [
+                    {
+                        "question": "How are you?",
+                        "answer": "Good, thanks!"
+                    }
+                ]
             }
         ]
 
@@ -2292,6 +2299,7 @@ Request:
             "responseTargetDate": "2018-06-15T10:00:00",
             "responseWarningDate": "2018-06-15T10:00:00",
             "startDate": "2018-06-15T10:00:00",
+            "estimatedTime": 30,
             "status": {
                 "description": "Accepted",
                 "id": "456"
@@ -3367,6 +3375,7 @@ Request:
             "responseTargetDate": "2018-06-15T10:00:00",
             "responseWarningDate": "2018-06-15T10:00:00",
             "startDate": "2018-06-15T10:00:00",
+            "estimatedTime": 30,
             "status": {
                 "description": "Accepted",
                 "id": "456"
@@ -4167,7 +4176,7 @@ Retrieve a specific question set by its ID.
             "hasBeenRespondedTo": true,
             "responseTargetDate": "2018-06-15T10:00:00",
             "responseWarningDate": "2018-06-15T10:00:00",
-            
+            "estimatedTime": 30,
             "hasRouteSheet" :true,
             "hasHazards" : false,
             "triageAnswers": [
