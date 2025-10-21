@@ -655,12 +655,14 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                   "email": "john.doe@ssginsight.com"
                 },
                 "hasHazards": false,
-                "triageAnswers": [
-                    {
-                        "question": "How are you?",
-                        "answer": "Good, thanks!"
-                    }
-                ]
+                "helpdesk":{
+                    "triage": [
+                        {
+                            "question": "How are you?",
+                            "answer": "Good, thanks!"
+                        }
+                    ]
+                }
             }
         ]
 
@@ -794,12 +796,14 @@ An empty list will be returned if `FaultCodeVisibility` is false.
                     "info2": "some optioanl info"                   
                 },
                 "hasHazards" : false,
-                "triageAnswers": [
-                    {
-                        "question": "How are you?",
-                        "answer": "Good, thanks!"
-                    }
-                ]
+                "helpdesk":{
+                    "triage": [
+                        {
+                            "question": "How are you?",
+                            "answer": "Good, thanks!"
+                        }
+                    ]
+                }
             }
         ]
         
@@ -2313,12 +2317,14 @@ Request:
                 "phone": "+48 12345678",
                 "email": "john.doe@ssginsight.com"
             },
-            "triageAnswers": [
-                {
-                    "question": "How are you?",
-                    "answer": "Good, thanks!"
-                }
-            ]
+            "helpdesk":{
+                "triage": [
+                    {
+                        "question": "How are you?",
+                        "answer": "Good, thanks!"
+                    }
+                ]
+            }
         }
         
 ## List asset job attachments [/assets/{assetId}/jobs/{assetJobId}/attachments/list]     
@@ -2744,12 +2750,14 @@ Request:
                 "info2": "some optioanl info"  
             },
             "hasHazards" : false,
-            "triageAnswers": [
+            "helpdesk":{
+                "triage": [
                     {
                         "question": "How are you?",
                         "answer": "Good, thanks!"
                     }
                 ]
+            }
         }
         
 
@@ -3393,12 +3401,14 @@ Request:
                 "info2": "some optioanl info"  
             },
             "hasHazards": false,
-            "triageAnswers": [
-                {
-                    "question": "How are you?",
-                    "answer": "Good, thanks!"
-                }
-            ]
+            "helpdesk":{
+                "triage": [
+                    {
+                        "question": "How are you?",
+                        "answer": "Good, thanks!"
+                    }
+                ]
+            }
         }
 
 ## Find a available job attachments [/available-jobs/{availableJobId}/attachments/list]
@@ -4179,12 +4189,14 @@ Retrieve a specific question set by its ID.
             "estimatedTime": 30,
             "hasRouteSheet" :true,
             "hasHazards" : false,
-            "triageAnswers": [
-                {
-                    "question": "How are you?",
-                    "answer": "Good, thanks!"
-                }
-            ]
+            "helpdesk":{
+                "triage": [
+                    {
+                        "question": "How are you?",
+                        "answer": "Good, thanks!"
+                    }
+                ]
+            }
         }
         
 ## List a crowd sourced job attachments [/user/crowdsourced-jobs/{id}/attachments/list]
