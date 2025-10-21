@@ -568,7 +568,7 @@ An empty list will be returned if `FaultCodeVisibility` is false.
 
 # Group User Requests
 
-## List the user's requests [/user/requests/list]
+## List the user's requests [/userty /list]
 
 ### /user/requests/list [GET]
 
@@ -3377,7 +3377,11 @@ Request:
                 "id": "123",
                 "code": "",
                 "description": "",
-                "hasWarranty": false
+                "hasWarranty": true, //obsolete
+                "warranty": {
+                    "expiryDate": "2018-06-15T10:00:00",
+                    "providerName": "DH Express"
+                } //null if no warranty
             },
             "priority": "",
             "responseTargetDate": "2018-06-15T10:00:00",
@@ -4146,7 +4150,11 @@ Retrieve a specific question set by its ID.
                 "id": "123",
                 "code": "",
                 "description": "",
-                "hasWarranty": false
+                "hasWarranty": true, //obsolete
+                "warranty": {
+                    "expiryDate": "2018-06-15T10:00:00",
+                    "providerName": "DH Express"
+                } //null if no warranty
             },
             
             "location": {
