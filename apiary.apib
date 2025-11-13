@@ -3402,16 +3402,7 @@ Request:
                     "description": ""
                 }
             },
-            "asset": {
-                "id": "123",
-                "code": "",
-                "description": "",
-                "hasWarranty": true, //obsolete
-                "warranty": {
-                    "expiryDate": "2018-06-15T10:00:00",
-                    "providerName": "DH Express"
-                } //null if no warranty
-            },
+            "asset": #AssetDetail,
             "priority": "",
             "responseTargetDate": "2018-06-15T10:00:00",
             "responseWarningDate": "2018-06-15T10:00:00",
@@ -3808,6 +3799,16 @@ Retrieve a specific question set by its ID.
 + isBreakdown: true (boolean) - Flag indicating if breakdown dates are required
 + question (Question, nullable) - The sub-question for the option, if any
 
+## Warranty
++ expiryDate : "2018-06-15T10:00:00"
++ providerName: "DH Express"
+
+## AssetDetail
++ id : "123"
++ code : "345"
++ description : "descriptiobn"
++ hasWarranty : true - obsolete
++ warranty : (Warranty)
 
 
 # Group Inventory
