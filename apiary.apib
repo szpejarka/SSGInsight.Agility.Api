@@ -2400,7 +2400,49 @@ Request:
                 "version":"1.1"
             }            
         ]
-            
+## List asset spare parts [/assets/{assetId}/spareparts/list]
+
+### /assets/{assetId}/spareparts/list [GET]
+        
++ Parameters
+
+    + assetId:"123" (required,string) - asset id
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "item": {
+                    "id": "123",
+                    "code": "PART-001",
+                    "description": "Replacement Filter",
+                    "availableQuantity": 123.00,
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    },
+                    "imageUrl": "https://api/blobid"                    
+                },
+                "quantity": 2.0,
+                "source": "ASSET | GROUP"
+            },
+            {
+                "item": {
+                    "id": "123",
+                    "code": "PART-001",
+                    "description": "Replacement Filter",
+                    "availableQuantity": 123.00,
+                    "unitOfMeasure": {
+                        "id": "12342",
+                        "code": "uom code"
+                    },
+                    "imageUrl": "https://api/blobid"                        
+                },
+                "quantity": 2.0,
+                "source": "ASSET | GROUP"
+            }                
+        ]
+
 # Group Users
         
 ## Find a user's avatar [/users/:userId/avatar/find]
