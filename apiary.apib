@@ -8,7 +8,7 @@ This is the API for Agility. The initial release will only be consumed by one ap
 - GET requests retrieve data
 - POST requests mutate data
 - Always suffix the URL with a verb (e.g. `/products/list`)
-- Don't envelope data - user headers for metadata (e.g. `X-Paging-PageCount: 1`)
+- Don't envelope data - user headers for metadata (e.g. `X-Pagingń-PageCount: 1`)
 - Each request to the API should include the user's device id in the header (e.g. `X-Device-Id: 02:00:00:00:00:00`)
 - Each request to the API should include the user's agility base uri in the header (e.g.  `X-Agility-BaseUri: https://uat.ssginsight.com/agility802`)
 
@@ -2621,7 +2621,6 @@ Request:
             "description" : "abc",
             "mustComplete": true,
             "completeBeforeStatusId": "123",
-            "createdBySFG20": true,
             "isHazardous":true,
             "items" : [
                 {
