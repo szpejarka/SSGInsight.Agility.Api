@@ -4408,17 +4408,27 @@ Retrieve a specific question set by its ID.
         
 # Group UI
 
-## Find the user configuration [/ui/api/user/configuration/find]
+## Find the system configuration metadata [/ui/api/system-configuration/find]
 
-### /ui/api/user/configuration/find [GET]
+### /ui/api/system-configuration/find [GET]
 
-
-+ Request (application/json)
++ fieldDisplayEnum: `Visible` `Mandatory` `Hidden`
 
 + Response 200 (application/json)
 
         {
-            "createRequestUsingTriage": {
-                "enabled": false
+            "costCodesMandatory": true,
+            "helpdesk":
+            {
+                "triageEnabled": true,
+                "caller" :{
+                    "Name" : fieldDisplayEnum,
+                    "ContactMethod" : fieldDisplayEnum,
+                    "Info1" : fieldDisplayEnum,
+                    "Info2" : fieldDisplayEnum,
+                    "EmailAddr" : fieldDisplayEnum,
+                    "PhoneNumber" : fieldDisplayEnum
+                },
+                "comments": fieldDisplayEnum
             }
         }
